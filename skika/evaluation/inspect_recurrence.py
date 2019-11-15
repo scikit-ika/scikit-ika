@@ -260,8 +260,10 @@ class InspectPrequential:
 
                         print(f"state {state.id} predictions different")
                         same_sum = 0
-                        for pi in range(len(state_predictions)):
-                            if self.state_tests[state.id][pi] == state_predictions[pi]:
+                        for pi in range(min(len(state_predictions), len(self.state_tests[state.id]))):
+                            lh = self.state_tests[state.id][pi]
+                            rh = state_predictions[pi]
+                            if lh == rh:
                                 same_sum += 1
                         print(
                             f"Similarity {same_sum / len(state_predictions)}")
