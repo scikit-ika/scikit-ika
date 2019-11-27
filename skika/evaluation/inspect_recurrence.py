@@ -25,7 +25,6 @@ class InspectorVisualizer():
                              '#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe',
                              '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000']
 
-    @staticmethod
     def hold(self):
         plt.savefig(self.name)
         # plt.show(block=True)
@@ -89,6 +88,12 @@ class InspectorVisualizer():
 
         if model_exposure['reset_alternative_states'] or (self.alt_state_lcs is None and len(model_exposure['alternative_states']) > 0):
             self.sub_plot_obj.axvline(x=sample_id, color="blue", ymin=0.5)
+            if model_exposure['signal_confidence_backtrack']:
+                self.sub_plot_obj.axvline(x=sample_id, color="yellow", ymin=0.5)
+            if model_exposure['signal_confidence_backtrack']:
+                self.sub_plot_obj.axvline(x=sample_id, color="red", ymin=0.5)
+            print(model_exposure)
+            input()
             self.alt_state_lcs = []
             self.alt_state_segs = []
             self.alt_state_stats = []
@@ -101,6 +106,18 @@ class InspectorVisualizer():
                 self.alt_state_stats.append([deque(), 0])
                 self.sub_plot_obj.add_collection(self.alt_state_lcs[-1])
 
+            self.alt_state_conf_lcs = []
+            self.alt_state_conf_segs = []
+            self.alt_state_conf_stats = []
+            for alt_state in model_exposure['alternative_states']:
+                as_color = self.state_colors[alt_state[0]
+                                             ] if alt_state[0] >= 0 else "black"
+                self.alt_state_conf_lcs.append(LineCollection(
+                    [], color=as_color, linestyle='dotted', linewidth=1))
+                self.alt_state_conf_segs.append([[[sample_id, 0], [sample_id, 0]]])
+                self.alt_state_conf_stats.append([deque(), 0])
+                self.sub_plot_obj.add_collection(self.alt_state_conf_lcs[-1])
+
         for ai, alt_state in enumerate(model_exposure['alternative_states']):
             self.alt_state_stats[ai][0].append(alt_state[1])
             self.alt_state_stats[ai][1] += alt_state[1]
@@ -112,6 +129,28 @@ class InspectorVisualizer():
                 self.alt_state_segs[ai].append([self.alt_state_segs[ai][-1][1], [
                                                sample_id, self.alt_state_stats[ai][1] / len(self.alt_state_stats[ai][0])]])
             self.alt_state_lcs[ai].set_segments(self.alt_state_segs[ai])
+            
+            print("model exposure: ")
+            print(model_exposure['alternative_states_difference_confidence'])
+            if alt_state[0] not in model_exposure['alternative_states_difference_confidence']:
+                continue
+            print(f"plotting {alt_state[0]}")
+            alt_stat_current_conf = model_exposure['alternative_states_difference_confidence'][alt_state[0]]
+            self.alt_state_conf_stats[ai][0].append(alt_stat_current_conf)
+            self.alt_state_conf_stats[ai][1] = (alt_stat_current_conf * 0.5) + (0.1 - 0.025)
+            if self.alt_state_conf_segs[ai][-1][0][1] == 0:
+                self.alt_state_conf_segs[ai][-1][0][1] = self.alt_state_conf_stats[ai][1]
+            if len(self.alt_state_conf_stats[ai][0]) > 300:
+                self.alt_state_conf_stats[ai][0].popleft()
+            print(f"Current end: {self.alt_state_conf_segs[ai][-1][1][1]}, new value: {self.alt_state_conf_stats[ai][1]}")
+            if abs(self.alt_state_conf_segs[ai][-1][1][1] - self.alt_state_conf_stats[ai][1]) < 0.01:
+                print("continue Seg")
+                self.alt_state_conf_segs[ai][-1][1][0] = sample_id
+            else:
+                print("New Seg")
+                self.alt_state_conf_segs[ai].append([self.alt_state_conf_segs[ai][-1][1], [
+                                               sample_id, self.alt_state_conf_stats[ai][1]]])
+            self.alt_state_conf_lcs[ai].set_segments(self.alt_state_conf_segs[ai])
 
         if model_exposure['load_restore_state'] is not None:
             restore_id = model_exposure['load_restore_state'][0]
@@ -170,6 +209,12 @@ class ModelExposure:
             sample_exposed_info['set_restore_state'] = self.model.set_restore_state
         if hasattr(self.model, 'load_restore_state'):
             sample_exposed_info['load_restore_state'] = self.model.load_restore_state
+        if hasattr(self.model, 'alternative_states_difference_confidence'):
+            sample_exposed_info['alternative_states_difference_confidence'] = self.model.alternative_states_difference_confidence
+        if hasattr(self.model, 'signal_confidence_backtrack'):
+            sample_exposed_info['signal_confidence_backtrack'] = self.model.signal_confidence_backtrack
+        if hasattr(self.model, 'signal_difference_backtrack'):
+            sample_exposed_info['signal_difference_backtrack'] = self.model.signal_difference_backtrack
 
         return sample_exposed_info
 
