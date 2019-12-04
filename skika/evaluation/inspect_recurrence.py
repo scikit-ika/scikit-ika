@@ -93,7 +93,7 @@ class InspectorVisualizer():
             if model_exposure['signal_confidence_backtrack']:
                 self.sub_plot_obj.axvline(x=sample_id, color="red", ymin=0.5)
             print(model_exposure)
-            input()
+            # input()
             self.alt_state_lcs = []
             self.alt_state_segs = []
             self.alt_state_stats = []
@@ -342,7 +342,7 @@ class InspectPrequential:
                 if self.state_tests[restore_id] != self.restore_states[restore_id][0]:
                     print("Restore Not Equal")
 
-                    input()
+                    # input()
 
             if model_exposed_info['set_restore_state'] is not None:
                 restore_id = model_exposed_info['set_restore_state']
