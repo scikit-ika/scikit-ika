@@ -41,8 +41,11 @@ class InspectorVisualizer():
 
         self.lc = LineCollection([])
         self.lc_c = LineCollection([])
+        self.lc_s = LineCollection([])
+        self.lc_s_segs = [[[0, 0.25], [0, 0.25]]]
         self.sub_plot_obj.add_collection(self.lc)
         self.sub_plot_current.add_collection(self.lc_c)
+        self.sub_plot_current.add_collection(self.lc_s)
         self.colors = []
         self.segments = [None]
         self.on_screen_segs = 0
@@ -56,6 +59,20 @@ class InspectorVisualizer():
         if model_exposure['found_change']:
             self.sub_plot_obj.axvline(x=sample_id, color="green")
             self.sub_plot_current.axvline(x=sample_id, color="green")
+        print('**********************')
+        print(f"{model_exposure}")
+        print('**********************')
+        if model_exposure['current_sensitivity']:
+            sx = sample_id
+            sy = ((model_exposure['current_sensitivity'] - 0.05) / (0.05 * 1.5))* 0.5 + 0.25
+            print(f"X: {sx}, Y: {sy}")
+            seg = [sx, sy]
+            
+            self.lc_s_segs.append([self.lc_s_segs[-1][1], seg])
+            self.lc_s.set_segments(self.lc_s_segs)
+            # self.sub_plot_current.plot(sx, sy)
+            # self.sub_plot_current.axhline(y=sy, xmin = 0.98, xmax = 1, color = "green")
+
         color = self.state_colors[model_exposure['active_state']]
         self.sample_ids.append(sample_id)
         is_correct = y == p
@@ -215,6 +232,8 @@ class ModelExposure:
             sample_exposed_info['signal_confidence_backtrack'] = self.model.signal_confidence_backtrack
         if hasattr(self.model, 'signal_difference_backtrack'):
             sample_exposed_info['signal_difference_backtrack'] = self.model.signal_difference_backtrack
+        if hasattr(self.model, 'current_sensitivity'):
+            sample_exposed_info['current_sensitivity'] = self.model.current_sensitivity
 
         return sample_exposed_info
 
