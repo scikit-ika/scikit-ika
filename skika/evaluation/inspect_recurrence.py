@@ -31,7 +31,7 @@ class InspectorVisualizer():
 
     def __configure(self):
         plt.ion()
-        self.fig = plt.figure(figsize=(9, 5))
+        self.fig = plt.figure(figsize=(18, 10))
         self.sub_plot_obj = self.fig.add_subplot(11 + 2 * 100)
         self.sub_plot_current = self.fig.add_subplot(12 + 2 * 100)
         self.sub_plot_obj.set_autoscale_on(True)
