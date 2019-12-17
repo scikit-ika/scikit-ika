@@ -6,6 +6,9 @@
 Welcome to scikit-ika's documentation!
 ======================================
 
+.. automodule:: skika
+   :members:
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
