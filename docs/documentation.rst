@@ -15,7 +15,6 @@ Data: :mod:`data`
 
 .. autosummary::
    :nosignatures:
-   :no-inherited-members:
    :toctree: _autosummary
 
    data.stream_generator
