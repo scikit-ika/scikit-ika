@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>skika.data.stream_generator &#8212; scikit-ika 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="API Documentation" href="../documentation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-skika.data.stream_generator">
+<span id="skika-data-stream-generator"></span><h1>skika.data.stream_generator<a class="headerlink" href="#module-skika.data.stream_generator" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.stream_generator.RecurrentDriftStream" title="skika.data.stream_generator.RecurrentDriftStream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecurrentDriftStream</span></code></a>([generator, …])</p></td>
+<td><p>Generates a stream with recurrent concept drifts.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="skika.data.stream_generator.RecurrentDriftStream">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.stream_generator.</code><code class="sig-name descname">RecurrentDriftStream</code><span class="sig-paren">(</span><em class="sig-param">generator='agrawal', stable_period=3000, position=3000, concepts=[4, 0, 8], width=1, lam=1.0, has_noise=False, all_concepts=[4, 0, 8, 6, 2, 1, 3, 5, 7, 9], concept_shift_step=-1, concept_shift_sample_intervals=[200000, 250000, 300000], stable_period_lam=-1, stable_period_start=1000, stable_period_base=200, stable_period_logger=None, random_state=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a stream with recurrent concept drifts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generator</strong> – a stream generator</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.feature_names">
+<em class="property">property </em><code class="sig-name descname">feature_names</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the names of the features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>names of the features</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.get_data_info">
+<code class="sig-name descname">get_data_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_data_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves minimum information from the stream</p>
+<p>Used by evaluator methods to id the stream.</p>
+<p>The default format is: ‘Stream name - n_targets, n_classes, n_features’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Stream data information</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.get_info">
+<code class="sig-name descname">get_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects and returns the information about the configuration of the estimator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Configuration of the estimator.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.get_params">
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> – Parameter names mapped to their values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mapping of string to any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.has_more_samples">
+<code class="sig-name descname">has_more_samples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.has_more_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if stream has more samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if stream has more samples.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.is_restartable">
+<code class="sig-name descname">is_restartable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.is_restartable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the stream is restartable.
+:returns: True if stream is restartable.
+:rtype: Boolean</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.last_sample">
+<code class="sig-name descname">last_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.last_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves last <cite>batch_size</cite> samples in the stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A numpy.ndarray of shape (batch_size, n_features) and an array-like of shape
+(batch_size, n_targets), representing the next batch_size samples.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple or tuple list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.n_cat_features">
+<em class="property">property </em><code class="sig-name descname">n_cat_features</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_cat_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the number of integer features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of integer features in the stream.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.n_features">
+<em class="property">property </em><code class="sig-name descname">n_features</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the number of features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The total number of features.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.n_num_features">
+<em class="property">property </em><code class="sig-name descname">n_num_features</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_num_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the number of numerical features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of numerical features in the stream.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.n_remaining_samples">
+<code class="sig-name descname">n_remaining_samples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_remaining_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the estimated number of remaining samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Remaining number of samples. -1 if infinite (e.g. generator)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.n_targets">
+<em class="property">property </em><code class="sig-name descname">n_targets</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the number of targets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of targets in the stream.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.next_sample">
+<code class="sig-name descname">next_sample</code><span class="sig-paren">(</span><em class="sig-param">batch_size=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.next_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the next <cite>batch_size</cite> samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> (<em>int</em>) – The number of samples to return.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return a tuple with the features matrix
+for the batch_size samples that were requested.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple or tuple list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.prepare_for_use">
+<code class="sig-name descname">prepare_for_use</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.prepare_for_use" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the stream for use.</p>
+<p class="rubric">Notes</p>
+<p>This functions should always be called after the stream initialization.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the estimator to its initial state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.restart">
+<code class="sig-name descname">restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restart the stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.set_params">
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.target_names">
+<em class="property">property </em><code class="sig-name descname">target_names</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the names of the targets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the names of the targets in the stream.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.stream_generator.RecurrentDriftStream.target_values">
+<em class="property">property </em><code class="sig-name descname">target_values</code><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all target_values in the stream for each target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of lists of all target_values for each target</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">scikit-ika</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">scikit-ika API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../documentation.html">API Documentation</a><ul>
+      <li>Previous: <a href="../documentation.html" title="previous chapter">API Documentation</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Team scikit-ika.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/_autosummary/skika.data.stream_generator.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
