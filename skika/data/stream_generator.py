@@ -13,6 +13,16 @@ from skmultiflow.data import HyperplaneGenerator
 from skmultiflow.data import ConceptDriftStream
 
 class RecurrentDriftStream(ConceptDriftStream):
+
+    """ Generates a stream with recurrent concept drifts.
+
+    Parameters
+    __________
+    generator:
+        a stream generator
+
+    """
+
     def __init__(self,
                  generator='agrawal',
                  stable_period=3000,

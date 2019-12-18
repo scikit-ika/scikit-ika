@@ -6,18 +6,25 @@
 Welcome to scikit-ika's documentation!
 ======================================
 
-.. automodule:: skika
-   :members:
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Documentation
+
+   scikit-ika API <documentation>
+
+`API Documentation <documentation.html>`_
+------------------------------------------
+
+Detailed documentation of the implementations.
 
 
 
 Indices and tables
 ==================
 
-* :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
