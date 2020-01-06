@@ -30,7 +30,7 @@ class InspectorVisualizer():
         # plt.show(block=True)
 
     def __configure(self):
-        plt.ion()
+        # plt.ion()
         self.fig = plt.figure(figsize=(18, 10))
         self.sub_plot_obj = self.fig.add_subplot(11 + 2 * 100)
         self.sub_plot_current = self.fig.add_subplot(12 + 2 * 100)
@@ -52,7 +52,7 @@ class InspectorVisualizer():
         self.alt_state_lcs = None
 
     def on_new_train_step(self, sample_id, data_exposure, model_exposure, X, y, p):
-        plt.pause(1e-9)
+        # plt.pause(1e-9)
         if data_exposure['drift']:
             self.sub_plot_obj.axvline(x=sample_id, color="red")
             self.sub_plot_current.axvline(x=sample_id, color="red")
