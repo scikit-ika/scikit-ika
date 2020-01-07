@@ -5,7 +5,7 @@ API Documentation
 This is the API documentation for ``scikit-ika``.
 
 Data: :mod:`data`
-=============================
+=================
 
 .. automodule:: skika.data
    :no-members:
@@ -21,7 +21,7 @@ Data: :mod:`data`
    data.synthetic.reccurring_concept_stream
    data.synthetic.wind_sim_generator
 
-Data: :mod:`evaluation`
+Evaluation: :mod:`evaluation`
 =============================
 
 .. automodule:: skika.evaluation
@@ -36,8 +36,8 @@ Data: :mod:`evaluation`
 
    evaluation.inspect_recurrence
 
-Data: :mod:`visualisation`
-=============================
+Visualisation: :mod:`visualisation`
+==================================
 
 .. automodule:: skika.visualisation
    :no-members:
