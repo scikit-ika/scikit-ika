@@ -1,0 +1,16 @@
+skika.visualisation.wind\_sim\_visualisation
+============================================
+
+.. automodule:: skika.visualisation.wind_sim_visualisation
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

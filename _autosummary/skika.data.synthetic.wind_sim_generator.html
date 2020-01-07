@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>skika.data.synthetic.wind_sim_generator &mdash; scikit-ika 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.evaluation.inspect_recurrence" href="skika.evaluation.inspect_recurrence.html" />
+    <link rel="prev" title="skika.data.synthetic.reccurring_concept_stream" href="skika.data.synthetic.reccurring_concept_stream.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> scikit-ika
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="skika.data.stream_generator.html">skika.data.stream_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.synthetic.reccurring_concept_stream.html">skika.data.synthetic.reccurring_concept_stream</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.data.synthetic.wind_sim_generator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#visualisation-visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-ika</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
+        
+      <li>skika.data.synthetic.wind_sim_generator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_autosummary/skika.data.synthetic.wind_sim_generator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-skika.data.synthetic.wind_sim_generator">
+<span id="skika-data-synthetic-wind-sim-generator"></span><h1>skika.data.synthetic.wind_sim_generator<a class="headerlink" href="#module-skika.data.synthetic.wind_sim_generator" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.synthetic.wind_sim_generator.PollutionEmission" title="skika.data.synthetic.wind_sim_generator.PollutionEmission"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PollutionEmission</span></code></a>(x, y, r, initial_strength, …)</p></td>
+<td><p>Helper class to model emitted pollution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.synthetic.wind_sim_generator.PollutionSource" title="skika.data.synthetic.wind_sim_generator.PollutionSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PollutionSource</span></code></a>(x, y, strength, expansion, …)</p></td>
+<td><p>Helper class to simulate a source of pollution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.synthetic.wind_sim_generator.WindSimGenerator" title="skika.data.synthetic.wind_sim_generator.WindSimGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WindSimGenerator</span></code></a>([concept, produce_image, …])</p></td>
+<td><p>Generator simulating wood smoke pollution sensors.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="skika.data.synthetic.wind_sim_generator.PollutionEmission">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.synthetic.wind_sim_generator.</code><code class="sig-name descname">PollutionEmission</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">r</em>, <em class="sig-param">initial_strength</em>, <em class="sig-param">expansion</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.PollutionEmission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper class to model emitted pollution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X Position of source</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y Position of source</p></li>
+<li><p><strong>r</strong> (<em>int</em>) – Initial radius</p></li>
+<li><p><strong>initial_strength</strong> (<em>int</em>) – Amount of pollution emitted initially</p></li>
+<li><p><strong>expansion</strong> (<em>int</em>) – How quickly pollution expands</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.synthetic.wind_sim_generator.PollutionSource">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.synthetic.wind_sim_generator.</code><code class="sig-name descname">PollutionSource</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">strength</em>, <em class="sig-param">expansion</em>, <em class="sig-param">random_state</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.PollutionSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper class to simulate a source of pollution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X Position of source</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y Position of source</p></li>
+<li><p><strong>strength</strong> (<em>int</em>) – Amount of pollution emitted</p></li>
+<li><p><strong>expansion</strong> (<em>int</em>) – How quickly pollution expands</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em> or </em><em>randomState</em>) – Seed for randomisation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.synthetic.wind_sim_generator.WindSimGenerator">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.synthetic.wind_sim_generator.</code><code class="sig-name descname">WindSimGenerator</code><span class="sig-paren">(</span><em class="sig-param">concept=0</em>, <em class="sig-param">produce_image=False</em>, <em class="sig-param">num_sensors=8</em>, <em class="sig-param">sensor_pattern='circle'</em>, <em class="sig-param">sample_random_state=None</em>, <em class="sig-param">x_trail=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.WindSimGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator simulating wood smoke pollution sensors.</p>
+<p>This generator is modeled after experiments placing
+sensors over a town to capture wood pollution readings.</p>
+<p>Pollution sources are distributed and generate an emission
+every few timesteps. Emission movement depends on wind
+speed and direction, as well as internal dissipation.</p>
+<p>Feature sensors pick up readings to generate features,
+while a central target sensor records a target reading.
+This is transformed into a classification target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept</strong> (<em>int</em><em> (</em><em>Default: 0</em><em>)</em>) – The initial concept</p></li>
+<li><p><strong>produce_image</strong> (<em>bool</em><em> (</em><em>Default: False</em><em>)</em>) – Whether or not to produce an image for visualisation</p></li>
+<li><p><strong>num_sensors</strong> (<em>int</em><em> (</em><em>Default: 8</em><em>)</em>) – The number of sensors to place</p></li>
+<li><p><strong>sensor_pattern</strong> (<em>'circle'</em><em>, </em><em>'grid'</em><em> (</em><em>Default: circle</em><em>)</em>) – The pattern to place sensors</p></li>
+<li><p><strong>sample_random_state</strong> (<em>int</em><em>, </em><em>randomState</em>) – randomState to generate simulation</p></li>
+<li><p><strong>x_trail</strong> (<em>int</em><em> (</em><em>Default: 1</em><em>)</em>) – The number of feature x lags to output</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="skika.data.synthetic.wind_sim_generator.WindSimGenerator.set_concept">
+<code class="sig-name descname">set_concept</code><span class="sig-paren">(</span><em class="sig-param">concept_seed</em>, <em class="sig-param">difficulty=3</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.WindSimGenerator.set_concept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set windspeed, direction and sources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_seed</strong> (<em>int</em>) – Seed for the concept</p></li>
+<li><p><strong>difficulty</strong> (<em>int</em><em> (</em><em>Default: 3</em><em>)</em>) – How difficult a concept is</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.synthetic.wind_sim_generator.WindSimGenerator.set_wind">
+<code class="sig-name descname">set_wind</code><span class="sig-paren">(</span><em class="sig-param">concept=0</em>, <em class="sig-param">direc=None</em>, <em class="sig-param">strength=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.WindSimGenerator.set_wind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set wind parameters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.synthetic.wind_sim_generator.WindSimGenerator.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.synthetic.wind_sim_generator.WindSimGenerator.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update simulation</p>
+<p>To save time when checking if sensor is within an
+emission, we exclude check for emissions wholely contained
+in anouther emission.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="skika.evaluation.inspect_recurrence.html" class="btn btn-neutral float-right" title="skika.evaluation.inspect_recurrence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="skika.data.synthetic.reccurring_concept_stream.html" class="btn btn-neutral float-left" title="skika.data.synthetic.reccurring_concept_stream" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Team scikit-ika
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+skika.data.synthetic.wind\_sim\_generator
+=========================================
+
+.. automodule:: skika.data.synthetic.wind_sim_generator
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      PollutionEmission
+      PollutionSource
+      WindSimGenerator
+   
+   
+
+   
+   
+   
