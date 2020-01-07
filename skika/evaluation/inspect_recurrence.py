@@ -7,6 +7,18 @@ from matplotlib.collections import LineCollection
 
 
 class InspectorVisualizer():
+    """ Class to visualize and plot online classification
+    results in real time.
+    Specific data is exposed per train step, and ploted on a real 
+    time graph.
+
+    Parameters
+    ----------
+
+    name: str
+        Name of output files
+    
+    """
     def __init__(self, name="test.pdf"):
         self.name = name
         self.accuracy_sum = 0
@@ -26,10 +38,15 @@ class InspectorVisualizer():
                              '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000']
 
     def hold(self):
+        """ Function called at end of run, can save
+        to output file or hold for viewing.
+        """
         plt.savefig(self.name)
         # plt.show(block=True)
 
     def __configure(self):
+        """ Initial setup for line colletions and pyplot.
+        """
         # plt.ion()
         self.fig = plt.figure(figsize=(18, 10))
         self.sub_plot_obj = self.fig.add_subplot(11 + 2 * 100)
@@ -52,6 +69,31 @@ class InspectorVisualizer():
         self.alt_state_lcs = None
 
     def on_new_train_step(self, sample_id, data_exposure, model_exposure, X, y, p):
+        """ Called every training step. Exposed data is read and plotted.
+
+        Parameters
+        ---------
+
+        sample_id: int
+            The number of the incoming data stream observation.
+        
+        data_exposure:
+            Object containing information to plot from data.
+
+        model_exposure:
+            Object containing information to plot from model behaviour.
+
+        X:
+            Observation input
+        
+        y: 
+            Observation label
+        
+        p:
+            Model predition for observation
+
+            
+        """
         # plt.pause(1e-9)
         if data_exposure['drift']:
             self.sub_plot_obj.axvline(x=sample_id, color="red")
@@ -191,6 +233,16 @@ class InspectorVisualizer():
 
 
 class DataExposure:
+    """ Class for accessing information from data
+    at each observation"
+
+    Parameters
+    ---------
+
+    data:
+        An object containing data information at all 
+        observations.
+    """
     def __init__(self, data):
         self.drift_points = {}
         if 'drift_points' in data:
@@ -207,6 +259,16 @@ class DataExposure:
 
 
 class ModelExposure:
+    """ Class for accessing information from model behaviour
+    at each observation"
+
+    Parameters
+    ---------
+
+    model:
+        An object containing model information at all 
+        observations.
+    """
     def __init__(self, model):
         self.model = model
 
@@ -239,6 +301,36 @@ class ModelExposure:
 
 
 class InspectPrequential:
+    """ Class to run classifier and pass information to 
+    the visualizer. Iteritively runs classifier on each
+    data stream observation and extracts measures to plot.
+
+    Parameters
+    ---------
+
+    max_samples: int
+        The maximum number of observations to run.
+
+    pretrain_size: int
+        The number of observations to run before
+        starting to plot. To reduce unstable results
+        at low observation count.
+    
+    output_file: str
+        The output file name.
+    
+    show_plot: bool
+        Whether or not to show a real time plot.
+        Much slower.
+    
+    data_expose:
+        An object containing information about the datastream,
+        for example drift points.
+    
+    name: str
+        Name of the experiment.
+
+    """
     def __init__(self,
                  max_samples=100000,
                  pretrain_size=200,

@@ -1,3 +1,6 @@
+""" An animated visualisation of the WindSimStream, showing how
+Pollution emissions and sources change over time and interact with sensors.
+"""
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib.colors
