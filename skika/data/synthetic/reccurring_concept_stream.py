@@ -53,6 +53,9 @@ class Concept:
     def get_moa_string(self, start, end):
         return ""
 
+    def get_supplementary_info(self):
+        return None
+
 
 class AGRAWALConcept(Concept):
     def __init__(self, concept_id=0, seed=None, noise=0):
@@ -167,6 +170,9 @@ class WindSimConcept(Concept):
 
     def get_info(self):
         return self.datastream.get_info(self.concept_id)
+    
+    def get_supplementary_info(self):
+        return {"seed": self.seed, "difficulty": self.difficulty, **self.datastream.get_concept_supp_info(self.seed, 1 + self.difficulty * 4)}
 
 
 class RecurringConceptStream:
@@ -349,6 +355,9 @@ class RecurringConceptStream:
             concept = self.concepts[self.concept_chain[start_index]]
         concepts.append((concept, start_index, self.num_samples))
         return self.get_moa_stream_string(concepts)
+    
+    def get_supplementary_info(self):
+        return self.concepts[self.current_concept].get_supplementary_info()
 
 
 class RecurringConceptGradualStream(RecurringConceptStream):
