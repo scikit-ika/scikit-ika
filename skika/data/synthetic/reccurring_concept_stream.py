@@ -11,7 +11,21 @@ from skmultiflow.data import SEAGenerator
 from skmultiflow.data import SineGenerator
 
 from skika.data.synthetic.wind_sim_generator import WindSimGenerator
-from skika.data.synthetic.generate_dataset import conceptOccurence
+
+class conceptOccurence:
+    """
+    Represents a concept in a stream
+    """
+    def __init__(self, id, difficulty, noise, appearences, examples_per_appearence):
+        self.id = id
+        self.difficulty = difficulty
+        self.noise = noise
+        self.appearences = appearences
+        self.examples_per_appearence = examples_per_appearence
+    
+    def __repr__(self):
+        # return f"{self.difficulty}"
+        return f"<id: {self.id}, difficulty: {self.difficulty}, noise: {self.noise}, appearences: {self.appearences}, e_p_a: {self.examples_per_appearence}"
 
 
 class RCStreamType(Enum):
@@ -343,6 +357,56 @@ class RecurringConceptStream:
         the first occurence of a concept. Allows 
         a better model to be built and stored.
 
+    Examples
+    --------
+
+    >>> # An example stream using the STAGGER Generator.
+    >>> # Starts using generating function 0, then at
+    >>> # observation 5000 transitions to generating function
+    >>> # 1 then at 10000 transitions back to 0.
+    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptStream, conceptOccurence
+    >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
+    >>> num_samples = 15000
+    >>> # init concept
+    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
+                        appearences = 2, examples_per_appearence = 5000)
+    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
+                        appearences = 1, examples_per_appearence = 5000)
+    >>> desc = {0: concept_0, 1: concept_1}
+    >>> datastream = RecurringConceptStream(
+                        rctype = RCStreamType.STAGGER,
+                        num_samples =num_samples,
+                        noise = 0,
+                        concept_chain = concept_chain,
+                        seed = 42,
+                        desc = desc,
+                        boost_first_occurance = False)
+    >>> datastream.has_more_samples()
+    True
+    >>> datastream.get_drift_info()
+    {0: 0, 5000: 1, 10000: 0}
+    >>> datastream.n_remaining_samples()
+    15000
+    >>> datastream.get_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,
+                    random_state=43)
+    10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    >>> datastream.get_moa_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    '(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)'
+    >>> datastream.get_supplementary_info()
+    >>> datastream.next_sample()
+    (array([[2., 0., 2.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14999
+    >>> datastream.next_sample()
+    (array([[2., 0., 0.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14998
     """
     def __init__(self, rctype, num_samples, noise, concept_chain, seed=None, desc=None, boost_first_occurance=True):
         if seed == None:
@@ -589,6 +653,57 @@ class RecurringConceptGradualStream(RecurringConceptStream):
         the first occurence of a concept. Allows 
         a better model to be built and stored.
 
+    Examples
+    --------
+
+    >>> # An example stream using the STAGGER Generator.
+    >>> # Starts using generating function 0, then at
+    >>> # observation 5000 transitions to generating function
+    >>> # 1 then at 10000 transitions back to 0.
+    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptGradualStream, conceptOccurence
+    >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
+    >>> num_samples = 15000
+    >>> # init concept
+    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
+                        appearences = 2, examples_per_appearence = 5000)
+    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
+                        appearences = 1, examples_per_appearence = 5000)
+    >>> desc = {0: concept_0, 1: concept_1}
+    >>> datastream = RecurringConceptGradualStream(
+                        rctype = RCStreamType.STAGGER,
+                        num_samples =num_samples,
+                        noise = 0,
+                        concept_chain = concept_chain,
+                        window_size = 1000,
+                        seed = 42,
+                        desc = desc,
+                        boost_first_occurance = False)
+    >>> datastream.has_more_samples()
+    True
+    >>> datastream.get_drift_info()
+    {0: 0, 5000: 1, 10000: 0}
+    >>> datastream.n_remaining_samples()
+    15000
+    >>> datastream.get_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,
+                    random_state=43)
+    10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    >>> datastream.get_moa_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    '(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)'
+    >>> datastream.get_supplementary_info()
+    >>> datastream.next_sample()
+    (array([[2., 0., 2.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14999
+    >>> datastream.next_sample()
+    (array([[2., 0., 0.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14998
     """
     def __init__(self, rctype, num_samples, noise, concept_chain, window_size=1000, seed=None, desc=None, boost_first_occurance=True):
         self.in_drift = False

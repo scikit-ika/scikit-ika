@@ -4,6 +4,7 @@ import random
 import pickle
 import json
 from skika.data.synthetic.reccurring_concept_stream import RCStreamType
+from skika.data.synthetic.reccurring_concept_stream import conceptOccurence
 from skika.data.synthetic.reccurring_concept_stream import RecurringConceptStream
 from skika.data.synthetic.reccurring_concept_stream import RecurringConceptGradualStream
 
@@ -28,20 +29,6 @@ class datastreamOptions:
         self.seed = seed
         self.gradual = gradual
 
-class conceptOccurence:
-    """
-    Represents a concept in a stream
-    """
-    def __init__(self, id, difficulty, noise, appearences, examples_per_appearence):
-        self.id = id
-        self.difficulty = difficulty
-        self.noise = noise
-        self.appearences = appearences
-        self.examples_per_appearence = examples_per_appearence
-    
-    def __repr__(self):
-        # return f"{self.difficulty}"
-        return f"<id: {self.id}, difficulty: {self.difficulty}, noise: {self.noise}, appearences: {self.appearences}, e_p_a: {self.examples_per_appearence}"
 
 def genConceptChain(concept_desc, sequential):
     """
