@@ -1,3 +1,6 @@
 [submodule "third_party/pybind11"]
 	path = third_party/pybind11
 	url = https://github.com/pybind/pybind11
+[submodule "third_party/streamDM/spdlog"]
+	path = third_party/streamDM/spdlog
+	url = https://github.com/gabime/spdlog
