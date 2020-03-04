@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="scikit-ika",
     version="0.0.1",
-    author="The Ika Team",
+    author="Team scikit-ika",
     author_email="",
     description="real-time lifelong machine learning",
     long_description=long_description,
