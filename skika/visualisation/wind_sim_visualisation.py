@@ -14,7 +14,7 @@ from skika.data.synthetic.wind_sim_generator import WindSimGenerator
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("-ns", "--nsensor", type=int,
-        help="Number of sensors", default=8)
+        help="Number of sensors", default=16)
     ap.add_argument("-st", "--sensortype",
         help="How sensors are arranged", default="grid", choices=["circle", "grid"])
     args = vars(ap.parse_args())

@@ -103,7 +103,7 @@ class PollutionEmission:
             # self.strength -= self.diminish
             self.strength *= (1 - self.diminish)
 
-        if self.strength <= 10:
+        if self.strength <= 1:
             self.alive = False
             if self.child is not None:
                 self.child.first_emitted = True
@@ -187,6 +187,8 @@ class WindSimGenerator:
                 for r in range(num_sensors_y):
                     px = (c+1) * sensor_x_gap
                     py = (r+1) * sensor_y_gap
+                    if math.sqrt(math.pow(px - center_sensor_loc[0], 2) + math.pow(py - center_sensor_loc[1], 2)) < 3:
+                        continue
                     self.optimal_sensor_locs.append((px, py))
 
         self.optimal_sensor_square_locs = []
@@ -222,8 +224,45 @@ class WindSimGenerator:
 
         self.ex = 0
 
+    def gen_concept_data(self, concept_seed, difficulty):
+        concept_generator = np.random.RandomState(concept_seed)
+
+        # wind_direction = concept_generator.randint(0, 360)
+        wind_direction = concept_generator.randint(0, 8) * (360 / 8)
+        wind_strength = (
+            (concept_generator.rand() * 40) + 60) / (self.window_width / 5)
+        wind_direction_corrected = (wind_direction - 90) % 360
+        wind_direction_radians = math.radians(wind_direction_corrected)
+
+        wind_strength_x = math.cos(
+            wind_direction_radians) * wind_strength
+        wind_strength_y = math.sin(
+            wind_direction_radians) * wind_strength
+
+        sources = []
+
+        num_sources = concept_generator.randint(difficulty + 2,
+                                                difficulty + 10)
+        for s in range(num_sources):
+            x = concept_generator.randint(self.window_width / 2 - self.window_width / 8,
+                                          self.window_width / 2 + self.window_width / 8)
+            y = concept_generator.randint(self.window_width / 2 - self.window_width / 8,
+                                          self.window_width / 2 + self.window_width / 8)
+            x -= math.cos(wind_direction_radians * -1) \
+                * (self.window_width / 3)
+            y += math.sin(wind_direction_radians * -1) \
+                * (self.window_width / 3)
+            strength = int(concept_generator.randint(10, 255))
+            strength = int(concept_generator.randint(5, 15))
+            size = concept_generator.randint(2, 4)
+            sources.append([x, y, strength, size])
+        
+        return [wind_direction, wind_strength, wind_direction_radians,
+                wind_strength_x, wind_strength_y, sources]
     def set_concept(self, concept_seed, difficulty=3):
         """ Set windspeed, direction and sources.
+            Randomized per concept, but given the same
+            concept_seed will set to the same values.
 
         Parameters
         ----------
@@ -234,43 +273,75 @@ class WindSimGenerator:
             How difficult a concept is
         """
         concept_generator = np.random.RandomState(concept_seed)
+        self.wind_direction, self.wind_strength, self.wind_direction_radians, \
+            self.wind_strength_x, self.wind_strength_y, sources = self.gen_concept_data(concept_seed, difficulty)
+        # self.wind_direction = concept_generator.randint(0, 360)
+        # self.wind_strength = (
+        #     (concept_generator.rand() * 40) + 60) / (self.window_width / 5)
+        # wind_direction_corrected = (self.wind_direction - 90) % 360
+        # self.wind_direction_radians = math.radians(wind_direction_corrected)
 
-        self.wind_direction = concept_generator.randint(0, 360)
-        self.wind_strength = (
-            (concept_generator.rand() * 60) + 60) / (self.window_width / 5)
-        wind_direction_corrected = (self.wind_direction - 90) % 360
-        self.wind_direction_radians = math.radians(wind_direction_corrected)
-
-        self.wind_strength_x = math.cos(
-            self.wind_direction_radians) * self.wind_strength
-        self.wind_strength_y = math.sin(
-            self.wind_direction_radians) * self.wind_strength
+        # self.wind_strength_x = math.cos(
+        #     self.wind_direction_radians) * self.wind_strength
+        # self.wind_strength_y = math.sin(
+        #     self.wind_direction_radians) * self.wind_strength
 
         self.sources = []
 
-        num_sources = concept_generator.randint(difficulty + 2,
-                                                difficulty + 10)
+        # num_sources = concept_generator.randint(difficulty + 2,
+        #                                         difficulty + 10)
+        num_sources = len(sources)
         for s in range(num_sources):
-            x = concept_generator.randint(self.window_width / 4,
-                                          self.window_width / 4 * 2)
-            y = concept_generator.randint(self.window_width / 4,
-                                          self.window_width / 4 * 2)
-            x -= math.cos(self.wind_direction_radians * -1) \
-                * (self.window_width / 2)
-            y += math.sin(self.wind_direction_radians * -1) \
-                * (self.window_width / 2)
-            strength = concept_generator.randint(10, 255)
-            strength = 170
-            size = concept_generator.randint(1, 4)
+            # x = concept_generator.randint(self.window_width / 2 - self.window_width / 8,
+            #                               self.window_width / 2 + self.window_width / 8)
+            # y = concept_generator.randint(self.window_width / 2 - self.window_width / 8,
+            #                               self.window_width / 2 + self.window_width / 8)
+            # x -= math.cos(self.wind_direction_radians * -1) \
+            #     * (self.window_width / 3)
+            # y += math.sin(self.wind_direction_radians * -1) \
+            #     * (self.window_width / 3)
+            # strength = concept_generator.randint(10, 255)
+            # strength = concept_generator.randint(5, 15)
+            # size = concept_generator.randint(2, 4)
+            # self.sources.append(PollutionSource(
+            #     x, y, strength, (self.window_width / 750) * size,
+            #     self.sample_random_state))
+            x = sources[s][0]
+            y = sources[s][1]
+            strength = sources[s][2]
+            size = sources[s][3]
             self.sources.append(PollutionSource(
                 x, y, strength, (self.window_width / 750) * size,
                 self.sample_random_state))
 
+    def get_concept_supp_info(self, concept_seed, difficulty):
+        concept_generator = np.random.RandomState(concept_seed)
+        wind_direction, wind_strength, wind_direction_radians, \
+            wind_strength_x, wind_strength_y, sources = self.gen_concept_data(concept_seed, difficulty)
+        
+        return {"wind_direction_deg": wind_direction, "wind_strength": wind_strength,
+                "wind_direction_radians": wind_direction_radians, "wind_strength_x": wind_strength_x,
+                "wind_strength_y": wind_strength_y, "sources": sources, "sensors": (self.optimal_sensor_locs[1:], self.optimal_sensor_locs[0])}
+
     def get_direction_from_concept(self, concept):
+        """ Get the wind direction from a set concept.
+        """
         return 45 * concept
 
     def set_wind(self, concept=0, direc=None, strength=None):
         """ Set wind parameters
+
+        Parameters
+        ---------
+
+        concept: int
+            The ID of the concept being set
+        
+        direc: int
+            The direction of wind in degrees
+        
+        strength: int
+            The strength of the wind in meters a second.
 
         """
         self.concept = concept
@@ -441,14 +512,22 @@ class WindSimGenerator:
         for b in range(batch_size):
             self.add_emissions()
             X = []
-            for i, x_emissions in enumerate(self.emitted_values[1:]):
-                for x_i in range(self.X_index - self.x_trail,
-                                 self.X_index + 1):
+            for x_i in reversed(range(self.X_index - self.x_trail,
+                                self.X_index + 1)):
+                for i, x_emissions in enumerate(self.emitted_values[1:]):
                     X.append(x_emissions[x_i])
             current_y = self.emitted_values[0][self.y_index]
 
-            last_y = self.emitted_values[0][self.y_index - 1]
-            y = 1 if current_y > last_y else 0
+            for l in range(self.x_trail):
+                last_y = self.emitted_values[0][self.y_index - (l + 1)]
+
+
+                # X.append(AQI_map(last_y))
+                X.append(last_y)
+
+
+            # y = 1 if current_y > last_y else 0
+            y = AQI_map(current_y)
             self.X_index += 1
             self.y_index += 1
             x_vals.append(X)
@@ -465,3 +544,16 @@ class WindSimGenerator:
 
     def has_more_samples(self):
         return True
+
+def AQI_map(val):
+    if val < 12:
+        return 0
+    if val < 35.5:
+        return 1
+    if val < 55.5:
+        return 2
+    if val < 150.5:
+        return 3
+    if val < 250.5:
+        return 4
+    return 5
