@@ -143,6 +143,59 @@ class WindSimGenerator:
 
     x_trail: int (Default: 1)
         The number of feature x lags to output
+
+    Examples
+    --------
+
+    >>> # Imports
+    >>> from skika.data.synthetic.wind_sim_generator import WindSimGenerator
+    >>> # Setting up the stream
+    >>> stream = WindSimGenerator(num_sensors = 16, sensor_pattern = 'grid')
+    >>> stream.prepare_for_use()
+    >>> # Retrieving one sample.
+    >>> # First sample may be all 0 depending on pollution transmission.
+    >>> stream.next_sample()
+    (array([[  0.        , 134.78461727,  71.68383298,   0.        ,
+          0.        , 104.90590932, 266.91631925,   0.        ,
+          0.        ,  51.31476312,  56.51469396,   0.        ,
+          0.        ,   0.        ,  11.0821078 ,   0.        ,
+          0.        , 153.24292292,  75.4566663 ,   0.        ,
+          0.        , 110.42727297, 296.14962106,   0.        ,
+          0.        ,  59.22154118,  68.89489498,   0.        ,
+          0.        ,   0.        ,  20.02603747,   0.        ,
+        199.49156743]]), array([4]))
+    >>> # Simulate for some time steps.
+    >>> for i in range(100):
+    >>>     _ = stream.next_sample()
+    >>> stream.next_sample()
+    (array([[  0.        , 119.28319232,  73.21440717,   0.        ,
+          0.        , 105.7541374 , 254.93216371,   0.        ,
+          0.        ,  51.13375057,  54.91003902,   0.        ,
+          0.        ,   0.        ,  11.45964019,   0.        ,
+          0.        , 136.27998587,  86.155855  ,   0.        ,
+          0.        , 120.36105135, 297.60813426,   0.        ,
+          0.        ,  68.54515689,  76.13336341,   0.        ,
+          0.        ,   0.        ,  20.32270414,   0.        ,
+        190.38410787]]), array([4]))
+    >>> stream.n_remaining_samples()
+    -1
+    >>> stream.has_more_samples()
+    True
+    >>> # The concept can be changed at any time.
+    >>> # This will change wind speed and direction
+    >>> # as well as the location of pollution sources.
+    >>> stream.set_concept(6)
+    >>> stream.next_sample()
+    (array([[  0.        ,   0.        ,   6.94576111,   0.        ,
+            96.21104249,  78.56179139,  68.90448328,   0.        ,
+            184.91552406, 119.25640506,  71.48302302,  24.73990969,
+            0.        ,   0.        ,   0.        ,   0.        ,
+            0.        ,   0.        ,   0.        ,   0.        ,
+            101.27478157,  82.69662251,  72.53103503,   0.        ,
+            215.61056166, 131.17070743,  78.0006768 ,  21.47142214,
+            0.        ,   0.        ,   0.        ,   0.        ,
+            227.11417744]]), array([4]))
+    
     """
 
     def __init__(self, concept=0, produce_image=False, num_sensors=8,
@@ -159,7 +212,6 @@ class WindSimGenerator:
 
         self.wind_direction = None
         self.concept = concept
-        self.set_wind(concept, strength=2.2)
 
         # Scale of noise, bigger = bigger noise features.
         self.noise_scale = 5000
@@ -444,17 +496,19 @@ class WindSimGenerator:
             sensor_windows.append(sensor_sum)
 
         if self.produce_image:
-            for sx, sy in self.optimal_sensor_square_locs:
-                sensor_collection = []
-                for dx in range(-1, 2):
-                    for dy in range(-1, 2):
-                        px = sx + dx
-                        py = sy + dy
-                        if 0 > px > self.window_width:
-                            continue
-                        if 0 > py > self.window_width:
-                            continue
-                        z[sy + dy, sx + dx] = 255
+            show_sensors = True
+            if show_sensors:
+                for sx, sy in self.optimal_sensor_square_locs:
+                    sensor_collection = []
+                    for dx in range(-1, 2):
+                        for dy in range(-1, 2):
+                            px = sx + dx
+                            py = sy + dy
+                            if 0 > px > self.window_width:
+                                continue
+                            if 0 > py > self.window_width:
+                                continue
+                            z[sy + dy, sx + dx] = 100
 
             self.last_update_image = z
 
@@ -496,7 +550,6 @@ class WindSimGenerator:
     def prepare_for_use(self):
 
         # Need to set up y values for X values y_lag behind.
-        print("prepared")
         if self.wind_direction is None:
             self.set_concept(self.concept)
         self.add_emissions()

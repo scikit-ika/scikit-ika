@@ -42,7 +42,7 @@ if __name__ == "__main__":
         if stream.produce_image:
             z = stream.get_last_image()
             plt.clf()
-            plt.imshow(z, norm = matplotlib.colors.Normalize(0, 255))
+            plt.imshow(z, norm = matplotlib.colors.Normalize(0, 10))
         count += 1
         if count >= drift_count:
             current_concept += 1

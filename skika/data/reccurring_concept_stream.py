@@ -12,6 +12,21 @@ from skmultiflow.data import SineGenerator
 
 from skika.data.synthetic.wind_sim_generator import WindSimGenerator
 
+class conceptOccurence:
+    """
+    Represents a concept in a stream
+    """
+    def __init__(self, id, difficulty, noise, appearences, examples_per_appearence):
+        self.id = id
+        self.difficulty = difficulty
+        self.noise = noise
+        self.appearences = appearences
+        self.examples_per_appearence = examples_per_appearence
+    
+    def __repr__(self):
+        # return f"{self.difficulty}"
+        return f"<id: {self.id}, difficulty: {self.difficulty}, noise: {self.noise}, appearences: {self.appearences}, e_p_a: {self.examples_per_appearence}"
+
 
 class RCStreamType(Enum):
     AGRAWAL = 0
@@ -25,6 +40,21 @@ class RCStreamType(Enum):
 
 
 class Concept:
+    """ Base concept class.
+    A 'Concept' can be thought of as a relationship
+    between features and label. Here we model different
+    concept using streams produced by different 
+    generating functions, i.e. each concept is a given
+    distribution of data and an observation is drawn 
+    from one concept.
+
+    Parameters
+    ----------
+    stream: datastream
+        The stream the concept will
+        draw observations from.
+
+    """
     def __init__(self, stream):
         self.datastream = stream
 
@@ -58,6 +88,22 @@ class Concept:
 
 
 class AGRAWALConcept(Concept):
+    """ An AGRAWAL concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the AGRAWAL generating function
+        to use. Should be within 0-9.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0):
         self.cf = concept_id
         self.seed = seed
@@ -71,6 +117,23 @@ class AGRAWALConcept(Concept):
 
 
 class TREEConcept(Concept):
+    """ A TREE concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the concept.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+    desc: conceptOccurence
+        A class which describes the specific concept.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0, desc=None):
         self.cf = concept_id
         self.seed = seed
@@ -85,6 +148,23 @@ class TREEConcept(Concept):
 
 
 class RBFConcept(Concept):
+    """ An RBF concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the concept.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+    desc: conceptOccurence
+        A class which describes the specific concept.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0, desc=None):
         self.cf = concept_id
         self.seed = seed
@@ -103,6 +183,22 @@ class RBFConcept(Concept):
 
 
 class SEAConcept(Concept):
+    """ A SEA concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the SEA generating function
+        to use. Should be within 0-9.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0):
         self.cf = concept_id
         self.seed = seed
@@ -116,6 +212,22 @@ class SEAConcept(Concept):
 
 
 class SINEConcept(Concept):
+    """ A SINE concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the SINE generating function
+        to use. Should be within 0-9.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0):
         self.cf = concept_id
         self.seed = seed
@@ -129,6 +241,22 @@ class SINEConcept(Concept):
 
 
 class STAGGERConcept(Concept):
+    """ A STAGGER concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the STAGGER generating function
+        to use. Should be within 0-3.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+
+    """
     def __init__(self, concept_id=0, seed=None, noise=0):
         stream = STAGGERGenerator(
             classification_function=concept_id, random_state=seed)
@@ -142,6 +270,23 @@ class STAGGERConcept(Concept):
 
 
 class WindSimConcept(Concept):
+    """ A WINDSIM concept.
+
+    Parameters
+    ----------
+    concept_id: int
+        The ID of the concept.
+    seed: int
+        The seed used by the random number generator.
+    noise: int
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+    desc: conceptOccurence
+        A class which describes the specific concept.
+
+    """
     WINDSIMSTREAM = WindSimGenerator(num_sensors=20, sensor_pattern='grid')
 
     def __init__(self, concept_id=0, seed=None, noise=0, desc=None):
@@ -176,6 +321,93 @@ class WindSimConcept(Concept):
 
 
 class RecurringConceptStream:
+    """ A stream featuring abrupt drift between given concepts.
+
+    Parameters
+    ----------
+
+    rctype: RCStreamType
+        An enum describing the type of stream
+    
+    num_samples: int
+        The number of samples in the stream
+    
+    noise: float
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+    
+    concept_chain: list<int> or dict
+        A dict with key observation number and value
+        the concept begining at that observation
+        or
+        A list of concept ids. A dict will be generated
+        with each concept lasting its length given in desc
+        or uniform length.
+    
+    seed: int
+        Random seed.
+    
+    desc: dict<int><conceptOccurence>
+        A map of concept ID to options
+
+    boost_first_occurance: bool
+        If true, double the observations drawn from
+        the first occurence of a concept. Allows 
+        a better model to be built and stored.
+
+    Examples
+    --------
+
+    >>> # An example stream using the STAGGER Generator.
+    >>> # Starts using generating function 0, then at
+    >>> # observation 5000 transitions to generating function
+    >>> # 1 then at 10000 transitions back to 0.
+    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptStream, conceptOccurence
+    >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
+    >>> num_samples = 15000
+    >>> # init concept
+    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
+                        appearences = 2, examples_per_appearence = 5000)
+    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
+                        appearences = 1, examples_per_appearence = 5000)
+    >>> desc = {0: concept_0, 1: concept_1}
+    >>> datastream = RecurringConceptStream(
+                        rctype = RCStreamType.STAGGER,
+                        num_samples =num_samples,
+                        noise = 0,
+                        concept_chain = concept_chain,
+                        seed = 42,
+                        desc = desc,
+                        boost_first_occurance = False)
+    >>> datastream.has_more_samples()
+    True
+    >>> datastream.get_drift_info()
+    {0: 0, 5000: 1, 10000: 0}
+    >>> datastream.n_remaining_samples()
+    15000
+    >>> datastream.get_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,
+                    random_state=43)
+    10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    >>> datastream.get_moa_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    '(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)'
+    >>> datastream.get_supplementary_info()
+    >>> datastream.next_sample()
+    (array([[2., 0., 2.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14999
+    >>> datastream.next_sample()
+    (array([[2., 0., 0.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14998
+    """
     def __init__(self, rctype, num_samples, noise, concept_chain, seed=None, desc=None, boost_first_occurance=True):
         if seed == None:
             seed = random.randint(0, 10000)
@@ -315,6 +547,10 @@ class RecurringConceptStream:
         return self.num_samples - self.example_count
 
     def get_stream_info(self):
+        """ Prints information about the 
+        concepts included in the stream.
+
+        """
         keys = list(self.concept_chain.keys())
         start_index = keys[0]
         concept = self.concepts[self.concept_chain[start_index]]
@@ -326,7 +562,13 @@ class RecurringConceptStream:
             concept = self.concepts[self.concept_chain[start_index]]
         print(f"{start_index} - {self.num_samples}: {concept.get_info()}")
 
-    def get_moa_stream_string(self, concepts):
+    def get_moa_stream_string(self, concepts = None):
+        """ Returns a string to run the corresponding
+        stream in MOA.
+
+        """
+        if concepts is None:
+            concepts = self.concepts
         if len(concepts) < 1:
             return ""
         if len(concepts) == 1:
@@ -343,6 +585,10 @@ class RecurringConceptStream:
             return f"(ConceptDriftStream -s {concept.get_moa_string(start, end)} -d {self.get_moa_stream_string(concepts[1:])} -p {end - start} -w 1)"
 
     def get_moa_stream_info(self):
+        """ Returns a string to run the corresponding
+        stream in MOA.
+
+        """
         print(self.concept_chain)
         keys = list(self.concept_chain.keys())
         start_index = keys[0]
@@ -357,10 +603,108 @@ class RecurringConceptStream:
         return self.get_moa_stream_string(concepts)
     
     def get_supplementary_info(self):
+        """ Returns supplementary info about
+        each concept.
+
+        """
         return self.concepts[self.current_concept].get_supplementary_info()
 
 
 class RecurringConceptGradualStream(RecurringConceptStream):
+    """ A stream featuring gradual drift between given concepts.
+    Uses the scikit-multiflow concept drift stream to blend concepts over
+    a window.
+
+    Parameters
+    ----------
+
+    rctype: RCStreamType
+        An enum describing the type of stream
+    
+    num_samples: int
+        The number of samples in the stream
+    
+    noise: float
+        The probability that noise will happen in the generation. At each
+        new sample generated, the sample with will perturbed by the amount of
+        perturbation.
+        Values go from 0.0 to 1.0.
+    
+    concept_chain: list<int> or dict
+        A dict with key observation number and value
+        the concept begining at that observation
+        or
+        A list of concept ids. A dict will be generated
+        with each concept lasting its length given in desc
+        or uniform length.
+    
+    window_size: int
+        The number of observations each gradual drift is
+        spread over.
+    
+    seed: int
+        Random seed.
+    
+    desc: dict<int><conceptOccurence>
+        A map of concept ID to options
+
+    boost_first_occurance: bool
+        If true, double the observations drawn from
+        the first occurence of a concept. Allows 
+        a better model to be built and stored.
+
+    Examples
+    --------
+
+    >>> # An example stream using the STAGGER Generator.
+    >>> # Starts using generating function 0, then at
+    >>> # observation 5000 transitions to generating function
+    >>> # 1 then at 10000 transitions back to 0.
+    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptGradualStream, conceptOccurence
+    >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
+    >>> num_samples = 15000
+    >>> # init concept
+    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
+                        appearences = 2, examples_per_appearence = 5000)
+    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
+                        appearences = 1, examples_per_appearence = 5000)
+    >>> desc = {0: concept_0, 1: concept_1}
+    >>> datastream = RecurringConceptGradualStream(
+                        rctype = RCStreamType.STAGGER,
+                        num_samples =num_samples,
+                        noise = 0,
+                        concept_chain = concept_chain,
+                        window_size = 1000,
+                        seed = 42,
+                        desc = desc,
+                        boost_first_occurance = False)
+    >>> datastream.has_more_samples()
+    True
+    >>> datastream.get_drift_info()
+    {0: 0, 5000: 1, 10000: 0}
+    >>> datastream.n_remaining_samples()
+    15000
+    >>> datastream.get_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,
+                    random_state=43)
+    10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,
+                    random_state=42)
+    >>> datastream.get_moa_stream_info()
+    {0: 0, 5000: 1, 10000: 0}
+    '(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)'
+    >>> datastream.get_supplementary_info()
+    >>> datastream.next_sample()
+    (array([[2., 0., 2.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14999
+    >>> datastream.next_sample()
+    (array([[2., 0., 0.]]), array([0]))
+    >>> datastream.n_remaining_samples()
+    14998
+    """
     def __init__(self, rctype, num_samples, noise, concept_chain, window_size=1000, seed=None, desc=None, boost_first_occurance=True):
         self.in_drift = False
         self.drift_switch = False
