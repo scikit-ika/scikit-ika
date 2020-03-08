@@ -62,7 +62,7 @@ with open("README.md", "r") as fh:
 setup(
     name="scikit-ika",
     version="0.0.3",
-    author="The Ika Team",
+    author="Team scikit-ika",
     author_email="",
     description="real-time lifelong machine learning",
     long_description=long_description,
@@ -75,7 +75,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    ext_modules=[CMakeExtension('skika')],
+    ext_modules=[CMakeExtension('skika.ensemble')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )
