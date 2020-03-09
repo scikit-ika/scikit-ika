@@ -9,6 +9,7 @@ jobs:
 env:
   global:
     - TWINE_USERNAME=__token__
+    - CIBW_BUILD="*macosx_x86_64 *manylinux_x86_64"
     - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-* pp*"
     - CIBW_BEFORE_BUILD_LINUX="pip install cmake"
 
