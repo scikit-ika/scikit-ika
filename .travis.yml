@@ -1,8 +1,5 @@
 language: python
 
-python:
-  - '3.6'
-
 jobs:
   include:
     - services: docker
@@ -17,6 +14,7 @@ jobs:
 env:
   global:
     - TWINE_USERNAME=__token__
+    - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-*"
 
 install:
   - python3 -m pip install cibuildwheel==1.2.0
