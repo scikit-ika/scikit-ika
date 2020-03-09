@@ -1,4 +1,7 @@
 # scikit-ika
+
+[![PyPI](https://img.shields.io/pypi/v/scikit-ika.svg)](https://pypi.python.org/pypi/scikit-ika) [![Build Status](https://travis-ci.com/scikit-ika/scikit-ika.svg?branch=master)](https://travis-ci.com/scikit-ika/scikit-ika)
+
 A real-time adaptive predictive system for evolving data streams.
 
 ### Requirements
