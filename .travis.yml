@@ -10,7 +10,7 @@ env:
   global:
     - TWINE_USERNAME=__token__
     - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-* pp*"
-    - CIBW_BEFORE_BUILD_LINUX="curl -OL https://cmake.org/files/v3.16/cmake-3.16.5-Linux-x86_64.sh && bash cmake-3.16.5-Linux-x86_64.sh --skip-license --prefix=/usr"
+    - CIBW_BEFORE_BUILD_LINUX="pip install cmake"
 
 install:
   - python3 -m pip install cibuildwheel==1.2.0
