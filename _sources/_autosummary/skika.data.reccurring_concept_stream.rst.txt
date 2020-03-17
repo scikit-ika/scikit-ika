@@ -1,7 +1,7 @@
-skika.data.synthetic.reccurring\_concept\_stream
-================================================
+skika.data.reccurring\_concept\_stream
+======================================
 
-.. automodule:: skika.data.synthetic.reccurring_concept_stream
+.. automodule:: skika.data.reccurring_concept_stream
 
    
    
@@ -24,6 +24,7 @@ skika.data.synthetic.reccurring\_concept\_stream
       STAGGERConcept
       TREEConcept
       WindSimConcept
+      conceptOccurence
    
    
 

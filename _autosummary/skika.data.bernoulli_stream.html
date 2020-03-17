@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>skika.data.bernoulli_stream &mdash; scikit-ika 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.data.generate_dataset" href="skika.data.generate_dataset.html" />
+    <link rel="prev" title="skika.data.wind_sim_generator" href="skika.data.wind_sim_generator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> scikit-ika
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="skika.data.stream_generator.html">skika.data.stream_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.reccurring_concept_stream.html">skika.data.reccurring_concept_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.wind_sim_generator.html">skika.data.wind_sim_generator</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.data.bernoulli_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.generate_dataset.html">skika.data.generate_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-ika</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
+        
+      <li>skika.data.bernoulli_stream</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_autosummary/skika.data.bernoulli_stream.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-skika.data.bernoulli_stream">
+<span id="skika-data-bernoulli-stream"></span><h1>skika.data.bernoulli_stream<a class="headerlink" href="#module-skika.data.bernoulli_stream" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.bernoulli_stream.BernoulliStream" title="skika.data.bernoulli_stream.BernoulliStream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BernoulliStream</span></code></a>(drift_period, n_drifts, …)</p></td>
+<td><p>A class to generate a Bernoulli Stream</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="skika.data.bernoulli_stream.BernoulliStream">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.bernoulli_stream.</code><code class="sig-name descname">BernoulliStream</code><span class="sig-paren">(</span><em class="sig-param">drift_period</em>, <em class="sig-param">n_drifts</em>, <em class="sig-param">widths_drifts</em>, <em class="sig-param">mean_errors</em>, <em class="sig-param">n_stable_drifts=1</em>, <em class="sig-param">random_state=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to generate a Bernoulli Stream</p>
+<p>The stream is simulating the error rate of a learner.
+It is possible to generate drifts by changing the mean error rate at change points.</p>
+<p>Change points are generated regularly along the stream, every drift_period instances.</p>
+<p>The width of the drifts can be specified. If only one value is given, it is applied to every drift. If several ones are specified,
+they are uniformly reparted and randomly applied to the drifts.</p>
+<p>The new mean error rate after each drift is picked in the mean_errors list.</p>
+<p>It is possible to retrive drift chracteristics from the stream : magnitude and severity of drifts.</p>
+<dl class="simple">
+<dt>Arguments :</dt><dd><dl class="simple">
+<dt>drift_period<span class="classifier">int</span></dt><dd><p>Number of instances between two drifts</p>
+</dd>
+<dt>n_drifts<span class="classifier">int</span></dt><dd><p>Number of drifts to generate</p>
+</dd>
+<dt>widths_drifts<span class="classifier">list of int</span></dt><dd><p>Width(s) to be applied to the drifts.</p>
+</dd>
+<dt>mean_errors<span class="classifier">list of float, or list of lists of floats</span></dt><dd><dl class="simple">
+<dt>List of mean errors to simulation the concepts. Can either be :</dt><dd><ul class="simple">
+<li><p>List of mean errors values. The stream will than radomly pair the values to create stable drift periods patterns.
+Must have at least 2 values to simulate drifts from 1 comcept to another.
+Ex : mean_errors = [0.1,0.2,0.5,0.6]</p></li>
+<li><p>List of lists. Each of the sub-lists must be a pair of two different error rates reprensenting one stable drift period.
+Ex : mean_errors = [[0.1,0.2],[0.5,0.6],[0.8,0.9]]</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>n_stable_drifts<span class="classifier">int, (optional, default = 1)</span></dt><dd><p>Number of floowing drfits with the same patterns (width and mean_errors)</p>
+</dd>
+<dt>random_state<span class="classifier">int (optional, default = 0)</span></dt><dd><p>Random state for the pseudo-random generators.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet">
+<code class="sig-name descname">choiceWithoutRepet</code><span class="sig-paren">(</span><em class="sig-param">n_iter</em>, <em class="sig-param">list_choices</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a list of n_iter items from lit_choices without following repetition.
+If len(list_choice) &gt; 2, the list is generated without repetitions every 3 items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude">
+<em class="property">property </em><code class="sig-name descname">current_drift_magnitude</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current_drift_magnitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current_drift_magnitude.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.current_drift_severity">
+<em class="property">property </em><code class="sig-name descname">current_drift_severity</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_severity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current_drift_severity.
+:returns: The current_drift_severity.
+:rtype: int</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.current_mean_error">
+<em class="property">property </em><code class="sig-name descname">current_mean_error</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_mean_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current_mean_error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current_mean_error.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.current_width">
+<em class="property">property </em><code class="sig-name descname">current_width</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current_width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current_width.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.get_data_info">
+<code class="sig-name descname">get_data_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.get_data_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves information from the stream</p>
+<blockquote>
+<div><p>The default format is: ‘Stream name - n_samples, n_drifts, widths_drifts, error_rates’.</p>
+<p>Returns</p>
+</div></blockquote>
+<dl class="simple">
+<dt>string</dt><dd><p>Stream data information</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.list_positions">
+<em class="property">property </em><code class="sig-name descname">list_positions</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.list_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the list of drifts positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of drifts positions.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.n_samples">
+<em class="property">property </em><code class="sig-name descname">n_samples</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.n_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the length of the stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The length of the stream.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.next_mean_error">
+<em class="property">property </em><code class="sig-name descname">next_mean_error</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_mean_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the next_mean_error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The next_mean_error.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.next_sample">
+<code class="sig-name descname">next_sample</code><span class="sig-paren">(</span><em class="sig-param">batch_size=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_sample" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>The sample generation works as follows:</dt><dd><p>A prediction 0 or 1 is generated by the random Bernoulli process,
+based on the current and next mean errors.
+The probability of drift is calculated and updated at every call
+based on the current sample index and the next drift position and width.</p>
+<p>Drift characteristics are udated every time a drift happens.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> (<em>int</em>) – The number of samples to return (works for batch_size == 1 only for the moment)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return a tuple with the predictions matrix for
+the batch_size samples that were requested.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple or tuple list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials">
+<code class="sig-name descname">perform_bernoulli_trials</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform n Bernoulli trials with success probability p
+and return number of successes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.bernoulli_stream.BernoulliStream.prepare_for_use">
+<code class="sig-name descname">prepare_for_use</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.prepare_for_use" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the stream for use.</p>
+<p class="rubric">Notes</p>
+<p>This functions should always be called after the stream initialization.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="skika.data.generate_dataset.html" class="btn btn-neutral float-right" title="skika.data.generate_dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="skika.data.wind_sim_generator.html" class="btn btn-neutral float-left" title="skika.data.wind_sim_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Team scikit-ika
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

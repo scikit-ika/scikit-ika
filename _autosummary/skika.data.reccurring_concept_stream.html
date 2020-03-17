@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>skika.data.reccurring_concept_stream &mdash; scikit-ika 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.data.wind_sim_generator" href="skika.data.wind_sim_generator.html" />
+    <link rel="prev" title="skika.data.stream_generator" href="skika.data.stream_generator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> scikit-ika
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="skika.data.stream_generator.html">skika.data.stream_generator</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.data.reccurring_concept_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.wind_sim_generator.html">skika.data.wind_sim_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.bernoulli_stream.html">skika.data.bernoulli_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skika.data.generate_dataset.html">skika.data.generate_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-ika</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
+        
+      <li>skika.data.reccurring_concept_stream</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_autosummary/skika.data.reccurring_concept_stream.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-skika.data.reccurring_concept_stream">
+<span id="skika-data-reccurring-concept-stream"></span><h1>skika.data.reccurring_concept_stream<a class="headerlink" href="#module-skika.data.reccurring_concept_stream" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.AGRAWALConcept" title="skika.data.reccurring_concept_stream.AGRAWALConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AGRAWALConcept</span></code></a>([concept_id, seed, noise])</p></td>
+<td><p>An AGRAWAL concept.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.Concept" title="skika.data.reccurring_concept_stream.Concept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Concept</span></code></a>(stream)</p></td>
+<td><p>Base concept class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RBFConcept" title="skika.data.reccurring_concept_stream.RBFConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RBFConcept</span></code></a>([concept_id, seed, noise, desc])</p></td>
+<td><p>An RBF concept.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RCStreamType" title="skika.data.reccurring_concept_stream.RCStreamType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCStreamType</span></code></a></p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream" title="skika.data.reccurring_concept_stream.RecurringConceptGradualStream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecurringConceptGradualStream</span></code></a>(rctype, …[, …])</p></td>
+<td><p>A stream featuring gradual drift between given concepts.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RecurringConceptStream" title="skika.data.reccurring_concept_stream.RecurringConceptStream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecurringConceptStream</span></code></a>(rctype, num_samples, …)</p></td>
+<td><p>A stream featuring abrupt drift between given concepts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.SEAConcept" title="skika.data.reccurring_concept_stream.SEAConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SEAConcept</span></code></a>([concept_id, seed, noise])</p></td>
+<td><p>A SEA concept.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.SINEConcept" title="skika.data.reccurring_concept_stream.SINEConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SINEConcept</span></code></a>([concept_id, seed, noise])</p></td>
+<td><p>A SINE concept.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.STAGGERConcept" title="skika.data.reccurring_concept_stream.STAGGERConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">STAGGERConcept</span></code></a>([concept_id, seed, noise])</p></td>
+<td><p>A STAGGER concept.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.TREEConcept" title="skika.data.reccurring_concept_stream.TREEConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TREEConcept</span></code></a>([concept_id, seed, noise, desc])</p></td>
+<td><p>A TREE concept.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.WindSimConcept" title="skika.data.reccurring_concept_stream.WindSimConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WindSimConcept</span></code></a>([concept_id, seed, noise, desc])</p></td>
+<td><p>A WINDSIM concept.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="skika.data.reccurring_concept_stream.conceptOccurence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conceptOccurence</span></code></a>(id, difficulty, noise, …)</p></td>
+<td><p>Represents a concept in a stream</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.AGRAWALConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">AGRAWALConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.AGRAWALConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>An AGRAWAL concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the AGRAWAL generating function
+to use. Should be within 0-9.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.Concept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">Concept</code><span class="sig-paren">(</span><em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.Concept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base concept class.
+A ‘Concept’ can be thought of as a relationship
+between features and label. Here we model different
+concept using streams produced by different
+generating functions, i.e. each concept is a given
+distribution of data and an observation is drawn
+from one concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> (<em>datastream</em>) – The stream the concept will
+draw observations from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.RBFConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RBFConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RBFConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>An RBF concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the concept.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+<li><p><strong>desc</strong> (<a class="reference internal" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="skika.data.reccurring_concept_stream.conceptOccurence"><em>conceptOccurence</em></a>) – A class which describes the specific concept.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.RCStreamType">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RCStreamType</code><a class="headerlink" href="#skika.data.reccurring_concept_stream.RCStreamType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptGradualStream</code><span class="sig-paren">(</span><em class="sig-param">rctype</em>, <em class="sig-param">num_samples</em>, <em class="sig-param">noise</em>, <em class="sig-param">concept_chain</em>, <em class="sig-param">window_size=1000</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">boost_first_occurance=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>A stream featuring gradual drift between given concepts.
+Uses the scikit-multiflow concept drift stream to blend concepts over
+a window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rctype</strong> (<a class="reference internal" href="#skika.data.reccurring_concept_stream.RCStreamType" title="skika.data.reccurring_concept_stream.RCStreamType"><em>RCStreamType</em></a>) – An enum describing the type of stream</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples in the stream</p></li>
+<li><p><strong>noise</strong> (<em>float</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+<li><p><strong>concept_chain</strong> (<em>list&lt;int&gt;</em><em> or </em><em>dict</em>) – A dict with key observation number and value
+the concept begining at that observation
+or
+A list of concept ids. A dict will be generated
+with each concept lasting its length given in desc
+or uniform length.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – The number of observations each gradual drift is
+spread over.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Random seed.</p></li>
+<li><p><strong>desc</strong> (<em>dict&lt;int&gt;&lt;conceptOccurence&gt;</em>) – A map of concept ID to options</p></li>
+<li><p><strong>boost_first_occurance</strong> (<em>bool</em>) – If true, double the observations drawn from
+the first occurence of a concept. Allows
+a better model to be built and stored.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An example stream using the STAGGER Generator.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Starts using generating function 0, then at</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># observation 5000 transitions to generating function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 1 then at 10000 transitions back to 0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skika.data.synthetic.reccurring_concept_stream</span> <span class="kn">import</span> <span class="n">RCStreamType</span><span class="p">,</span> <span class="n">RecurringConceptGradualStream</span><span class="p">,</span> <span class="n">conceptOccurence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_chain</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_samples</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># init concept</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_0</span> <span class="o">=</span> <span class="n">conceptOccurence</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">difficulty</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="go">                    appearences = 2, examples_per_appearence = 5000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_1</span> <span class="o">=</span> <span class="n">conceptOccurence</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">difficulty</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="go">                    appearences = 1, examples_per_appearence = 5000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">desc</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">concept_0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">concept_1</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span> <span class="o">=</span> <span class="n">RecurringConceptGradualStream</span><span class="p">(</span>
+<span class="go">                    rctype = RCStreamType.STAGGER,</span>
+<span class="go">                    num_samples =num_samples,</span>
+<span class="go">                    noise = 0,</span>
+<span class="go">                    concept_chain = concept_chain,</span>
+<span class="go">                    window_size = 1000,</span>
+<span class="go">                    seed = 42,</span>
+<span class="go">                    desc = desc,</span>
+<span class="go">                    boost_first_occurance = False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">has_more_samples</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_drift_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">15000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_stream_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="go">0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,</span>
+<span class="go">                random_state=42)</span>
+<span class="go">5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,</span>
+<span class="go">                random_state=43)</span>
+<span class="go">10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,</span>
+<span class="go">                random_state=42)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_moa_stream_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="go">&#39;(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_supplementary_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="go">(array([[2., 0., 2.]]), array([0]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">14999</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="go">(array([[2., 0., 0.]]), array([0]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">14998</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_info">
+<code class="sig-name descname">get_moa_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string to run the corresponding
+stream in MOA.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_string">
+<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param">concepts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string to run the corresponding
+stream in MOA.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_stream_info">
+<code class="sig-name descname">get_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_stream_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints information about the
+concepts included in the stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_supplementary_info">
+<code class="sig-name descname">get_supplementary_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_supplementary_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns supplementary info about
+each concept.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptStream">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptStream</code><span class="sig-paren">(</span><em class="sig-param">rctype</em>, <em class="sig-param">num_samples</em>, <em class="sig-param">noise</em>, <em class="sig-param">concept_chain</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">boost_first_occurance=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>A stream featuring abrupt drift between given concepts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rctype</strong> (<a class="reference internal" href="#skika.data.reccurring_concept_stream.RCStreamType" title="skika.data.reccurring_concept_stream.RCStreamType"><em>RCStreamType</em></a>) – An enum describing the type of stream</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples in the stream</p></li>
+<li><p><strong>noise</strong> (<em>float</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+<li><p><strong>concept_chain</strong> (<em>list&lt;int&gt;</em><em> or </em><em>dict</em>) – A dict with key observation number and value
+the concept begining at that observation
+or
+A list of concept ids. A dict will be generated
+with each concept lasting its length given in desc
+or uniform length.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Random seed.</p></li>
+<li><p><strong>desc</strong> (<em>dict&lt;int&gt;&lt;conceptOccurence&gt;</em>) – A map of concept ID to options</p></li>
+<li><p><strong>boost_first_occurance</strong> (<em>bool</em>) – If true, double the observations drawn from
+the first occurence of a concept. Allows
+a better model to be built and stored.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An example stream using the STAGGER Generator.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Starts using generating function 0, then at</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># observation 5000 transitions to generating function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 1 then at 10000 transitions back to 0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skika.data.synthetic.reccurring_concept_stream</span> <span class="kn">import</span> <span class="n">RCStreamType</span><span class="p">,</span> <span class="n">RecurringConceptStream</span><span class="p">,</span> <span class="n">conceptOccurence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_chain</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_samples</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># init concept</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_0</span> <span class="o">=</span> <span class="n">conceptOccurence</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">difficulty</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="go">                    appearences = 2, examples_per_appearence = 5000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_1</span> <span class="o">=</span> <span class="n">conceptOccurence</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">difficulty</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="go">                    appearences = 1, examples_per_appearence = 5000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">desc</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">concept_0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">concept_1</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span> <span class="o">=</span> <span class="n">RecurringConceptStream</span><span class="p">(</span>
+<span class="go">                    rctype = RCStreamType.STAGGER,</span>
+<span class="go">                    num_samples =num_samples,</span>
+<span class="go">                    noise = 0,</span>
+<span class="go">                    concept_chain = concept_chain,</span>
+<span class="go">                    seed = 42,</span>
+<span class="go">                    desc = desc,</span>
+<span class="go">                    boost_first_occurance = False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">has_more_samples</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_drift_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">15000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_stream_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="go">0 - 5000: STAGGERGenerator(balance_classes=False, classification_function=0,</span>
+<span class="go">                random_state=42)</span>
+<span class="go">5000 - 10000: STAGGERGenerator(balance_classes=False, classification_function=1,</span>
+<span class="go">                random_state=43)</span>
+<span class="go">10000 - 15000: STAGGERGenerator(balance_classes=False, classification_function=0,</span>
+<span class="go">                random_state=42)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_moa_stream_info</span><span class="p">()</span>
+<span class="go">{0: 0, 5000: 1, 10000: 0}</span>
+<span class="go">&#39;(ConceptDriftStream -s (generators.STAGGERGenerator -f 1 -i 42) -d (ConceptDriftStream -s (generators.STAGGERGenerator -f 2 -i 43) -d (generators.STAGGERGenerator -f 1 -i 42) -p 5000 -w 1) -p 5000 -w 1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">get_supplementary_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="go">(array([[2., 0., 2.]]), array([0]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">14999</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="go">(array([[2., 0., 0.]]), array([0]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastream</span><span class="o">.</span><span class="n">n_remaining_samples</span><span class="p">()</span>
+<span class="go">14998</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_info">
+<code class="sig-name descname">get_moa_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string to run the corresponding
+stream in MOA.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_string">
+<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param">concepts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string to run the corresponding
+stream in MOA.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_stream_info">
+<code class="sig-name descname">get_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_stream_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints information about the
+concepts included in the stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_supplementary_info">
+<code class="sig-name descname">get_supplementary_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_supplementary_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns supplementary info about
+each concept.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.SEAConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SEAConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SEAConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A SEA concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the SEA generating function
+to use. Should be within 0-9.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.SINEConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SINEConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SINEConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A SINE concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the SINE generating function
+to use. Should be within 0-9.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.STAGGERConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">STAGGERConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.STAGGERConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A STAGGER concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the STAGGER generating function
+to use. Should be within 0-3.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.TREEConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">TREEConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.TREEConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A TREE concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the concept.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+<li><p><strong>desc</strong> (<a class="reference internal" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="skika.data.reccurring_concept_stream.conceptOccurence"><em>conceptOccurence</em></a>) – A class which describes the specific concept.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.WindSimConcept">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">WindSimConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.WindSimConcept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A WINDSIM concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concept_id</strong> (<em>int</em>) – The ID of the concept.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – The seed used by the random number generator.</p></li>
+<li><p><strong>noise</strong> (<em>int</em>) – The probability that noise will happen in the generation. At each
+new sample generated, the sample with will perturbed by the amount of
+perturbation.
+Values go from 0.0 to 1.0.</p></li>
+<li><p><strong>desc</strong> (<a class="reference internal" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="skika.data.reccurring_concept_stream.conceptOccurence"><em>conceptOccurence</em></a>) – A class which describes the specific concept.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="skika.data.reccurring_concept_stream.conceptOccurence">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">conceptOccurence</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">difficulty</em>, <em class="sig-param">noise</em>, <em class="sig-param">appearences</em>, <em class="sig-param">examples_per_appearence</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a concept in a stream</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="skika.data.wind_sim_generator.html" class="btn btn-neutral float-right" title="skika.data.wind_sim_generator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="skika.data.stream_generator.html" class="btn btn-neutral float-left" title="skika.data.stream_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Team scikit-ika
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

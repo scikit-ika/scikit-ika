@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -85,18 +85,17 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.stream_generator.html">skika.data.stream_generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.synthetic.reccurring_concept_stream.html">skika.data.synthetic.reccurring_concept_stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.synthetic.wind_sim_generator.html">skika.data.synthetic.wind_sim_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.reccurring_concept_stream.html">skika.data.reccurring_concept_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.wind_sim_generator.html">skika.data.wind_sim_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.bernoulli_stream.html">skika.data.bernoulli_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.data.generate_dataset.html">skika.data.generate_dataset</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.evaluation.inspect_recurrence.html">skika.evaluation.inspect_recurrence</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#visualisation-visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_autosummary/skika.visualisation.wind_sim_visualisation.html">skika.visualisation.wind_sim_visualisation</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -177,10 +176,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/skika.data.stream_generator.html#module-skika.data.stream_generator" title="skika.data.stream_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.stream_generator</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/skika.data.synthetic.reccurring_concept_stream.html#module-skika.data.synthetic.reccurring_concept_stream" title="skika.data.synthetic.reccurring_concept_stream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.synthetic.reccurring_concept_stream</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/skika.data.reccurring_concept_stream.html#module-skika.data.reccurring_concept_stream" title="skika.data.reccurring_concept_stream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.reccurring_concept_stream</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/skika.data.synthetic.wind_sim_generator.html#module-skika.data.synthetic.wind_sim_generator" title="skika.data.synthetic.wind_sim_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.synthetic.wind_sim_generator</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/skika.data.wind_sim_generator.html#module-skika.data.wind_sim_generator" title="skika.data.wind_sim_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.wind_sim_generator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/skika.data.bernoulli_stream.html#module-skika.data.bernoulli_stream" title="skika.data.bernoulli_stream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.bernoulli_stream</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/skika.data.generate_dataset.html#module-skika.data.generate_dataset" title="skika.data.generate_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data.generate_dataset</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -188,7 +193,6 @@
 </div>
 <div class="section" id="module-skika.evaluation">
 <span id="evaluation-evaluation"></span><h2>Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code><a class="headerlink" href="#module-skika.evaluation" title="Permalink to this headline">¶</a></h2>
-<p>A lifelong real-time adaptive predictive system for evolving data streams.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -201,9 +205,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="visualisation-visualisation">
-<h2>Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code><a class="headerlink" href="#visualisation-visualisation" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-skika.visualisation"></span><p>A lifelong real-time adaptive predictive system for evolving data streams.</p>
+<div class="section" id="module-skika.visualisation">
+<span id="visualisation-visualisation"></span><h2>Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code><a class="headerlink" href="#module-skika.visualisation" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -213,8 +216,8 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualisation.wind_sim_feature_visualisation</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/skika.visualisation.wind_sim_visualisation.html#module-skika.visualisation.wind_sim_visualisation" title="skika.visualisation.wind_sim_visualisation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualisation.wind_sim_visualisation</span></code></a></p></td>
-<td><p>An animated visualisation of the WindSimStream, showing how Pollution emissions and sources change over time and interact with sensors.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualisation.wind_sim_visualisation</span></code></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>

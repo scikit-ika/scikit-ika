@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>skika.visualisation.wind_sim_visualisation &mdash; scikit-ika 0.0.0 documentation</title>
+  <title>skika.data.generate_dataset.datastreamOptions &mdash; scikit-ika 0.0.0 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -34,8 +34,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="skika.evaluation.inspect_recurrence" href="skika.evaluation.inspect_recurrence.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,16 +79,8 @@
             
             
               <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#visualisation-visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.visualisation.wind_sim_visualisation</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation.html">API Documentation</a></li>
 </ul>
 
             
@@ -135,15 +126,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
-        
-      <li>skika.visualisation.wind_sim_visualisation</li>
+      <li>skika.data.generate_dataset.datastreamOptions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/_autosummary/skika.visualisation.wind_sim_visualisation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/_autosummary/skika.data.generate_dataset.datastreamOptions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,10 +145,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-skika.visualisation.wind_sim_visualisation">
-<span id="skika-visualisation-wind-sim-visualisation"></span><h1>skika.visualisation.wind_sim_visualisation<a class="headerlink" href="#module-skika.visualisation.wind_sim_visualisation" title="Permalink to this headline">¶</a></h1>
-<p>An animated visualisation of the WindSimStream, showing how
-Pollution emissions and sources change over time and interact with sensors.</p>
+  <div class="section" id="skika-data-generate-dataset-datastreamoptions">
+<h1>skika.data.generate_dataset.datastreamOptions<a class="headerlink" href="#skika-data-generate-dataset-datastreamoptions" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="skika.data.generate_dataset.datastreamOptions">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">datastreamOptions</code><span class="sig-paren">(</span><em class="sig-param">noise</em>, <em class="sig-param">num_concepts</em>, <em class="sig-param">hard_diff</em>, <em class="sig-param">easy_diff</em>, <em class="sig-param">hard_appear</em>, <em class="sig-param">easy_appear</em>, <em class="sig-param">hard_prop</em>, <em class="sig-param">examples_per_appearence</em>, <em class="sig-param">stream_type</em>, <em class="sig-param">seed</em>, <em class="sig-param">gradual</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.datastreamOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for generating a concept.</p>
+<dl class="method">
+<dt id="skika.data.generate_dataset.datastreamOptions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">noise</em>, <em class="sig-param">num_concepts</em>, <em class="sig-param">hard_diff</em>, <em class="sig-param">easy_diff</em>, <em class="sig-param">hard_appear</em>, <em class="sig-param">easy_appear</em>, <em class="sig-param">hard_prop</em>, <em class="sig-param">examples_per_appearence</em>, <em class="sig-param">stream_type</em>, <em class="sig-param">seed</em>, <em class="sig-param">gradual</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.datastreamOptions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.datastreamOptions.__init__" title="skika.data.generate_dataset.datastreamOptions.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(noise, num_concepts, hard_diff, …)</p></td>
+<td><p>Initialize self.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
@@ -167,13 +178,6 @@ Pollution emissions and sources change over time and interact with sensors.</p>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="skika.evaluation.inspect_recurrence.html" class="btn btn-neutral float-left" title="skika.evaluation.inspect_recurrence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
