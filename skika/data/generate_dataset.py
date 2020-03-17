@@ -3,10 +3,10 @@ import argparse
 import random
 import pickle
 import json
-from skika.data.synthetic.reccurring_concept_stream import RCStreamType
-from skika.data.synthetic.reccurring_concept_stream import conceptOccurence
-from skika.data.synthetic.reccurring_concept_stream import RecurringConceptStream
-from skika.data.synthetic.reccurring_concept_stream import RecurringConceptGradualStream
+from skika.data.reccurring_concept_stream import RCStreamType
+from skika.data.reccurring_concept_stream import conceptOccurence
+from skika.data.reccurring_concept_stream import RecurringConceptStream
+from skika.data.reccurring_concept_stream import RecurringConceptGradualStream
 
 import numpy as np
 import pandas as pd

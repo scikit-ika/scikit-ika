@@ -10,7 +10,7 @@ from skmultiflow.data import RandomTreeGenerator
 from skmultiflow.data import SEAGenerator
 from skmultiflow.data import SineGenerator
 
-from skika.data.synthetic.wind_sim_generator import WindSimGenerator
+from skika.data.wind_sim_generator import WindSimGenerator
 
 class conceptOccurence:
     """
