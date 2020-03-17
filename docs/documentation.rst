@@ -18,8 +18,10 @@ Data: :mod:`data`
    :toctree: _autosummary
 
    data.stream_generator
-   data.synthetic.reccurring_concept_stream
-   data.synthetic.wind_sim_generator
+   data.reccurring_concept_stream
+   data.wind_sim_generator
+   data.bernoulli_stream
+   data.generate_dataset
 
 Evaluation: :mod:`evaluation`
 =============================
@@ -37,7 +39,7 @@ Evaluation: :mod:`evaluation`
    evaluation.inspect_recurrence
 
 Visualisation: :mod:`visualisation`
-==================================
+===================================
 
 .. automodule:: skika.visualisation
    :no-members:
