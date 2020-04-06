@@ -18,6 +18,8 @@ class BernoulliStream():
          
          The new mean error rate after each drift is picked in the mean_errors list.
          
+         It is possible to modulate the number of following drifts with the same characteristics with the parameter n_stable_drifts.
+         
          It is possible to retrive drift chracteristics from the stream : magnitude and severity of drifts. 
          
          Arguments :
@@ -40,7 +42,9 @@ class BernoulliStream():
                       Ex : mean_errors = [[0.1,0.2],[0.5,0.6],[0.8,0.9]]
             
             n_stable_drifts : int, (optional, default = 1)
-                Number of floowing drfits with the same patterns (width and mean_errors)
+                Number of following drifts with the same patterns (width and mean_errors). 
+                Ex : if n_stable_drifts = 5, the characteristics of the drifts are changing every 5 drifts. 
+                This enable to generate streams with more or less drifts diversity. 
                 
             random_state : int (optional, default = 0)
                 Random state for the pseudo-random generators. 
