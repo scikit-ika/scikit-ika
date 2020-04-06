@@ -1,14 +1,10 @@
 import numpy as np
 from skmultiflow.utils import check_random_state
-#import itertools
 import math
-
-#from skmultiflow.core import BaseSKMObject
-#from abc import ABCMeta, abstractmethod
 
 class BernoulliStream():
     """ A class to generate a Bernoulli Stream
-
+         
          The stream is simulating the error rate of a learner.
          It is possible to generate drifts by changing the mean error rate at change points.
 
@@ -44,8 +40,28 @@ class BernoulliStream():
                 Number of floowing drfits with the same patterns (width and mean_errors)
 
             random_state : int (optional, default = 0)
-                Random state for the pseudo-random generators.
-
+                Random state for the pseudo-random generators. 
+        
+        Examples
+        --------
+            >>> # Imports
+            >>> from bernoulli_stream import BernoulliStream
+            
+            >>> # Setting up the stream
+            stream = BernoulliStream(drift_period=1000, n_drifts = 10, widths_drifts = [1,500], mean_errors = [[0.0,1.0],[0.2,0.8]], n_stable_drifts = 5)
+            >>> stream.prepare_for_use()
+            
+            >>> # Retrieving one sample
+            >>> stream.next_sample()
+            >>> array([1.])
+            
+            >>> stream.list_positions
+            >>> [1000, 2001, 3002, 4502, 6002, 7003, 8004, 9504, 11004, 12005]
+            
+            >>> stream.n_samples
+            >>> 13006
+            
+        
         """
 
     def __init__(self,
@@ -383,10 +399,8 @@ class BernoulliStream():
         tuple or tuple list
             Return a tuple with the predictions matrix for
             the batch_size samples that were requested.
-        """
-
-
-
+        """        
+        
         self.current_prediction = np.zeros(batch_size)
 
         for j in range(batch_size):
@@ -508,17 +522,10 @@ class BernoulliStream():
 
 ####################################################################
 ## Test
-#from scipy.stats import kurtosis, skew
-
-#from scipy.spatial import distance
-
-#mag_theo = [0.632,0.578,0.447,0.389,0.289,0.227,0.142,0.067]
-#sev_theo = [1,100,500]
-
-#meta_features = list(itertools.product(sev_theo,mag_theo))
-#
 
 #stream = BernoulliStream(drift_period=1500, n_drifts = 500, widths_drifts = [1,50,250], mean_errors = [[0.0,1.0],[0.35,0.45],[0.85,0.4],[0.5,0.2],[0.9,0.3],[0.55,0.75],[0.5,0.1],[0.65,0.75],[0.95,0.25],[0.1,0.0]], n_stable_drifts = 10)
+#        
+#stream = BernoulliStream(drift_period=1000, n_drifts = 100, widths_drifts = [1,500], mean_errors = [[0.0,1.0],[0.2,0.8]], n_stable_drifts = 5)
 #stream.prepare_for_use()
 #
 #drift_positions = stream.list_positions
