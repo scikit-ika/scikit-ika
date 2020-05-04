@@ -71,3 +71,5 @@ Hyper-parameter tuning: :mod:`hyper_parameter_tuning`
 
    hyper_parameter_tuning.build_pareto_knowledge_drifts
    hyper_parameter_tuning.build_pareto_knowledge_trees
+   hyper_parameter_tuning.evaluate_prequential_and_adapt
+   hyper_parameter_tuning.meta_feature_generator
