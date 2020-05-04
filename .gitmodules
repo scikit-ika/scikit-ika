@@ -4,3 +4,6 @@
 [submodule "third_party/streamDM/spdlog"]
 	path = third_party/streamDM/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "third_party/scikit-multiflow"]
+	path = third_party/scikit-multiflow
+	url = https://github.com/scikit-ika/scikit-multiflow
