@@ -7,7 +7,9 @@ from skmultiflow.utils import check_random_state
 import math
 
 class HyperplaneGeneratorRedund(Stream):
-    r""" Hyperplane stream generator.
+    """ Hyperplane stream generator.
+
+    Modified version of scikit-multiflow code to include generation of redundant attributes.
 
     Generates a problem of prediction class of a rotation hyperplane. It was
     used as testbed for CVFDT and VFDT in [1]_.
@@ -41,8 +43,9 @@ class HyperplaneGeneratorRedund(Stream):
         The number of attributes with drift.
         Higher than 2.
 
-    perc_redund_feature (Default = 0)
+    perc_redund_feature: float (Default: 0.0)
         The percentage of features to be redundant.
+        From 0.0 to 1.0.
 
     mag_change: float (Default: 0.0)
         Magnitude of the change for every example.

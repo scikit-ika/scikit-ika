@@ -19,20 +19,20 @@ class buildTreesKnowledge():
     The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
     
     Parameters :
-        results_file : str 
+        results_file: str 
             Path to the file containing the knowledge files (results of the evaluation of the configurations on example streams)
-            See example result files 
+            See example in hyper_param_tuning_examples to format the file. 
         
-        list_perc_redund : list of float
+        list_perc_redund: list of float
             List of percentages of redundance used in the example streams
         
-        list_models : list of str
+        list_models: list of str
             List of the names of the ARF configurations tested on the streams
         
-        output : str
+        output: str
             Directory path where to save output file
             
-        verbose : bool, default = False
+        verbose: bool, default = False
             Print pareto figures if True 
     
     Output :

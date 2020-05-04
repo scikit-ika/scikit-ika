@@ -10,6 +10,8 @@ import math
 class RandomRBFGeneratorRedund(Stream):
     """ Random Radial Basis Function stream generator.
 
+    Modified version of scikit-multiflow code to include generation of redundant attributes.
+
     Produces a radial basis function stream. A number of centroids, having a random central position, a standard
     deviation, a class label and weight, are generated. A new sample is created by choosing one of the centroids at
     random, taking into account their weights, and offsetting the attributes at a random direction from the centroid's

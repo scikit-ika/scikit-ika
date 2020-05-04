@@ -18,30 +18,30 @@ class buildDriftKnowledge():
     The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
     
     Parameters :
-        results_directory : str 
+        results_directory: str 
             Path to the directory containing the knowledge files (results of the evaluation of the configurations on example streams)
             
-        namesDetectors : list of str
+        namesDetectors: list of str
             List of the names of the detectors
             
-        namesStreams : list of str
+        namesStreams: list of str
             list of the names of the streams
             
-        nMetaFeatures : int, default = 15 ((severity, magnitude, interval) * (med, kurto, skew, per10, per90))
+        nMetaFeatures: int, default = 15 ((severity, magnitude, interval) * (med, kurto, skew, per10, per90))
             Number of meta-features extracted from the stream 
             NOT USED FOR THE MOMENT as we use theoritical meta-features and not measured ones
         
-        knowledge_type : str
+        knowledge_type: str
             String indicating what knowledge is being calculated (for arf tree tuning or drift detectors)
             NOT USED FOR THE MOMENT, need further implementing to bring the two applications together
             
-        output : str
+        output: str
             Directory path where to save output file
             
-        verbose : bool, default = False
+        verbose: bool, default = False
             Print pareto figures if True 
         
-        Output :
+        Output:
             Csv file containing the configurations selected for each example stream (each row = 1 stream)
             
             
