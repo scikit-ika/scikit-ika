@@ -27,7 +27,7 @@
 #include <stack>
 #include <iterator>
 #include <iostream>
-#include <fstream> 
+#include <fstream>
 #include <sstream>  
 #include <cmath>
 #include <ctime>
@@ -37,8 +37,16 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
+#include <stdint.h>
 
+#if defined(_WIN32) || defined(WIN32)
+// Windows work arounds for functions used from unistd.h.
+#include <io.h>
+#define access _access
+#define strcasecmp stricmp
+#else
 #include <unistd.h>
+#endif
 
 #include "utils/Utils.h"
 #include "utils/json.h"
