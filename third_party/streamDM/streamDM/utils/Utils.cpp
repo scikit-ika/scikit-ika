@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
-#include <unistd.h>
+#include <stdint.h>
 #include <cmath>
 
 #include <sys/types.h>
