@@ -58,7 +58,7 @@ class buildDriftKnowledge():
                                    'SeqDrift211','SeqDrift212','SeqDrift213','SeqDrift214','SeqDrift215','SeqDrift216','SeqDrift217','SeqDrift218']]
             
             >>> output_dir = os.getcwd()
-            >>> directoryPathFiles = 'examples/pareto_knowledge/ExampleDriftKnowledge'
+            >>> directoryPathFiles = 'examples/pareto_knowledge/ExampleDriftKnowledge' # Available in hyper-param-tuning-examples repository
             
             >>> paretoBuild = buildDriftKnowledge(results_directory = directoryPathFiles, namesDetectors = namesDetect, namesStreams = namesStm, output = output_dir, verbose =True)
             >>> paretoBuild.load_drift_data()

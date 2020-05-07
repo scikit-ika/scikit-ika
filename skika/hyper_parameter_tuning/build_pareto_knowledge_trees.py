@@ -21,7 +21,7 @@ class buildTreesKnowledge():
     Parameters :
         results_file: str 
             Path to the file containing the knowledge files (results of the evaluation of the configurations on example streams)
-            See example in hyper_param_tuning_examples to format the file. 
+            See example in hyper-param-tuning-examples repository (pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv) to format the file
         
         list_perc_redund: list of float
             List of percentages of redundance used in the example streams
@@ -44,7 +44,7 @@ class buildTreesKnowledge():
         >>> perc_redund = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
         
         >>> output_dir = os.getcwd()
-        >>> name_file =' /examples/pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv'
+        >>> name_file =' /examples/pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv' # Available in hyper-param-tuning-examples repository
         
         >>> paretoBuild = buildTreesKnowledge(results_file = name_file, list_perc_redund = perc_redund, list_models = names, output = output_dir, verbose = True)
         >>> paretoBuild.load_drift_data()

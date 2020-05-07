@@ -1,10 +1,4 @@
 import os
-import sys
-
-# Insert here the path to the scikit_multiflow dev version (includes RAM_h measure):
-dirpath = os.getcwd()
-parent_third_party = os.path.dirname(os.path.dirname(dirpath))
-sys.path.insert(0, parent_third_party+'/third_party/scikit_multiflow/src/')
 
 import warnings
 import re
@@ -42,7 +36,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
     (partial fit). This way the model is always tested on samples that it
     hasn't seen yet.
 
-    Aditional scikit-ika features:
+    Additional scikit-ika features:
     This method implements an adaptive tuning process to adapt the number of trees 
     in an Adaptive Random Forest, depending on the number of redundant features in the stream.
 
