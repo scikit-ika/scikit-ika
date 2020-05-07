@@ -2,3 +2,5 @@ numpy
 sklearn
 scikit-multiflow
 cmake
+kneed
+pandas
