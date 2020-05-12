@@ -38,7 +38,7 @@ def test_pearl():
                        drift_delta,
                        enable_state_adaption,
                        enable_state_graph)
-    classifier.init_data_source("data/covtype.arff");
+    classifier.init_data_source("recurrent-data/real-world/covtype.arff");
 
     correct = 0
     max_samples = 40001
