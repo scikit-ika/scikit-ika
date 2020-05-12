@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/scikit-ika.svg)](https://pypi.python.org/pypi/scikit-ika) [![Build Status](https://travis-ci.com/scikit-ika/scikit-ika.svg?branch=master)](https://travis-ci.com/scikit-ika/scikit-ika)
 
-A real-time adaptive predictive system for evolving data streams.
+A real-time adaptive predictive system for evolving data streams. [Learn More](https://scikit-ika.github.io/about/)
 
 ### Requirements
 
@@ -26,3 +26,17 @@ From source
 git clone https://github.com/scikit-ika/scikit-ika.git --recursive
 pip install ./scikit-ika
 ```
+
+### Note
+
+`scikit-ika` is still in its infancy. The APIs are unstable and the documentation is scarse.
+
+Guides on usages and parameter tunning are on its way. Meanwhile, please feel free to
+raise issues or email us if you have any questions.
+
+### Acknowledgement
+
+This project is inspired by and has dependencies on the following projects:
+
+* [scikit-multiflow](https://github.com/scikit-multiflow/scikit-multiflow)
+* [streamDM in C++](https://github.com/huawei-noah/streamDM-Cpp)
