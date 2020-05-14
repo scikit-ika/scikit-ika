@@ -118,7 +118,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
     1. If the adaptive hyper-parameter tuning is not used, this evaluator can process a single learner to track its performance; 
        or multiple learners  at a time, to compare different models on the same stream.
        
-    2. If the adaptive hyper-parameter tuning is used, this evaluator can process only a single learner.
+    2. If the adaptive hyper-parameter tuning is used, this evaluator can process only a single learner at the moment. 
     
     3. This class can be only used with the ARF as a classifier. Further developments are needed to generalise it to more tasks with
        more classifiers. 
@@ -458,6 +458,10 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                             (self.global_sample_count / self.n_wait > update_count + 1)):
                         if prediction is not None:
                             self._update_metrics()
+                            
+#                            for i in range(self.n_models):
+#                                self.current_eval_measurements[i].accuracy_score()
+                            
                         update_count += 1
 
                 self._end_time = timer()
