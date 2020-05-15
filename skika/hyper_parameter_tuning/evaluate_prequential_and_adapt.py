@@ -236,12 +236,12 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
             self._init_plot()
             self._init_file()
 
-            self.model = self._train_and_test()
+            self.model, self.list_acc = self._train_and_test()
 
             if self.show_plot:
                 self.visualizer.hold()
 
-            return self.model
+            return self.model, self.list_acc
 
     def _train_and_test(self):
         """ Method to control the prequential evaluation and adaptive tuning. 
@@ -269,10 +269,12 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
 
         first_run = True
 
-        # Init meta_features extractors for each model
+        # Init meta_features extractors and list of accuracies (for test) for each model
+        self.list_acc = []
         self.extractor = []
         for  i in range(self.n_models):
             self.extractor.append(ComputeStreamMetaFeatures(stream = self.stream, list_feat = ['perc_redund_feat']))
+            self.list_acc.append([])
 
         if self.pretrain_size > 0:
             print('Pre-training on {} sample(s).'.format(self.pretrain_size))
@@ -328,7 +330,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         pourcRedundRead = []
         newNbTrees = []
 
-        # Initialise RAM_hours measurements +  Meta-features extractor
+        # Initialise RAM_hours measurements 
         for i in range(self.n_models):
             self.running_RAM_H_measurements[i].compute_evaluate_start_time()
 
@@ -459,8 +461,8 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                         if prediction is not None:
                             self._update_metrics()
                             
-#                            for i in range(self.n_models):
-#                                self.current_eval_measurements[i].accuracy_score()
+                            for i in range(self.n_models):
+                                self.list_acc[i].append(self.current_eval_measurements[i].accuracy_score())
                             
                         update_count += 1
 
@@ -489,7 +491,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         if self.restart_stream:
             self.stream.restart()
 
-        return self.model
+        return self.model, self.list_acc
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         """ Partially fit all the models on the given data.
