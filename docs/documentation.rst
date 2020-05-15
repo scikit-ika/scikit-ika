@@ -24,6 +24,7 @@ Data: :mod:`data`
    data.generate_dataset
    data.hyper_plane_generator_redund
    data.random_rbf_generator_redund
+   data.stream_generator_redundancy_drift
 
 Evaluation: :mod:`evaluation`
 =============================

@@ -13,11 +13,47 @@ from skika.data.random_rbf_generator_redund import RandomRBFGeneratorRedund
 class StreamGeneratorRedund(Stream):
     """ Stream generator with change in number of redundant features
         
-        Create a stream from RandomRBFRedun or HyperPlanRedun to generate a given number of drifts with a given number of instances.
-        Each concept contains a different number of redundant features.
+        Create a stream from RandomRBFRedun or HyperPlanRedun to generate a given 
+        number of drifts with a given number of instances. Each concept contains a 
+        different number of redundant features (0, 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100% 
+        of the total number of features).
         
-        Parameters:
+        Drifts are regularly placed every n_instances/n_drifts instances. 
+        
+        Parameters
         ----------
+        base_stream: Stream (Default: RandomRBFRedun)
+            The base stream to use.
+        
+        random_state: int, RandomState instance or None, optional (default=None)
+            If int, random_state is the seed used by the random number generator;
+            If RandomState instance, random_state is the random number generator;
+            If None, the random number generator is the RandomState instance used
+            by `np.random`.
+        
+        n_drifts: int (Default: 10)
+            Number of drifts to be generated. 
+        
+        n_instances: int (Default: 10000)
+            Number of instances to be generated. 
+        
+        Example
+        --------
+        >>> # Imports
+        >>> from skika.data.stream_generator_redundancy_drift import StreamGeneratorRedund
+        >>> from skika.data.random_rbf_generator_redund import RandomRBFGeneratorRedund
+        >>> # Set the stream
+        >>> stream = StreamGeneratorRedund(base_stream = RandomRBFGeneratorRedund(n_classes=2, n_features=30, n_centroids=50, noise_percentage = 0.0), random_state=None, n_drifts = 10, n_instances = 10000)
+        >>> stream.prepare_for_use()
+        >>> # Retrieve next sample
+        >>> stream.next_sample()
+        (array([[0.21780997, 0.37810599, 0.24129934, 0.78979064, 0.83463727,
+                     0.90272964, 0.5611584 , 0.58977699, 0.78035701, 0.89178544,
+                     0.55418949, 0.30293076, 0.09691338, 0.75894948, 0.03441104,
+                     0.58977699, 0.75894948, 0.24129934, 0.78979064, 0.83463727,
+                     0.37810599, 0.55418949, 0.75894948, 0.24129934, 0.55418949,
+                     0.78035701, 0.09691338, 0.90272964, 0.83463727, 0.24129934]]),
+        array([1]))
         
 
     """
@@ -64,8 +100,9 @@ class StreamGeneratorRedund(Stream):
         self.list_perc_redund = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
 
     def prepare_for_use(self):
-        """
-        Prepares the stream for use.
+        """ Prepares the stream for use.
+        Randomly create the list of redundant numbers of features used for each concept in the stream.
+        
         Notes
         -----
         This functions should always be called after the stream initialization.
