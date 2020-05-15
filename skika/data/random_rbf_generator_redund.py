@@ -55,7 +55,7 @@ class RandomRBFGeneratorRedund(Stream):
     Examples
     --------
     >>> # Imports
-    >>> from skika.data.random_rbf_generator import RandomRBFGenerator
+    >>> from skika.data.random_rbf_generator import RandomRBFGeneratorRedund
     >>> # Setting up the stream
     >>> stream = RandomRBFGeneratorRedund(model_random_state=99, sample_random_state=50, n_classes=4, n_features=10, perc_redund_feature = 0.4, n_centroids=50)
     >>> stream.prepare_for_use()
@@ -213,7 +213,7 @@ class RandomRBFGeneratorRedund(Stream):
         self.n_not_redund_features = self.n_features - self.n_redund_features
 
         # Initialise variables for redundancy
-        self.index_redund = [np.random.randint(0,(self.n_features - self.n_redund_features-1)) for ind in range(self.n_redund_features)]
+        self.index_redund = [self._sample_random_state.randint(0,(self.n_features - self.n_redund_features-1)) for ind in range(self.n_redund_features)]
 #        self.coef_redund = [self._sample_random_state.rand()+0.1 for ind in range(self.n_redund_features)]
 
     def generate_centroids(self):
