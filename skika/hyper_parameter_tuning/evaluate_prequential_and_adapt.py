@@ -236,12 +236,12 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
             self._init_plot()
             self._init_file()
 
-            self.model, self.list_acc = self._train_and_test()
+            self.model, self.list_acc, new_nb_trees = self._train_and_test()
 
             if self.show_plot:
                 self.visualizer.hold()
 
-            return self.model, self.list_acc
+            return self.model, self.list_acc, new_nb_trees
 
     def _train_and_test(self):
         """ Method to control the prequential evaluation and adaptive tuning. 
@@ -328,7 +328,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         comptDrift = []
         driftDetecList = []
         pourcRedundRead = []
-        newNbTrees = []
+        new_nb_trees = []
 
         # Initialise RAM_hours measurements 
         for i in range(self.n_models):
@@ -338,7 +338,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
             comptDrift.append(0)          # Temp variable to simulate drift detection
             driftDetecList.append([])
             pourcRedundRead.append([])
-            newNbTrees.append([])
+            new_nb_trees.append([])
 
         sample_stream = False
 
@@ -395,7 +395,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                                 comptDrift[i] = comptDrift[i] + 1
                                 driftDetecList[i].append(self.global_sample_count)
                                 pourcRedundRead[i].append(round(current_perc_redund,1))
-                                newNbTrees[i].append(self.metaKB[round(current_perc_redund,1)])
+                                new_nb_trees[i].append(self.metaKB[round(current_perc_redund,1)])
 
                                 # # DEBUG:
 #                                print('Number detected drifts : '+str(comptDrift[i]))
@@ -486,12 +486,12 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                 print('Number detected drifts : '+str(comptDrift[i]))
                 print('Positions detected drifts : '+str(driftDetecList[i]))
                 print('Perc redund measured : '+str(pourcRedundRead[i]))
-                print('New trees number : '+str(newNbTrees[i]))
+                print('New trees number : '+str(new_nb_trees[i]))
 
         if self.restart_stream:
             self.stream.restart()
 
-        return self.model, self.list_acc
+        return self.model, self.list_acc, new_nb_trees
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         """ Partially fit all the models on the given data.
