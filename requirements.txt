@@ -1,6 +1,6 @@
 numpy
 sklearn
-scikit-multiflow
 cmake
 kneed
 pandas
+./third_party/scikit-multiflow
