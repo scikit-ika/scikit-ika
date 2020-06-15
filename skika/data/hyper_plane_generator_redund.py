@@ -229,7 +229,7 @@ class HyperplaneGeneratorRedund(Stream):
         self.n_not_redund_features = self.n_features - self.n_redund_features
 
         # Initialise variable for redundancy
-        self.index_redund = [np.random.randint(0,(self.n_features - self.n_redund_features-1)) for ind in range(self.n_redund_features)]
+        self.index_redund = [self._sample_random_state.randint(0,(self.n_features - self.n_redund_features-1)) for ind in range(self.n_redund_features)]
         self.coef_redund = [self._random_state.rand()+0.1 for ind in range(self.n_redund_features)]
 
     def next_sample(self, batch_size=1):
