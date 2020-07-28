@@ -130,7 +130,7 @@ class buildTreesKnowledge():
            
         indr = 0
         for score in self.scores :
-            print("########################## Perc redun = "+str(perc_redund[indr])+" ##########################")
+            print("########################## Perc redun = "+str(self.list_perc_redund[indr])+" ##########################")
                   
             # Calculate pareto front
             pareto = self.identify_pareto(score)
