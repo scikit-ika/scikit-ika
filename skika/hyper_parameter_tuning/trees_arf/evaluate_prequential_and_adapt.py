@@ -10,11 +10,11 @@ from numpy import unique
 from skmultiflow.evaluation.base_evaluator import StreamEvaluator
 from skmultiflow.utils import constants
 
-from skika.hyper_parameter_tuning.meta_feature_generator import ComputeStreamMetaFeatures
+from skika.hyper_parameter_tuning.trees_arf.meta_feature_generator import ComputeStreamMetaFeatures
 
 
 class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
-    """ Prequential evaluation method with adaptive tuning of hyper-parameters.
+    """ Prequential evaluation method with adaptive tuning of hyper-parameters to tune the number of trees in ARF.
     
     This code is based on the ``scikit_multiflow`` evaluate_prequential implementation. 
     Copyright (c) 2017, scikit-multiflow
@@ -129,7 +129,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
     Example
     --------
     >>> from skika.data.random_rbf_generator_redund import RandomRBFGeneratorRedund
-    >>> from skika.hyper_parameter_tuning.evaluate_prequential_and_adapt import EvaluatePrequentialAndAdaptTreesARF
+    >>> from skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt import EvaluatePrequentialAndAdaptTreesARF
     >>>
     >>> # Set the stream
     >>> stream = StreamGeneratorRedund(base_stream = RandomRBFGeneratorRedund(n_classes=2, n_features=30, n_centroids=50, noise_percentage = 0.0), random_state=None, n_drifts = 100, n_instances = 100000)
