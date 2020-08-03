@@ -18,7 +18,7 @@ from skmultiflow.drift_detection.ddm import DDM
 from skmultiflow.drift_detection.page_hinkley import PageHinkley
 
 
-from bernoulliStream import BernoulliStream
+from skika.data.bernoulli_stream import BernoulliStream
 
 
 class evaluateDriftDetection():
