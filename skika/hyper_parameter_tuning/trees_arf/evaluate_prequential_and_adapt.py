@@ -16,31 +16,32 @@ from skika.hyper_parameter_tuning.trees_arf.meta_feature_generator import Comput
 class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
     """ Prequential evaluation method with adaptive tuning of hyper-parameters to tune the number of trees in ARF.
     
-    This code is based on the ``scikit_multiflow`` evaluate_prequential implementation. 
-    Copyright (c) 2017, scikit-multiflow
-    All rights reserved.
+    Description : 
+        This code is based on the ``scikit_multiflow`` evaluate_prequential implementation. 
+        Copyright (c) 2017, scikit-multiflow
+        All rights reserved.
+        
+        We modified it to include adaptive tuning of hyper-parameters.
+        
+        Scikit_multiflow description:
+        An alternative to the traditional holdout evaluation, inherited from
+        batch setting problems.
     
-    Description: We modified it to include adaptive tuning of hyper-parameters.
+        The prequential evaluation is designed specifically for stream settings,
+        in the sense that each sample serves two purposes, and that samples are
+        analysed sequentially, in order of arrival, and become immediately
+        inaccessible.
     
-    Scikit_multiflow description:
-    An alternative to the traditional holdout evaluation, inherited from
-    batch setting problems.
+        This method consists of using each sample to test the model, which means
+        to make a predictions, and then the same sample is used to train the model
+        (partial fit). This way the model is always tested on samples that it
+        hasn't seen yet.
+    
+        Additional scikit-ika features:
+        This method implements an adaptive tuning process to adapt the number of trees 
+        in an Adaptive Random Forest, depending on the number of redundant features in the stream.
 
-    The prequential evaluation is designed specifically for stream settings,
-    in the sense that each sample serves two purposes, and that samples are
-    analysed sequentially, in order of arrival, and become immediately
-    inaccessible.
-
-    This method consists of using each sample to test the model, which means
-    to make a predictions, and then the same sample is used to train the model
-    (partial fit). This way the model is always tested on samples that it
-    hasn't seen yet.
-
-    Additional scikit-ika features:
-    This method implements an adaptive tuning process to adapt the number of trees 
-    in an Adaptive Random Forest, depending on the number of redundant features in the stream.
-
-    Parameters:
+    Parameters :
         n_wait:int (Default: 200)
             The number of samples to process between each test. Also defines when to update the plot if `show_plot=True`.
             Note that setting `n_wait` too small can significantly slow the evaluation process.

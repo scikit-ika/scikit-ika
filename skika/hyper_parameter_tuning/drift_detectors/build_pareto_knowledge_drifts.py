@@ -12,12 +12,12 @@ from kneed import KneeLocator
 class buildDriftKnowledge():
     """
     Description :
-    Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for the drift detector tuning.
-    The knowledge consists in the best configuration of hyper-parameters for each dataset. 
+        Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for the drift detector tuning.
+        The knowledge consists in the best configuration of hyper-parameters for each dataset. 
+        
+        The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
     
-    The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
-    
-    Parameters:
+    Parameters :
         results_directory: str 
             Path to the directory containing the knowledge files (results of the evaluation of the configurations on example streams)
             

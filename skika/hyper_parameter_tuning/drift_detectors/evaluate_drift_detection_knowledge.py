@@ -28,11 +28,14 @@ class evaluateDriftDetection():
         Class to evaluate the performance of the drift detection for the knowledge computation. 
         Performance is evaluate with the numbers of TP and FP detections.
     
-    Parameters:
-        list_drifts_detectors : list of drift detectors to evaluate. Each detector is used for warning and drift detection. 
+    Parameters :
+        list_drifts_detectors : list of drift detector object
+            List of drift detectors to evaluate. 
+            Each detector is used for warning and drift detection. 
             If the detector doesn't handle both directly, one should pass two detectors, the first one for the warning detection and the second one for the drift detection. 
         
-        list_names_drifts_detectors: list of drift detectors names to evaluate. 
+        list_names_drifts_detectors: list of str.
+            List of drift detectors names to evaluate. 
         
         stream: stream object 
             Stream on which the detectors are evaluated.

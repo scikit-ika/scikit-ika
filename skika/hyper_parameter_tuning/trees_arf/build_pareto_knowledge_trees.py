@@ -12,13 +12,13 @@ import warnings
 
 class buildTreesKnowledge():
     """
-    Description:
-    Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for tuning the number of trees in ARF. 
-    The knowledge consists in the best configuration of hyper-parameters for each dataset. 
+    Description :
+        Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for tuning the number of trees in ARF. 
+        The knowledge consists in the best configuration of hyper-parameters for each dataset. 
+        
+        The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
     
-    The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
-    
-    Parameters:
+    Parameters :
         results_file: str 
             Path to the file containing the knowledge files (results of the evaluation of the configurations on example streams)
             See example in hyper-param-tuning-examples repository (pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv) to format the file

@@ -18,13 +18,13 @@ class evaluateDriftDetection():
     """ Prequential evaluation method with adaptive tuning of hyper-parameters for drift detector tuning.
     
     Description : 
-    Prequential evaluation method with adaptive tuning of hyper-parameters for drift detector tuning. 
-    This class enable to evaluate the performance of an adaptive tuning of drift detectors based on a meta-knowledge base built from results from class 
-    evaluate_drift_detection_knowledge. 
+        Prequential evaluation method with adaptive tuning of hyper-parameters for drift detector tuning. 
+        This class enable to evaluate the performance of an adaptive tuning of drift detectors based on a meta-knowledge base built from results from class 
+        evaluate_drift_detection_knowledge. 
     
     
     Parameters :
-        list_drifts_detectors: list 
+        list_drifts_detectors: list of drift detector object
             List of drift detectors to evaluate. Each detector is used for warning and drift detection. 
             If the detector doesn't give both directly, one should pass two detectors, the first one for the warning detection and the second one for the drift detection. 
         
@@ -45,7 +45,7 @@ class evaluateDriftDetection():
         win_adapt_size: list
             Length of the sliding window to store and compare meta-features with knowledge.
             
-        stream : stream object 
+        stream: stream object 
             Stream on which the detectors are evaluated (Bernoulli stream).
             
         n_runs: int

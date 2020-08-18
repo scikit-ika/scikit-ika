@@ -9,9 +9,9 @@ import numpy as np
 
 
 class ComputeStreamMetaFeatures():
-    """ Description:
-
-    Compute extraction of several meta-features on the stream.
+    """ 
+    Description :
+        Compute extraction of several meta-features on the stream.
 
     """
 
