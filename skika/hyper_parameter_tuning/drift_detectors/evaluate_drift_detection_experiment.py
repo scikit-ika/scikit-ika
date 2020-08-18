@@ -17,47 +17,50 @@ from scipy.spatial import distance
 class evaluateDriftDetection():
     """ Prequential evaluation method with adaptive tuning of hyper-parameters for drift detector tuning.
     
-    Description 
+    Description : 
     Prequential evaluation method with adaptive tuning of hyper-parameters for drift detector tuning. 
     This class enable to evaluate the performance of an adaptive tuning of drift detectors based on a meta-knowledge base built from results from class 
     evaluate_drift_detection_knowledge. 
     
     
     Parameters :
-        list_drifts_detectors : list 
+        list_drifts_detectors: list 
             List of drift detectors to evaluate. Each detector is used for warning and drift detection. 
             If the detector doesn't give both directly, one should pass two detectors, the first one for the warning detection and the second one for the drift detection. 
         
-        list_names_drifts_detectors : list of drift detectors names to evaluate. 
+        list_names_drifts_detectors: list of drift detectors names to evaluate. 
         
-        kBase :
+        kBase:
             Knowledge base containing meta-features values matched with drift detectors best configurations.
             
-        dict_k_base : dict
+        dict_k_base: dict
             Dict linking the name of the configurations with the warning and drift detectors
         
-        adapt : list of int
+        adapt: list of int
             List of int to indicate if the drift detector configuration should be :
                 - 0 : Not adapted
                 - 1 : Adapted given knowledge with meta-learning
             Must be the same size as list_drifts_detectors.
         
-        win_adapt_size : list
+        win_adapt_size: list
             Length of the sliding window to store and compare meta-features with knowledge.
             
         stream : stream object 
             Stream on which the detectors are evaluated (Bernoulli stream).
             
-        n_runs : int
+        n_runs: int
             Number of runs to process
             The results will be given as mean and std over n_runs.
             
-        name_file : str
+        name_file: str
             Name of the file to save the results.
             
-        Output :
+        Output:
             Csv files containing the performance results.
             
+    Example:
+        
+        See https://github.com/scikit-ika/hyper-param-tuning-examples
         
     
     """
@@ -268,7 +271,7 @@ class evaluateDriftDetection():
 
     def evaluate(self) :
         """
-         Evaluate the detectors on the strem
+         Evaluate the detectors on the stream
          
         """
         for run in range(self.n_runs) :  

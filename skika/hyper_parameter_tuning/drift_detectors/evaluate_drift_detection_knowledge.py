@@ -24,29 +24,32 @@ from skika.data.bernoulli_stream import BernoulliStream
 class evaluateDriftDetection():
     """ Prequential evaluation method to collect knowledge for drift detector tuning.
     
-    Description
+    Description :
         Class to evaluate the performance of the drift detection for the knowledge computation. 
         Performance is evaluate with the numbers of TP and FP detections.
     
-    Parameters :
+    Parameters:
         list_drifts_detectors : list of drift detectors to evaluate. Each detector is used for warning and drift detection. 
             If the detector doesn't handle both directly, one should pass two detectors, the first one for the warning detection and the second one for the drift detection. 
         
-        list_names_drifts_detectors : list of drift detectors names to evaluate. 
+        list_names_drifts_detectors: list of drift detectors names to evaluate. 
         
-        stream : stream object 
+        stream: stream object 
             Stream on which the detectors are evaluated.
         
-        n_runs : int
+        n_runs: int
             Number of runs to process.
             The results will be given as mean and std over n_runs.
         
-        name_file : str
+        name_file: str
             Name of the file to save the results.
         
-        Output :
+        Output:
             Csv files containing the performance results to be exploited to build the knowledge base.
-            
+        
+    Example:
+        
+        See https://github.com/scikit-ika/hyper-param-tuning-examples
 
     """
     
@@ -241,7 +244,7 @@ class evaluateDriftDetection():
     
     def evaluate(self) :
         """
-         Evaluate the detectors on the strem
+         Evaluate the detectors on the stream
          
         """
         for run in range(self.n_runs) :  

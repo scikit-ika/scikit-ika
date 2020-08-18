@@ -1,0 +1,22 @@
+skika.hyper\_parameter\_tuning.trees\_arf.meta\_feature\_generator
+==================================================================
+
+.. automodule:: skika.hyper_parameter_tuning.trees_arf.meta_feature_generator
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ComputeStreamMetaFeatures
+   
+   
+
+   
+   
+   

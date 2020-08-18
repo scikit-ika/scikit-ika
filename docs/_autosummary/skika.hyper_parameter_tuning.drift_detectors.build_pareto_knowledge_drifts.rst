@@ -1,0 +1,22 @@
+skika.hyper\_parameter\_tuning.drift\_detectors.build\_pareto\_knowledge\_drifts
+================================================================================
+
+.. automodule:: skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      buildDriftKnowledge
+   
+   
+
+   
+   
+   

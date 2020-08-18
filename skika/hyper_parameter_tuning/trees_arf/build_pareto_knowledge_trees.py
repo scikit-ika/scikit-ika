@@ -12,13 +12,13 @@ import warnings
 
 class buildTreesKnowledge():
     """
-    Description
+    Description:
     Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for tuning the number of trees in ARF. 
     The knowledge consists in the best configuration of hyper-parameters for each dataset. 
     
     The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations. 
     
-    Parameters :
+    Parameters:
         results_file: str 
             Path to the file containing the knowledge files (results of the evaluation of the configurations on example streams)
             See example in hyper-param-tuning-examples repository (pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv) to format the file
@@ -35,11 +35,11 @@ class buildTreesKnowledge():
         verbose: bool, default = False
             Print pareto figures if True 
     
-    Output :
+    Output:
             Csv file containing the configurations selected for each example stream (each row = 1 stream)
      
-    Example
-        -------- 
+    Example:
+
         >>> names = ['ARF10','ARF30','ARF60','ARF70','ARF90','ARF100','ARF120','ARF150','ARF200']    
         >>> perc_redund = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
         

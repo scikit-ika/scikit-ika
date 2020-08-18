@@ -70,7 +70,9 @@ Hyper-parameter tuning: :mod:`hyper_parameter_tuning`
    :nosignatures:
    :toctree: _autosummary
 
-   hyper_parameter_tuning.build_pareto_knowledge_drifts
-   hyper_parameter_tuning.build_pareto_knowledge_trees
-   hyper_parameter_tuning.evaluate_prequential_and_adapt
-   hyper_parameter_tuning.meta_feature_generator
+   hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts
+   hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment
+   hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge
+   hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees
+   hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt
+   hyper_parameter_tuning.trees_arf.meta_feature_generator
