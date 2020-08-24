@@ -145,6 +145,7 @@ class evaluateDriftDetection():
         self.prepare_evaluation()
         self.evaluate()
         
+        return self.mean_n_detected, self.mean_n_TP, self.mean_n_FP, self.mean_delays
         
     def prepare_evaluation(self) :
         """

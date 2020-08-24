@@ -4,7 +4,7 @@
 #import sys
 import os
 # Insert here the path to the tornado framework
-#dirpath = os.getcwd()
+dirpath = os.getcwd()
 #sys.path.insert(0, dirpath+'\\tornadomaster\\')  
 
 import numpy as np
@@ -83,6 +83,8 @@ class evaluateDriftDetection():
     def run(self):
         self.prepare_evaluation()
         self.evaluate()
+        
+        return self.mean_n_detected, self.mean_n_TP, self.mean_n_FP, self.mean_delays
         
     def prepare_evaluation(self) :
         """
@@ -396,6 +398,7 @@ class evaluateDriftDetection():
             self.process_results_run()
             
         self.process_results_global()
+        
                 
     def process_results_run(self):
         
