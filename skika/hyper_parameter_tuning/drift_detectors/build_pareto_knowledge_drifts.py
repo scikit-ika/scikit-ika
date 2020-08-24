@@ -187,7 +187,7 @@ class buildDriftKnowledge():
                 
             indS += 1 
             
-        print('end')
+#        print('end')
     
     def processMetaFeatures(self):
         print('Start process meta-features')
@@ -199,7 +199,8 @@ class buildDriftKnowledge():
         Function to calculate the Pareto front and detect the knee point
         
         """
-        print('Start Pareto calculation')
+        if self.verbose == True :
+            print('Start Pareto calculation')
         for indS in range(self.nStreams) :
             for indD in range(self.n_detectors) :
                 names = self.listNameDetecOK[indS][indD]
@@ -277,9 +278,10 @@ class buildDriftKnowledge():
                 
         with open(self.output+'/bestConfigsDrift.csv','w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerows(self.bestConfig)    
+            writer.writerows(self.bestConfig)   
             
-        print('End Pareto calculation')
+        if self.verbose == True :    
+            print('End Pareto calculation')
 #        print(self.bestConfig)
         
     

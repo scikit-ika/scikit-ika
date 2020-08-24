@@ -130,16 +130,19 @@ class buildTreesKnowledge():
            
         indr = 0
         for score in self.scores :
-            print("########################## Perc redun = "+str(self.list_perc_redund[indr])+" ##########################")
+            if self.verbose == True :
+                print("########################## Perc redun = "+str(self.list_perc_redund[indr])+" ##########################")
                   
             # Calculate pareto front
             pareto = self.identify_pareto(score)
-            print ('Pareto front index vales')
-            print ('Points on Pareto front: \n',pareto)
+            if self.verbose == True :
+                print ('Pareto front index vales')
+                print ('Points on Pareto front: \n',pareto)
             
             pareto_front = score[pareto]
-            print ('\nPareto front scores')
-            print (pareto_front)
+            if self.verbose == True :
+                print ('\nPareto front scores')
+                print (pareto_front)
             
             pareto_front_df = pd.DataFrame(pareto_front)
             pareto_front_df.sort_values(0, inplace=True)
@@ -181,7 +184,8 @@ class buildTreesKnowledge():
                     # Get the index of the selected configuration 
                     idName = scorepd.loc[(scorepd['X'] == kneeX) & (scorepd['Y'] == kneeY)].index[0]
             
-            print('Knee point : '+str(self.list_models[idName]))
+            if self.verbose == True :
+                print('Knee point : '+str(self.list_models[idName]))
             self.bestConfig[indr][1] = str(self.list_models[idName])
             
             if self.verbose == True :
