@@ -15,51 +15,51 @@ from skika.hyper_parameter_tuning.trees_arf.meta_feature_generator import Comput
 
 class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
     """ Prequential evaluation method with adaptive tuning of hyper-parameters to tune the number of trees in ARF.
-    
-    Description : 
-        This code is based on the ``scikit_multiflow`` evaluate_prequential implementation. 
+
+    Description :
+        This code is based on the ``scikit_multiflow`` evaluate_prequential implementation.
         Copyright (c) 2017, scikit-multiflow
         All rights reserved.
-        
+
         We modified it to include adaptive tuning of hyper-parameters.
-        
+
         Scikit_multiflow description:
         An alternative to the traditional holdout evaluation, inherited from
         batch setting problems.
-    
+
         The prequential evaluation is designed specifically for stream settings,
         in the sense that each sample serves two purposes, and that samples are
         analysed sequentially, in order of arrival, and become immediately
         inaccessible.
-    
+
         This method consists of using each sample to test the model, which means
         to make a predictions, and then the same sample is used to train the model
         (partial fit). This way the model is always tested on samples that it
         hasn't seen yet.
-    
+
         Additional scikit-ika features:
-        This method implements an adaptive tuning process to adapt the number of trees 
+        This method implements an adaptive tuning process to adapt the number of trees
         in an Adaptive Random Forest, depending on the number of redundant features in the stream.
 
     Parameters :
         n_wait:int (Default: 200)
             The number of samples to process between each test. Also defines when to update the plot if `show_plot=True`.
             Note that setting `n_wait` too small can significantly slow the evaluation process.
-    
+
         max_samples:int (Default: 100000)
             The maximum number of samples to process during the evaluation.
-    
+
         batch_size:int (Default: 1)
             The number of samples to pass at a time to the model(s).
-    
+
         pretrain_size:int (Default: 200)
             The number of samples to use to train the model before starting the evaluation. Used to enforce a 'warm' start.
-    
+
         max_time:float (Default: float("inf"))
             The maximum duration of the simulation (in seconds).
-    
+
         metrics:list, optional (Default: ['accuracy', 'kappa'])
-        
+
             | The list of metrics to track during the evaluation. Also defines the metrics that will be displayed in plots
               and/or logged into the output file. Valid options are
             | *Classification*
@@ -89,45 +89,45 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
             | 'running_time'
             | 'model_size'
             | 'ram_hours'
-    
+
         output_file: string, optional (Default: None)
             File name to save the summary of the evaluation.
-    
+
         show_plot: bool (Default: False)
             If True, a plot will show the progress of the evaluation. Warning: Plotting can slow down the evaluation
             process.
-    
+
         restart_stream: bool, optional (default: True)
             If True, the stream is restarted once the evaluation is complete.
-    
+
         data_points_for_classification: bool(Default: False)
             If True, the visualization used is a cloud of data points (only works for classification) and default
             performance metrics are ignored. If specific metrics are required, then they *must* be explicitly set
             using the ``metrics`` attribute.
-    
+
         metaKB : dict (Default: None)
             The meta model linking the meta features to the hyper-parameters configuration.
-            It is a dictionary linking the percentage of redundant features and the number of trees to choose for 
+            It is a dictionary linking the percentage of redundant features and the number of trees to choose for
             each of them. This model is built by runing multiple ARF configurations (with different number of trees)
-            on multiple streams with different percentages of redundant features, and using the build_pareto_knowledge_trees 
-            module to choose the number of trees. 
+            on multiple streams with different percentages of redundant features, and using the build_pareto_knowledge_trees
+            module to choose the number of trees.
             E.g.: dictMeta = {0.0:60 ,0.1:30, 0.2:30, 0.3:30, 0.4:60, 0.5:70, 0.6:60, 0.7:30, 0.8:30, 0.9:30}
             If no metaKB, the class performs only the prequential evaluation.
-    
+
     Notes
-        1. If the adaptive hyper-parameter tuning is not used, this evaluator can process a single learner to track its performance; 
+        1. If the adaptive hyper-parameter tuning is not used, this evaluator can process a single learner to track its performance;
            or multiple learners  at a time, to compare different models on the same stream.
-           
-        2. If the adaptive hyper-parameter tuning is used, this evaluator can process only a single learner at the moment. 
-        
+
+        2. If the adaptive hyper-parameter tuning is used, this evaluator can process only a single learner at the moment.
+
         3. This class can be only used with the ARF as a classifier. Further developments are needed to generalise it to more tasks with
-           more classifiers. 
-    
+           more classifiers.
+
         4. The metric 'true_vs_predicted' is intended to be informative only. It corresponds to evaluations at a specific
            moment which might not represent the actual learner performance across all instances.
 
     Example:
-        
+
         >>> from skika.data.random_rbf_generator_redund import RandomRBFGeneratorRedund
         >>> from skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt import EvaluatePrequentialAndAdaptTreesARF
         >>>
@@ -138,7 +138,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         >>> # Set the model
         >>> arf = AdaptiveRandomForest(n_estimators = 10)
         >>>
-        >>> # Set the meta knowledge 
+        >>> # Set the meta knowledge
         >>> dictMeta = {0.0:60 ,0.1:30, 0.2:30, 0.3:30, 0.4:60, 0.5:70, 0.6:60, 0.7:30, 0.8:30, 0.9:30} # dict = {'pourc redund feat':best nb tree}
         >>>
         >>> # Set the evaluator
@@ -148,7 +148,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         >>>                                 n_wait=500,
         >>>                                 pretrain_size=200,
         >>>                                 show_plot=True)
-        >>> 
+        >>>
         >>> # Run evaluation with adative tuning
         >>> evaluator.evaluate(stream=stream, model=arf, model_names=['ARF'])
 
@@ -207,7 +207,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         warnings.filterwarnings("ignore", ".*Passing 1d.*")
 
     def evaluate(self, stream, model, model_names=None):
-        """ Evaluates a model on samples from a stream and adapt the tuning. 
+        """ Evaluates a model on samples from a stream and adapt the tuning.
 
         Parameters
         ----------
@@ -216,7 +216,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
 
         model: skmultiflow.core.BaseStreamModel or sklearn.base.BaseEstimator or list
             The model or list of models to evaluate.
-            NOTE : Only ARF is usable with this current version of the adaptive tuning. 
+            NOTE : Only ARF is usable with this current version of the adaptive tuning.
 
         model_names: list, optional (Default=None)
             A list with the names of the models.
@@ -244,7 +244,7 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
             return self.model, self.list_acc, new_nb_trees
 
     def _train_and_test(self):
-        """ Method to control the prequential evaluation and adaptive tuning. 
+        """ Method to control the prequential evaluation and adaptive tuning.
 
         Returns
         -------
@@ -325,19 +325,19 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
         print('Evaluating...')
 
         # Verification variables
-        comptDrift = []
-        driftDetecList = []
-        pourcRedundRead = []
+        compt_drift = []
+        drift_detec_list = []
+        pourc_redund_read = []
         new_nb_trees = []
 
-        # Initialise RAM_hours measurements 
+        # Initialise RAM_hours measurements
         for i in range(self.n_models):
             self.running_RAM_H_measurements[i].compute_evaluate_start_time()
 
             # Verification variables
-            comptDrift.append(0)          # Temp variable to simulate drift detection
-            driftDetecList.append([])
-            pourcRedundRead.append([])
+            compt_drift.append(0)          # Temp variable to simulate drift detection
+            drift_detec_list.append([])
+            pourc_redund_read.append([])
             new_nb_trees.append([])
 
         sample_stream = False
@@ -392,15 +392,15 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                                 sample_stream = False
 
                                 # Verification variables
-                                comptDrift[i] = comptDrift[i] + 1
-                                driftDetecList[i].append(self.global_sample_count)
-                                pourcRedundRead[i].append(round(current_perc_redund,1))
+                                compt_drift[i] = compt_drift[i] + 1
+                                drift_detec_list[i].append(self.global_sample_count)
+                                pourc_redund_read[i].append(round(current_perc_redund,1))
                                 new_nb_trees[i].append(self.metaKB[round(current_perc_redund,1)])
 
                                 # # DEBUG:
-#                                print('Number detected drifts : '+str(comptDrift[i]))
-#                                print('Positions detected drifts : '+str(driftDetecList[i]))
-#                                print('Perc redund measured : '+str(pourcRedundRead[i]))
+#                                print('Number detected drifts : '+str(compt_drift[i]))
+#                                print('Positions detected drifts : '+str(drift_detec_list[i]))
+#                                print('Perc redund measured : '+str(pourc_redund_read[i]))
 
                 if X is not None and y is not None:
                     # Test
@@ -460,10 +460,10 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
                             (self.global_sample_count / self.n_wait > update_count + 1)):
                         if prediction is not None:
                             self._update_metrics()
-                            
+
                             for i in range(self.n_models):
                                 self.list_acc[i].append(self.current_eval_measurements[i].accuracy_score())
-                            
+
                         update_count += 1
 
                 self._end_time = timer()
@@ -483,9 +483,9 @@ class EvaluatePrequentialAndAdaptTreesARF(StreamEvaluator):
 
         if self.metaKB != None :
             for i in range(self.n_models):
-                print('Number detected drifts : '+str(comptDrift[i]))
-                print('Positions detected drifts : '+str(driftDetecList[i]))
-                print('Perc redund measured : '+str(pourcRedundRead[i]))
+                print('Number detected drifts : '+str(compt_drift[i]))
+                print('Positions detected drifts : '+str(drift_detec_list[i]))
+                print('Perc redund measured : '+str(pourc_redund_read[i]))
                 print('New trees number : '+str(new_nb_trees[i]))
 
         if self.restart_stream:
