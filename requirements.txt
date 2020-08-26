@@ -1,6 +1,6 @@
 numpy
 sklearn
 cmake
-kneed
+kneed==0.5.1
 pandas
 ./third_party/scikit-multiflow
