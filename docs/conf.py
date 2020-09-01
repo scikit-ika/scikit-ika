@@ -23,7 +23,7 @@ copyright = '2019, Team scikit-ika'
 author = 'Team scikit-ika'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
+# release = '0.0.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -51,7 +51,20 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
+
+html_logo = "_static/ika-logo.svg"
+
+html_theme_options = {
+    "github_url": "https://github.com/scikit-ika/scikit-ika",
+    "show_prev_next": False,
+    "external_links": [
+        {"name": "Home", "url": "https://scikit-ika.github.io/"},
+    ],
+    "show_prev_next": False,
+    "use_edit_page_button": False
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

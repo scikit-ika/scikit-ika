@@ -41,24 +41,8 @@ Evaluation: :mod:`evaluation`
 
    evaluation.inspect_recurrence
 
-Visualisation: :mod:`visualisation`
-===================================
-
-.. automodule:: skika.visualisation
-   :no-members:
-   :no-inherited-members:
-
-.. currentmodule:: skika
-
-.. autosummary::
-   :nosignatures:
-   :toctree: _autosummary
-
-   visualisation.wind_sim_feature_visualisation
-   visualisation.wind_sim_visualisation
-
-Hyper-parameter tuning: :mod:`hyper_parameter_tuning`
-===================================
+Hyper-parameter Tuning: :mod:`hyper_parameter_tuning`
+=====================================================
 
 .. automodule:: skika.hyper_parameter_tuning
    :no-members:
