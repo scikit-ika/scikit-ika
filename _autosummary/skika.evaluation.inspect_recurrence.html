@@ -1,165 +1,147 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>skika.evaluation.inspect_recurrence &mdash; scikit-ika 0.0.0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.evaluation.inspect_recurrence &#8212; scikit-ika  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="skika.data.generate_dataset" href="skika.data.generate_dataset.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="next" title="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts" href="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.html" />
+    <link rel="prev" title="skika.data.stream_generator_redundancy_drift" href="skika.data.stream_generator_redundancy_drift.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="../index.html" class="icon icon-home"> scikit-ika
-          
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-          </a>
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
 
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.evaluation.inspect_recurrence</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+
+      <ul class="navbar-nav">
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">scikit-ika</a>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
         
-      </nav>
-
-
-      <div class="wy-nav-content">
         
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
-        
-      <li>skika.evaluation.inspect_recurrence</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../_sources/_autosummary/skika.evaluation.inspect_recurrence.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
+      </ul>
+    </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="module-skika.evaluation.inspect_recurrence">
 <span id="skika-evaluation-inspect-recurrence"></span><h1>skika.evaluation.inspect_recurrence<a class="headerlink" href="#module-skika.evaluation.inspect_recurrence" title="Permalink to this headline">¶</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
+<table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -179,9 +161,9 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="skika.evaluation.inspect_recurrence.DataExposure">
-<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">DataExposure</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.DataExposure" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">DataExposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.DataExposure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for accessing information from data
 at each observation”</p>
 <dl class="field-list simple">
@@ -192,9 +174,9 @@ observations.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.evaluation.inspect_recurrence.InspectPrequential">
-<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">InspectPrequential</code><span class="sig-paren">(</span><em class="sig-param">max_samples=100000</em>, <em class="sig-param">pretrain_size=200</em>, <em class="sig-param">output_file=None</em>, <em class="sig-param">show_plot=None</em>, <em class="sig-param">data_expose=None</em>, <em class="sig-param">name='test.pdf'</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectPrequential" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">InspectPrequential</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_samples</span><span class="o">=</span><span class="default_value">100000</span></em>, <em class="sig-param"><span class="n">pretrain_size</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_plot</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">data_expose</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'test.pdf'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectPrequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to run classifier and pass information to
 the visualizer. Iteritively runs classifier on each
 data stream observation and extracts measures to plot.</p>
@@ -216,9 +198,9 @@ for example drift points.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.evaluation.inspect_recurrence.InspectorVisualizer">
-<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">InspectorVisualizer</code><span class="sig-paren">(</span><em class="sig-param">name='test.pdf'</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectorVisualizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">InspectorVisualizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'test.pdf'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectorVisualizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to visualize and plot online classification
 results in real time.
 Specific data is exposed per train step, and ploted on a real
@@ -228,16 +210,16 @@ time graph.</p>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of output files</p>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="skika.evaluation.inspect_recurrence.InspectorVisualizer.hold">
 <code class="sig-name descname">hold</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectorVisualizer.hold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function called at end of run, can save
 to output file or hold for viewing.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.evaluation.inspect_recurrence.InspectorVisualizer.on_new_train_step">
-<code class="sig-name descname">on_new_train_step</code><span class="sig-paren">(</span><em class="sig-param">sample_id</em>, <em class="sig-param">data_exposure</em>, <em class="sig-param">model_exposure</em>, <em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectorVisualizer.on_new_train_step" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">on_new_train_step</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sample_id</span></em>, <em class="sig-param"><span class="n">data_exposure</span></em>, <em class="sig-param"><span class="n">model_exposure</span></em>, <em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.InspectorVisualizer.on_new_train_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called every training step. Exposed data is read and plotted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -255,9 +237,9 @@ to output file or hold for viewing.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.evaluation.inspect_recurrence.ModelExposure">
-<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">ModelExposure</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.ModelExposure" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.evaluation.inspect_recurrence.</code><code class="sig-name descname">ModelExposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.evaluation.inspect_recurrence.ModelExposure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for accessing information from model behaviour
 at each observation”</p>
 <dl class="field-list simple">
@@ -271,50 +253,26 @@ observations.</p>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="skika.data.generate_dataset.html" class="btn btn-neutral float-left" title="skika.data.generate_dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
     </div>
-  
 
-  <hr/>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
 
-  <div role="contentinfo">
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2019, Team scikit-ika
-
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt &#8212; scikit-ika  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator" href="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator.html" />
+    <link rel="prev" title="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees" href="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt">
+<span id="skika-hyper-parameter-tuning-trees-arf-evaluate-prequential-and-adapt"></span><h1>skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt<a class="headerlink" href="#module-skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF" title="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EvaluatePrequentialAndAdaptTreesARF</span></code></a>([…])</p></td>
+<td><p>Prequential evaluation method with adaptive tuning of hyper-parameters to tune the number of trees in ARF.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF">
+<em class="property">class </em><code class="sig-prename descclassname">skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.</code><code class="sig-name descname">EvaluatePrequentialAndAdaptTreesARF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_wait</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">max_samples</span><span class="o">=</span><span class="default_value">100000</span></em>, <em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">pretrain_size</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">max_time</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">metrics</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_file</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_plot</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">restart_stream</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">data_points_for_classification</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">metaKB</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prequential evaluation method with adaptive tuning of hyper-parameters to tune the number of trees in ARF.</p>
+<dl>
+<dt>Description :</dt><dd><p>This code is based on the <code class="docutils literal notranslate"><span class="pre">scikit_multiflow</span></code> evaluate_prequential implementation.
+Copyright (c) 2017, scikit-multiflow
+All rights reserved.</p>
+<p>We modified it to include adaptive tuning of hyper-parameters.</p>
+<p>Scikit_multiflow description:
+An alternative to the traditional holdout evaluation, inherited from
+batch setting problems.</p>
+<p>The prequential evaluation is designed specifically for stream settings,
+in the sense that each sample serves two purposes, and that samples are
+analysed sequentially, in order of arrival, and become immediately
+inaccessible.</p>
+<p>This method consists of using each sample to test the model, which means
+to make a predictions, and then the same sample is used to train the model
+(partial fit). This way the model is always tested on samples that it
+hasn’t seen yet.</p>
+<p>Additional scikit-ika features:
+This method implements an adaptive tuning process to adapt the number of trees
+in an Adaptive Random Forest, depending on the number of redundant features in the stream.</p>
+</dd>
+<dt>Parameters :</dt><dd><dl class="simple">
+<dt>n_wait:int (Default: 200)</dt><dd><p>The number of samples to process between each test. Also defines when to update the plot if <cite>show_plot=True</cite>.
+Note that setting <cite>n_wait</cite> too small can significantly slow the evaluation process.</p>
+</dd>
+<dt>max_samples:int (Default: 100000)</dt><dd><p>The maximum number of samples to process during the evaluation.</p>
+</dd>
+<dt>batch_size:int (Default: 1)</dt><dd><p>The number of samples to pass at a time to the model(s).</p>
+</dd>
+<dt>pretrain_size:int (Default: 200)</dt><dd><p>The number of samples to use to train the model before starting the evaluation. Used to enforce a ‘warm’ start.</p>
+</dd>
+<dt>max_time:float (Default: float(“inf”))</dt><dd><p>The maximum duration of the simulation (in seconds).</p>
+</dd>
+</dl>
+<p>metrics:list, optional (Default: [‘accuracy’, ‘kappa’])</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">The list of metrics to track during the evaluation. Also defines the metrics that will be displayed in plots
+and/or logged into the output file. Valid options are</div>
+<div class="line"><em>Classification</em></div>
+<div class="line">‘accuracy’</div>
+<div class="line">‘kappa’</div>
+<div class="line">‘kappa_t’</div>
+<div class="line">‘kappa_m’</div>
+<div class="line">‘true_vs_predicted’</div>
+<div class="line">‘precision’</div>
+<div class="line">‘recall’</div>
+<div class="line">‘f1’</div>
+<div class="line">‘gmean’</div>
+<div class="line"><em>Multi-target Classification</em></div>
+<div class="line">‘hamming_score’</div>
+<div class="line">‘hamming_loss’</div>
+<div class="line">‘exact_match’</div>
+<div class="line">‘j_index’</div>
+<div class="line"><em>Regression</em></div>
+<div class="line">‘mean_square_error’</div>
+<div class="line">‘mean_absolute_error’</div>
+<div class="line">‘true_vs_predicted’</div>
+<div class="line"><em>Multi-target Regression</em></div>
+<div class="line">‘average_mean_squared_error’</div>
+<div class="line">‘average_mean_absolute_error’</div>
+<div class="line">‘average_root_mean_square_error’</div>
+<div class="line"><em>Experimental</em></div>
+<div class="line">‘running_time’</div>
+<div class="line">‘model_size’</div>
+<div class="line">‘ram_hours’</div>
+</div>
+</div></blockquote>
+<dl class="simple">
+<dt>output_file: string, optional (Default: None)</dt><dd><p>File name to save the summary of the evaluation.</p>
+</dd>
+<dt>show_plot: bool (Default: False)</dt><dd><p>If True, a plot will show the progress of the evaluation. Warning: Plotting can slow down the evaluation
+process.</p>
+</dd>
+<dt>restart_stream: bool, optional (default: True)</dt><dd><p>If True, the stream is restarted once the evaluation is complete.</p>
+</dd>
+<dt>data_points_for_classification: bool(Default: False)</dt><dd><p>If True, the visualization used is a cloud of data points (only works for classification) and default
+performance metrics are ignored. If specific metrics are required, then they <em>must</em> be explicitly set
+using the <code class="docutils literal notranslate"><span class="pre">metrics</span></code> attribute.</p>
+</dd>
+<dt>metaKB<span class="classifier">dict (Default: None)</span></dt><dd><p>The meta model linking the meta features to the hyper-parameters configuration.
+It is a dictionary linking the percentage of redundant features and the number of trees to choose for
+each of them. This model is built by runing multiple ARF configurations (with different number of trees)
+on multiple streams with different percentages of redundant features, and using the build_pareto_knowledge_trees
+module to choose the number of trees.
+E.g.: dictMeta = {0.0:60 ,0.1:30, 0.2:30, 0.3:30, 0.4:60, 0.5:70, 0.6:60, 0.7:30, 0.8:30, 0.9:30}
+If no metaKB, the class performs only the prequential evaluation.</p>
+</dd>
+</dl>
+</dd>
+<dt>Notes</dt><dd><ol class="arabic simple">
+<li><p>If the adaptive hyper-parameter tuning is not used, this evaluator can process a single learner to track its performance;
+or multiple learners  at a time, to compare different models on the same stream.</p></li>
+<li><p>If the adaptive hyper-parameter tuning is used, this evaluator can process only a single learner at the moment.</p></li>
+<li><p>This class can be only used with the ARF as a classifier. Further developments are needed to generalise it to more tasks with
+more classifiers.</p></li>
+<li><p>The metric ‘true_vs_predicted’ is intended to be informative only. It corresponds to evaluations at a specific
+moment which might not represent the actual learner performance across all instances.</p></li>
+</ol>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skika.data.random_rbf_generator_redund</span> <span class="kn">import</span> <span class="n">RandomRBFGeneratorRedund</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt</span> <span class="kn">import</span> <span class="n">EvaluatePrequentialAndAdaptTreesARF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set the stream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span> <span class="o">=</span> <span class="n">StreamGeneratorRedund</span><span class="p">(</span><span class="n">base_stream</span> <span class="o">=</span> <span class="n">RandomRBFGeneratorRedund</span><span class="p">(</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_centroids</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">noise_percentage</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_drifts</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">n_instances</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">prepare_for_use</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set the model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arf</span> <span class="o">=</span> <span class="n">AdaptiveRandomForest</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set the meta knowledge</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dictMeta</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">60</span> <span class="p">,</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">:</span><span class="mi">70</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">:</span><span class="mi">30</span><span class="p">}</span> <span class="c1"># dict = {&#39;pourc redund feat&#39;:best nb tree}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set the evaluator</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">EvaluatePrequential</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="s1">&#39;kappa&#39;</span><span class="p">,</span><span class="s1">&#39;running_time&#39;</span><span class="p">,</span><span class="s1">&#39;ram_hours&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                                <span class="n">max_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                <span class="n">n_wait</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                <span class="n">pretrain_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Run evaluation with adative tuning</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">arf</span><span class="p">,</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ARF&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em>, <em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">model_names</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates a model on samples from a stream and adapt the tuning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<em>Stream</em>) – The stream from which to draw the samples.</p></li>
+<li><p><strong>model</strong> (<em>skmultiflow.core.BaseStreamModel</em><em> or </em><em>sklearn.base.BaseEstimator</em><em> or </em><em>list</em>) – The model or list of models to evaluate.
+NOTE : Only ARF is usable with this current version of the adaptive tuning.</p></li>
+<li><p><strong>model_names</strong> (<em>list</em><em>, </em><em>optional</em><em> (</em><em>Default=None</em><em>)</em>) – A list with the names of the models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The trained model(s).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>StreamModel or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_current_measurements">
+<code class="sig-name descname">get_current_measurements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_idx</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_current_measurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get current measurements from the evaluation (measured on last <cite>n_wait</cite> samples).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_idx</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>Default=None</em><em>)</em>) – Indicates the index of the model as defined in <cite>evaluate(model)</cite>.
+If None, returns a list with the measurements for each model.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>measurements or list</em></p></li>
+<li><p><em>Current measurements. If model_idx is None, returns a list with the measurements</em> – for each model.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – If the index is invalid.:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_info">
+<code class="sig-name descname">get_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects and returns the information about the configuration of the estimator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Configuration of the estimator.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_mean_measurements">
+<code class="sig-name descname">get_mean_measurements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_idx</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_mean_measurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get mean measurements from the evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_idx</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>Default=None</em><em>)</em>) – Indicates the index of the model as defined in <cite>evaluate(model)</cite>.
+If None, returns a list with the measurements for each model.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>measurements or list</em></p></li>
+<li><p><em>Mean measurements. If model_idx is None, returns a list with the measurements</em> – for each model.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – If the index is invalid.:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_measurements">
+<code class="sig-name descname">get_measurements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_idx</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_measurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get measurements from the evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_idx</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>Default=None</em><em>)</em>) – Indicates the index of the model as defined in <cite>evaluate(model)</cite>.
+If None, returns a list with the measurements for each model.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>tuple (mean, current)</em></p></li>
+<li><p><em>Mean and Current measurements. If model_idx is None, each member of the tuple</em> – is a a list with the measurements for each model.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – If the index is invalid.:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_params">
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deep</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> – Parameter names mapped to their values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mapping of string to any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.partial_fit">
+<code class="sig-name descname">partial_fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">classes</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sample_weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.partial_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partially fit all the models on the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>Numpy.ndarray of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data upon which the algorithm will create its model.</p></li>
+<li><p><strong>y</strong> (<em>Array-like</em>) – An array-like containing the classification labels / target values for all samples in X.</p></li>
+<li><p><strong>classes</strong> (<em>list</em>) – Stores all the classes that may be encountered during the classification task. Not used for regressors.</p></li>
+<li><p><strong>sample_weight</strong> (<em>Array-like</em>) – Samples weight. If not provided, uniform weights are assumed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>EvaluatePrequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts with the estimator(s) being evaluated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>Numpy.ndarray of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – All the samples we want to predict the label for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Model(s) predictions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the estimator to its initial state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.set_params">
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.EvaluatePrequentialAndAdaptTreesARF.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

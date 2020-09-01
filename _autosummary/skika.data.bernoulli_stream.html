@@ -1,170 +1,147 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>skika.data.bernoulli_stream &mdash; scikit-ika 0.0.0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.data.bernoulli_stream &#8212; scikit-ika  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skika.data.generate_dataset" href="skika.data.generate_dataset.html" />
-    <link rel="prev" title="skika.data.wind_sim_generator" href="skika.data.wind_sim_generator.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="skika.data.wind_sim_generator" href="skika.data.wind_sim_generator.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="../index.html" class="icon icon-home"> scikit-ika
-          
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-          </a>
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
 
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="skika.data.stream_generator.html">skika.data.stream_generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.reccurring_concept_stream.html">skika.data.reccurring_concept_stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.wind_sim_generator.html">skika.data.wind_sim_generator</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.data.bernoulli_stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.generate_dataset.html">skika.data.generate_dataset</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+
+      <ul class="navbar-nav">
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">scikit-ika</a>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
         
-      </nav>
-
-
-      <div class="wy-nav-content">
         
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
-        
-      <li>skika.data.bernoulli_stream</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../_sources/_autosummary/skika.data.bernoulli_stream.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
+      </ul>
+    </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="module-skika.data.bernoulli_stream">
 <span id="skika-data-bernoulli-stream"></span><h1>skika.data.bernoulli_stream<a class="headerlink" href="#module-skika.data.bernoulli_stream" title="Permalink to this headline">¶</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
+<table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -175,16 +152,18 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.bernoulli_stream.BernoulliStream">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.bernoulli_stream.</code><code class="sig-name descname">BernoulliStream</code><span class="sig-paren">(</span><em class="sig-param">drift_period</em>, <em class="sig-param">n_drifts</em>, <em class="sig-param">widths_drifts</em>, <em class="sig-param">mean_errors</em>, <em class="sig-param">n_stable_drifts=1</em>, <em class="sig-param">random_state=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.bernoulli_stream.</code><code class="sig-name descname">BernoulliStream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">drift_period</span></em>, <em class="sig-param"><span class="n">n_drifts</span></em>, <em class="sig-param"><span class="n">widths_drifts</span></em>, <em class="sig-param"><span class="n">mean_errors</span></em>, <em class="sig-param"><span class="n">n_stable_drifts</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class to generate a Bernoulli Stream</p>
-<p>The stream is simulating the error rate of a learner.
+<blockquote>
+<div><p>The stream is simulating the error rate of a learner.
 It is possible to generate drifts by changing the mean error rate at change points.</p>
 <p>Change points are generated regularly along the stream, every drift_period instances.</p>
 <p>The width of the drifts can be specified. If only one value is given, it is applied to every drift. If several ones are specified,
 they are uniformly reparted and randomly applied to the drifts.</p>
 <p>The new mean error rate after each drift is picked in the mean_errors list.</p>
+<p>It is possible to modulate the number of following drifts with the same characteristics with the parameter n_stable_drifts.</p>
 <p>It is possible to retrive drift chracteristics from the stream : magnitude and severity of drifts.</p>
 <dl class="simple">
 <dt>Arguments :</dt><dd><dl class="simple">
@@ -205,21 +184,47 @@ Ex : mean_errors = [[0.1,0.2],[0.5,0.6],[0.8,0.9]]</p></li>
 </dd>
 </dl>
 </dd>
-<dt>n_stable_drifts<span class="classifier">int, (optional, default = 1)</span></dt><dd><p>Number of floowing drfits with the same patterns (width and mean_errors)</p>
+<dt>n_stable_drifts<span class="classifier">int, (optional, default = 1)</span></dt><dd><p>Number of following drifts with the same patterns (width and mean_errors).
+Ex : if n_stable_drifts = 5, the characteristics of the drifts are changing every 5 drifts.
+This enable to generate streams with more or less drifts diversity.</p>
 </dd>
 <dt>random_state<span class="classifier">int (optional, default = 0)</span></dt><dd><p>Random state for the pseudo-random generators.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<dl class="method">
+</div></blockquote>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Imports</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bernoulli_stream</span> <span class="kn">import</span> <span class="n">BernoulliStream</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting up the stream</span>
+<span class="go">stream = BernoulliStream(drift_period=1000, n_drifts = 10, widths_drifts = [1,500], mean_errors = [[0.0,1.0],[0.2,0.8]], n_stable_drifts = 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">prepare_for_use</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Retrieving one sample</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">list_positions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">3002</span><span class="p">,</span> <span class="mi">4502</span><span class="p">,</span> <span class="mi">6002</span><span class="p">,</span> <span class="mi">7003</span><span class="p">,</span> <span class="mi">8004</span><span class="p">,</span> <span class="mi">9504</span><span class="p">,</span> <span class="mi">11004</span><span class="p">,</span> <span class="mi">12005</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream</span><span class="o">.</span><span class="n">n_samples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">13006</span>
+</pre></div>
+</div>
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet">
-<code class="sig-name descname">choiceWithoutRepet</code><span class="sig-paren">(</span><em class="sig-param">n_iter</em>, <em class="sig-param">list_choices</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">choiceWithoutRepet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_iter</span></em>, <em class="sig-param"><span class="n">list_choices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a list of n_iter items from lit_choices without following repetition.
 If len(list_choice) &gt; 2, the list is generated without repetitions every 3 items.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude">
 <em class="property">property </em><code class="sig-name descname">current_drift_magnitude</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the current_drift_magnitude.</p>
@@ -233,7 +238,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.current_drift_severity">
 <em class="property">property </em><code class="sig-name descname">current_drift_severity</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_severity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the current_drift_severity.
@@ -241,7 +246,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 :rtype: int</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.current_mean_error">
 <em class="property">property </em><code class="sig-name descname">current_mean_error</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_mean_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the current_mean_error.</p>
@@ -255,7 +260,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.current_width">
 <em class="property">property </em><code class="sig-name descname">current_width</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_width" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the current_width.</p>
@@ -269,7 +274,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.get_data_info">
 <code class="sig-name descname">get_data_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.get_data_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves information from the stream</p>
@@ -283,7 +288,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.list_positions">
 <em class="property">property </em><code class="sig-name descname">list_positions</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.list_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the list of drifts positions.</p>
@@ -297,7 +302,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.n_samples">
 <em class="property">property </em><code class="sig-name descname">n_samples</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.n_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the length of the stream.</p>
@@ -311,7 +316,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.next_mean_error">
 <em class="property">property </em><code class="sig-name descname">next_mean_error</code><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_mean_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the next_mean_error.</p>
@@ -325,9 +330,9 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.next_sample">
-<code class="sig-name descname">next_sample</code><span class="sig-paren">(</span><em class="sig-param">batch_size=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_sample" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">next_sample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_size</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_sample" title="Permalink to this definition">¶</a></dt>
 <dd><dl>
 <dt>The sample generation works as follows:</dt><dd><p>A prediction 0 or 1 is generated by the random Bernoulli process,
 based on the current and next mean errors.
@@ -350,14 +355,14 @@ the batch_size samples that were requested.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials">
-<code class="sig-name descname">perform_bernoulli_trials</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">perform_bernoulli_trials</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform n Bernoulli trials with success probability p
 and return number of successes.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.bernoulli_stream.BernoulliStream.prepare_for_use">
 <code class="sig-name descname">prepare_for_use</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.prepare_for_use" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares the stream for use.</p>
@@ -370,52 +375,26 @@ and return number of successes.</p>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="skika.data.generate_dataset.html" class="btn btn-neutral float-right" title="skika.data.generate_dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="skika.data.wind_sim_generator.html" class="btn btn-neutral float-left" title="skika.data.wind_sim_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
     </div>
-  
 
-  <hr/>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
 
-  <div role="contentinfo">
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2019, Team scikit-ika
-
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

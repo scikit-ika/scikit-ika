@@ -1,7 +1,11 @@
-skika.data.bernoulli\_stream
+﻿skika.data.bernoulli\_stream
 ============================
 
 .. automodule:: skika.data.bernoulli_stream
+
+   
+   
+   
 
    
    
@@ -20,3 +24,6 @@ skika.data.bernoulli\_stream
    
    
    
+
+
+

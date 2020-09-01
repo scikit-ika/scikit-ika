@@ -1,7 +1,11 @@
-skika.data.reccurring\_concept\_stream
+﻿skika.data.reccurring\_concept\_stream
 ======================================
 
 .. automodule:: skika.data.reccurring_concept_stream
+
+   
+   
+   
 
    
    
@@ -31,3 +35,6 @@ skika.data.reccurring\_concept\_stream
    
    
    
+
+
+

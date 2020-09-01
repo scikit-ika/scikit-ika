@@ -1,170 +1,147 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>skika.data.reccurring_concept_stream &mdash; scikit-ika 0.0.0 documentation</title>
-  
 
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.data.reccurring_concept_stream &#8212; scikit-ika  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skika.data.wind_sim_generator" href="skika.data.wind_sim_generator.html" />
-    <link rel="prev" title="skika.data.stream_generator" href="skika.data.stream_generator.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="skika.data.stream_generator" href="skika.data.stream_generator.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
 
-          
-            <a href="../index.html" class="icon icon-home"> scikit-ika
-          
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-          
-          </a>
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
 
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-skika.data">Data: <code class="xref py py-mod docutils literal notranslate"><span class="pre">data</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="skika.data.stream_generator.html">skika.data.stream_generator</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">skika.data.reccurring_concept_stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.wind_sim_generator.html">skika.data.wind_sim_generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.bernoulli_stream.html">skika.data.bernoulli_stream</a></li>
-<li class="toctree-l3"><a class="reference internal" href="skika.data.generate_dataset.html">skika.data.generate_dataset</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.evaluation">Evaluation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">evaluation</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-skika.visualisation">Visualisation: <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+
+      <ul class="navbar-nav">
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">scikit-ika</a>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
         
-      </nav>
-
-
-      <div class="wy-nav-content">
         
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../documentation.html">API Documentation</a> &raquo;</li>
-        
-      <li>skika.data.reccurring_concept_stream</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../_sources/_autosummary/skika.data.reccurring_concept_stream.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
+      </ul>
+    </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="module-skika.data.reccurring_concept_stream">
 <span id="skika-data-reccurring-concept-stream"></span><h1>skika.data.reccurring_concept_stream<a class="headerlink" href="#module-skika.data.reccurring_concept_stream" title="Permalink to this headline">¶</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
+<table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -179,7 +156,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RBFConcept" title="skika.data.reccurring_concept_stream.RBFConcept"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RBFConcept</span></code></a>([concept_id, seed, noise, desc])</p></td>
 <td><p>An RBF concept.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RCStreamType" title="skika.data.reccurring_concept_stream.RCStreamType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCStreamType</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RCStreamType" title="skika.data.reccurring_concept_stream.RCStreamType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCStreamType</span></code></a>(value)</p></td>
 <td><p>An enumeration.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream" title="skika.data.reccurring_concept_stream.RecurringConceptGradualStream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecurringConceptGradualStream</span></code></a>(rctype, …[, …])</p></td>
@@ -208,9 +185,9 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.AGRAWALConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">AGRAWALConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.AGRAWALConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">AGRAWALConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.AGRAWALConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>An AGRAWAL concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -227,9 +204,9 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.Concept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">Concept</code><span class="sig-paren">(</span><em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.Concept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">Concept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.Concept" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base concept class.
 A ‘Concept’ can be thought of as a relationship
 between features and label. Here we model different
@@ -245,9 +222,9 @@ draw observations from.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.RBFConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RBFConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RBFConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RBFConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RBFConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>An RBF concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -264,15 +241,15 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.RCStreamType">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RCStreamType</code><a class="headerlink" href="#skika.data.reccurring_concept_stream.RCStreamType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RCStreamType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RCStreamType" title="Permalink to this definition">¶</a></dt>
 <dd><p>An enumeration.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptGradualStream</code><span class="sig-paren">(</span><em class="sig-param">rctype</em>, <em class="sig-param">num_samples</em>, <em class="sig-param">noise</em>, <em class="sig-param">concept_chain</em>, <em class="sig-param">window_size=1000</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">boost_first_occurance=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptGradualStream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rctype</span></em>, <em class="sig-param"><span class="n">num_samples</span></em>, <em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">concept_chain</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">boost_first_occurance</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream" title="Permalink to this definition">¶</a></dt>
 <dd><p>A stream featuring gradual drift between given concepts.
 Uses the scikit-multiflow concept drift stream to blend concepts over
 a window.</p>
@@ -352,28 +329,28 @@ a better model to be built and stored.</p></li>
 <span class="go">14998</span>
 </pre></div>
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_info">
 <code class="sig-name descname">get_moa_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string to run the corresponding
 stream in MOA.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_string">
-<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param">concepts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concepts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string to run the corresponding
 stream in MOA.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_stream_info">
 <code class="sig-name descname">get_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_stream_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints information about the
 concepts included in the stream.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_supplementary_info">
 <code class="sig-name descname">get_supplementary_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptGradualStream.get_supplementary_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns supplementary info about
@@ -382,9 +359,9 @@ each concept.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptStream">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptStream</code><span class="sig-paren">(</span><em class="sig-param">rctype</em>, <em class="sig-param">num_samples</em>, <em class="sig-param">noise</em>, <em class="sig-param">concept_chain</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">desc=None</em>, <em class="sig-param">boost_first_occurance=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">RecurringConceptStream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rctype</span></em>, <em class="sig-param"><span class="n">num_samples</span></em>, <em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">concept_chain</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">boost_first_occurance</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream" title="Permalink to this definition">¶</a></dt>
 <dd><p>A stream featuring abrupt drift between given concepts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -459,28 +436,28 @@ a better model to be built and stored.</p></li>
 <span class="go">14998</span>
 </pre></div>
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_info">
 <code class="sig-name descname">get_moa_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string to run the corresponding
 stream in MOA.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_string">
-<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param">concepts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_moa_stream_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concepts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_moa_stream_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string to run the corresponding
 stream in MOA.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_stream_info">
 <code class="sig-name descname">get_stream_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_stream_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints information about the
 concepts included in the stream.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="skika.data.reccurring_concept_stream.RecurringConceptStream.get_supplementary_info">
 <code class="sig-name descname">get_supplementary_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.RecurringConceptStream.get_supplementary_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns supplementary info about
@@ -489,9 +466,9 @@ each concept.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.SEAConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SEAConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SEAConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SEAConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SEAConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>A SEA concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -508,9 +485,9 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.SINEConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SINEConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SINEConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">SINEConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.SINEConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>A SINE concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -527,9 +504,9 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.STAGGERConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">STAGGERConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.STAGGERConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">STAGGERConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.STAGGERConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>A STAGGER concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -546,9 +523,9 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.TREEConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">TREEConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.TREEConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">TREEConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.TREEConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>A TREE concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -565,9 +542,9 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.WindSimConcept">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">WindSimConcept</code><span class="sig-paren">(</span><em class="sig-param">concept_id=0</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">noise=0</em>, <em class="sig-param">desc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.WindSimConcept" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">WindSimConcept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">noise</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.WindSimConcept" title="Permalink to this definition">¶</a></dt>
 <dd><p>A WINDSIM concept.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -584,61 +561,35 @@ Values go from 0.0 to 1.0.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="skika.data.reccurring_concept_stream.conceptOccurence">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">conceptOccurence</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">difficulty</em>, <em class="sig-param">noise</em>, <em class="sig-param">appearences</em>, <em class="sig-param">examples_per_appearence</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.reccurring_concept_stream.</code><code class="sig-name descname">conceptOccurence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">difficulty</span></em>, <em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">appearences</span></em>, <em class="sig-param"><span class="n">examples_per_appearence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.reccurring_concept_stream.conceptOccurence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents a concept in a stream</p>
 </dd></dl>
 
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="skika.data.wind_sim_generator.html" class="btn btn-neutral float-right" title="skika.data.wind_sim_generator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="skika.data.stream_generator.html" class="btn btn-neutral float-left" title="skika.data.stream_generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
     </div>
-  
 
-  <hr/>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
 
-  <div role="contentinfo">
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     <p>
-        &copy; Copyright 2019, Team scikit-ika
-
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
 </footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  </body>
 </html>

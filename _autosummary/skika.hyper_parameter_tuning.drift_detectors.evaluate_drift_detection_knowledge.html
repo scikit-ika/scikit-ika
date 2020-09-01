@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge &#8212; scikit-ika  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees" href="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.html" />
+    <link rel="prev" title="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge">
+<span id="skika-hyper-parameter-tuning-drift-detectors-evaluate-drift-detection-knowledge"></span><h1>skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge<a class="headerlink" href="#module-skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection" title="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EvaluateDriftDetection</span></code></a>([…])</p></td>
+<td><p>Prequential evaluation method to collect knowledge for drift detector tuning.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection">
+<em class="property">class </em><code class="sig-prename descclassname">skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.</code><code class="sig-name descname">EvaluateDriftDetection</code><span class="sig-paren">(</span><em class="sig-param">list_drifts_detectors=[[ADWIN(delta=0.5), ADWIN(delta=0.05)], [DDM(min_num_instances=None, out_control_level=3.0, warning_level=2.0)], [PageHinkley(alpha=0.9999, delta=0.05, min_instances=100, threshold=50), PageHinkley(alpha=0.9999, delta=0.05, min_instances=100, threshold=100)]], list_names_drifts_detectors=['ADWIN', 'DDM', 'PH'], stream=&lt;skika.data.bernoulli_stream.BernoulliStream object&gt;, n_runs=1, name_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prequential evaluation method to collect knowledge for drift detector tuning.</p>
+<dl class="simple">
+<dt>Description :</dt><dd><p>Class to evaluate the performance of the drift detection for the knowledge computation.
+Performance is evaluate with the numbers of TP and FP detections.</p>
+</dd>
+<dt>Parameters :</dt><dd><dl class="simple">
+<dt>list_drifts_detectors<span class="classifier">list of drift detector object</span></dt><dd><p>List of drift detectors to evaluate.
+Each detector is used for warning and drift detection.
+If the detector doesn’t handle both directly, one should pass two detectors, the first one for the warning detection and the second one for the drift detection.</p>
+</dd>
+<dt>list_names_drifts_detectors: list of str.</dt><dd><p>List of drift detectors names to evaluate.</p>
+</dd>
+<dt>stream: stream object</dt><dd><p>Stream on which the detectors are evaluated.</p>
+</dd>
+<dt>n_runs: int</dt><dd><p>Number of runs to process.
+The results will be given as mean and std over n_runs.</p>
+</dd>
+<dt>name_file: str</dt><dd><p>Name of the file to save the results.</p>
+</dd>
+<dt>Output:</dt><dd><p>Csv files containing the performance results to be exploited to build the knowledge base.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>See <a class="reference external" href="https://github.com/scikit-ika/hyper-param-tuning-examples">https://github.com/scikit-ika/hyper-param-tuning-examples</a></p>
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the detectors on the stream</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.interval_measure">
+<code class="sig-name descname">interval_measure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">detecId</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.interval_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure the interval between 2 drifts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.magnitude_measure">
+<code class="sig-name descname">magnitude_measure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">detecId</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.magnitude_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extraction of the magnitude of a single drift</p>
+<p>Attributes :
+detecId : ID of the drift detector (int)
+p : distribution before drift (array)
+q : distribution after drift (array)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.prepare_evaluation">
+<code class="sig-name descname">prepare_evaluation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.prepare_evaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare variables and stream for drift detection and meta-features extraction</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.severity_measure">
+<code class="sig-name descname">severity_measure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">detecId</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.EvaluateDriftDetection.severity_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure severity of the drift. The severity is defined as the number of instances in the warning interval.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

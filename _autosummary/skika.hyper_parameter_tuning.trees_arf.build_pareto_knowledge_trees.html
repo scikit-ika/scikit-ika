@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees &#8212; scikit-ika  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt" href="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.html" />
+    <link rel="prev" title="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../documentation.html">API Documentation</a>
+        </li>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+        </li>
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees">
+<span id="skika-hyper-parameter-tuning-trees-arf-build-pareto-knowledge-trees"></span><h1>skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees<a class="headerlink" href="#module-skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge" title="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BuildTreesKnowledge</span></code></a>(results_file, …[, verbose])</p></td>
+<td><p>Description :</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge">
+<em class="property">class </em><code class="sig-prename descclassname">skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.</code><code class="sig-name descname">BuildTreesKnowledge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">results_file</span></em>, <em class="sig-param"><span class="n">list_perc_redund</span></em>, <em class="sig-param"><span class="n">list_models</span></em>, <em class="sig-param"><span class="n">output</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Description :</dt><dd><p>Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for tuning the number of trees in ARF.
+The knowledge consists in the best configuration of hyper-parameters for each dataset.</p>
+<p>The datasets are characterised by meta-features and a knowledge base can be then be built to link these features to the best configurations.</p>
+</dd>
+<dt>Parameters :</dt><dd><dl class="simple">
+<dt>results_file: str</dt><dd><p>Path to the file containing the knowledge files (results of the evaluation of the configurations on example streams)
+See example in hyper-param-tuning-examples repository (pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv) to format the file</p>
+</dd>
+<dt>list_perc_redund: list of float</dt><dd><p>List of percentages of redundance used in the example streams</p>
+</dd>
+<dt>list_models: list of str</dt><dd><p>List of the names of the ARF configurations tested on the streams</p>
+</dd>
+<dt>output: str</dt><dd><p>Directory path where to save output file</p>
+</dd>
+<dt>verbose: bool, default = False</dt><dd><p>Print pareto figures if True</p>
+</dd>
+</dl>
+</dd>
+<dt>Output:</dt><dd><p>Csv file containing the configurations selected for each example stream (each row = 1 stream)</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ARF10&#39;</span><span class="p">,</span><span class="s1">&#39;ARF30&#39;</span><span class="p">,</span><span class="s1">&#39;ARF60&#39;</span><span class="p">,</span><span class="s1">&#39;ARF70&#39;</span><span class="p">,</span><span class="s1">&#39;ARF90&#39;</span><span class="p">,</span><span class="s1">&#39;ARF100&#39;</span><span class="p">,</span><span class="s1">&#39;ARF120&#39;</span><span class="p">,</span><span class="s1">&#39;ARF150&#39;</span><span class="p">,</span><span class="s1">&#39;ARF200&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perc_redund</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.9</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">name_file</span> <span class="o">=</span><span class="s1">&#39; /examples/pareto_knowledge/ExamplesTreesKnowledge/Results10-200.csv&#39;</span> <span class="c1"># Available in hyper-param-tuning-examples repository</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pareto_build</span> <span class="o">=</span> <span class="n">BuildTreesKnowledge</span><span class="p">(</span><span class="n">results_file</span><span class="o">=</span><span class="n">name_file</span><span class="p">,</span> <span class="n">list_perc_redund</span><span class="o">=</span><span class="n">perc_redund</span><span class="p">,</span> <span class="n">list_models</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pareto_build</span><span class="o">.</span><span class="n">load_drift_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pareto_build</span><span class="o">.</span><span class="n">calculate_pareto</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pareto_build</span><span class="o">.</span><span class="n">best_config</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.best_config">
+<em class="property">property </em><code class="sig-name descname">best_config</code><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.best_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the length of the stream.
+:returns: The length of the stream.
+:rtype: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.calculate_crowding">
+<code class="sig-name descname">calculate_crowding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scores</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.calculate_crowding" title="Permalink to this definition">¶</a></dt>
+<dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a>
+Crowding is based on a vector for each individual
+All dimension is normalised between low and high. For any one dimension, all
+solutions are sorted in order low to high. Crowding for chromsome x
+for that score is the difference between the next highest and next
+lowest score. Total crowding value sums all crowding for all scores</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.calculate_pareto">
+<code class="sig-name descname">calculate_pareto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.calculate_pareto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to calculate the Pareto front and detect the knee point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.identify_pareto">
+<code class="sig-name descname">identify_pareto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scores</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.identify_pareto" title="Permalink to this definition">¶</a></dt>
+<dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.load_drift_data">
+<code class="sig-name descname">load_drift_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.load_drift_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to load the performance data from the csv file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.reduce_by_crowding">
+<code class="sig-name descname">reduce_by_crowding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scores</span></em>, <em class="sig-param"><span class="n">number_to_select</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.BuildTreesKnowledge.reduce_by_crowding" title="Permalink to this definition">¶</a></dt>
+<dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a>
+This function selects a number of solutions based on tournament of
+crowding distances. Two members of the population are picked at
+random. The one with the higher croding dostance is always picked</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2019, Team scikit-ika.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

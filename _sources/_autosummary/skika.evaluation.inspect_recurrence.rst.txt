@@ -1,7 +1,11 @@
-skika.evaluation.inspect\_recurrence
+﻿skika.evaluation.inspect\_recurrence
 ====================================
 
 .. automodule:: skika.evaluation.inspect_recurrence
+
+   
+   
+   
 
    
    
@@ -23,3 +27,6 @@ skika.evaluation.inspect\_recurrence
    
    
    
+
+
+
