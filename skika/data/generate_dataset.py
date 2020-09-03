@@ -4,14 +4,14 @@ import random
 import pickle
 import json
 from skika.data.reccurring_concept_stream import RCStreamType
-from skika.data.reccurring_concept_stream import conceptOccurence
+from skika.data.reccurring_concept_stream import ConceptOccurence
 from skika.data.reccurring_concept_stream import RecurringConceptStream
 from skika.data.reccurring_concept_stream import RecurringConceptGradualStream
 
 import numpy as np
 import pandas as pd
 
-class datastreamOptions:
+class DatastreamOptions:
     """
     Options for generating a concept.
     """
@@ -30,7 +30,7 @@ class datastreamOptions:
         self.gradual = gradual
 
 
-def genConceptChain(concept_desc, sequential):
+def generate_concept_chain(concept_desc, sequential):
     """
     Given a list of availiable concepts, generate a dict with (start, id) pairs
     giving the start of each concept.
@@ -61,7 +61,7 @@ def genConceptChain(concept_desc, sequential):
         random.shuffle(concept_chain)
     return concept_chain, num_samples
 
-def genPatternConceptChain(concept_desc, sequential):
+def generate_pattern_concept_chain(concept_desc, sequential):
     """
     Given a list of availiable concepts, generate a dict with (start, id) pairs
     giving the start of each concept.
@@ -84,7 +84,7 @@ def genPatternConceptChain(concept_desc, sequential):
 
     pattern = {}
     seg_lengths = {}
-    # Set current 
+    # Set current
     for current in concept_desc:
         if current not in pattern:
             pattern[current] = {}
@@ -166,29 +166,29 @@ def genPatternConceptChain(concept_desc, sequential):
     return concept_chain, num_samples
 
 
-def generateExperimentConceptChain(ds_options, sequential, pattern):
+def generate_experiment_concept_chain(ds_options, sequential, pattern):
     """
     Generates a list of concepts for a datastream.
 
     Parameters
     ----------
 
-    ds_options: 
+    ds_options:
         options for the data stream
-    
+
     sequential: bool
         If concepts should be sequential not random
-    
+
     pattern: bool
         If transitions should have an underlying pattern
-    
+
     Returns
     -------
     concept_chain: dict<int><int>
 
     num_samples: int
 
-    concept_descriptions: list<conceptOccurence>
+    concept_descriptions: list<ConceptOccurence>
     """
     num_hard = math.floor(ds_options.hard_proportion * ds_options.num_concepts)
     num_easy = ds_options.num_concepts - num_hard
@@ -196,17 +196,17 @@ def generateExperimentConceptChain(ds_options, sequential, pattern):
     concept_desc = {}
     cID = 0
     for i in range(num_hard):
-        concept = conceptOccurence(cID, ds_options.hard_diff, ds_options.noise, ds_options.hard_appearences, ds_options.examples_per_appearence) 
+        concept = ConceptOccurence(cID, ds_options.hard_diff, ds_options.noise, ds_options.hard_appearences, ds_options.examples_per_appearence)
         concept_desc[cID] = concept
         cID += 1
     for i in range(num_easy):
-        concept = conceptOccurence(cID, ds_options.easy_diff, ds_options.noise, ds_options.easy_appearences, ds_options.examples_per_appearence) 
+        concept = ConceptOccurence(cID, ds_options.easy_diff, ds_options.noise, ds_options.easy_appearences, ds_options.examples_per_appearence)
         concept_desc[cID] = concept
         cID += 1
     if pattern:
-        cc, ns = genPatternConceptChain(concept_desc, sequential)
+        cc, ns = generate_pattern_concept_chain(concept_desc, sequential)
     else:
-        cc, ns = genConceptChain(concept_desc, sequential)
+        cc, ns = generate_concept_chain(concept_desc, sequential)
     return cc, ns, concept_desc
 
 
@@ -217,7 +217,7 @@ class ExperimentOptions:
         self.experiment_directory = directory
         self.batch_size = 1
 
-def makeReuseFolder(experiment_directory):
+def make_reuse_folder(experiment_directory):
     if not os.path.exists(experiment_directory):
         print('making directory')
         print(experiment_directory)
@@ -227,14 +227,14 @@ def makeReuseFolder(experiment_directory):
 def get_concepts(gt_concepts, ex_index, num_samples):
     """ Given [(gt_concept, start_i, end_i)...]
         Return the ground truth occuring at a given index."""
-    
+
     gt_concept = None
     for gt_c, s_i, e_i in gt_concepts:
         if s_i <= ex_index < e_i:
             gt_concept = gt_c
-            break 
+            break
     return (gt_concept)
-    
+
 def get_model_drifts(num_samples, datastream):
     detections = np.zeros(num_samples)
     for d_i, d in enumerate(datastream.get_drift_info().keys()):
@@ -250,7 +250,7 @@ def get_concept_by_example(num_samples, ground_truth_concepts):
         gt_by_ex.append(sample_gt_concept)
     return gt_by_ex
 
-def get_concepts_from_model(concept_chain, num_samples):  
+def get_concepts_from_model(concept_chain, num_samples):
     # Have a dict of {ts: concept}
     # Transform to [(concept, start_ts, end_ts)]
     switch_indexes = list(concept_chain.keys())
@@ -273,7 +273,7 @@ def get_concepts_from_model(concept_chain, num_samples):
 
     return get_concept_by_example(num_samples, ground_truth_concepts)
 
-class npEncoder(json.JSONEncoder):
+class NPEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.int32):
             return int(obj)
@@ -287,13 +287,13 @@ def saveStreamToArff(filename, stream_examples, stream_supplementary, arff):
 
     filename: str
         filename with extention
-    
+
     stream_examples: list
         list of examples [[X, y]]
-    
+
     stream_supplementary: list
         list of supplementary info for each observation
-    
+
     arff: bool
         Use arff or CSV
 
@@ -310,7 +310,7 @@ def saveStreamToArff(filename, stream_examples, stream_supplementary, arff):
                             values.append(row[0].tolist()[0][i])
                         except:
                             print(row)
-                    
+
                         # values = np.unique(np.array([x[0].tolist()[0][i] for x in stream_examples]))
                     values = np.unique(np.array(values))
                     if len(values) < 10:
@@ -338,7 +338,7 @@ def saveStreamToArff(filename, stream_examples, stream_supplementary, arff):
         for line in stream_supplementary:
             # print(line)
             # print(pickle.dumps(line), file=f)
-            print(json.dumps(line, cls=npEncoder), file=f)
+            print(json.dumps(line, cls=NPEncoder), file=f)
 
 
 def save_stream(options, ds_options, pattern = False, arff = False):
@@ -350,18 +350,18 @@ def save_stream(options, ds_options, pattern = False, arff = False):
     options: ExperimentOptions
         options for the experiment
 
-    ds_options: datastreamOptions
+    ds_options: DatastreamOptions
         options for the stream
-    
+
     pattern: bool
         Should use a pattern for concept ordering
-    
+
     arff: bool
         Save to ARFF
 
 
     """
-    cc, ns, desc = generateExperimentConceptChain(ds_options, options.sequential, pattern)
+    cc, ns, desc = generate_experiment_concept_chain(ds_options, options.sequential, pattern)
     options.ds_length = ns
     options.concept_chain = cc
     print(desc)
@@ -457,7 +457,7 @@ if __name__ == '__main__':
     print(args['many'])
     if args['many']:
         # for st in ['RBF', 'TREE', 'WINDSIM']:
-        
+
             # for noise in [0, 0.05, 0.1, 0.25]:
         for noise in [0, 0.05, 0.1]:
             for st in ['TREE', 'RBF']:
@@ -465,14 +465,14 @@ if __name__ == '__main__':
                 # for num_concepts in [50]:
                 for nc in [50]:
                     for d in [1, 2, 3]:
-                        
+
                         for hp in [0, 0.05, 0.1, 0.15]:
                             if st == 'TREE' and d == 1 and hp == 0:
                                 continue
                             for r in range(0, 3):
                                 seed = random.randint(0, 10000)
                                 args['seed'] = seed
-                                ds_options = datastreamOptions(noise, num_concepts, args['harddifficulty'] + d, args['easydifficulty'] + d, args['hardappear'],
+                                ds_options = DatastreamOptions(noise, num_concepts, args['harddifficulty'] + d, args['easydifficulty'] + d, args['hardappear'],
                                         args['easyappear'], hp, args['examplesperapp'], RCStreamType[st], seed, args['gradual'])
                                 experiment_info = ds_options.__dict__.copy()
                                 experiment_info.pop('seed')
@@ -480,13 +480,13 @@ if __name__ == '__main__':
                                 experiment_name = '_'.join((str(x) for x in experiment_info)).replace('.', '-')
                                 experiment_directory = f"{os.getcwd()}{os.sep}{args['directory']}{os.sep}{noise}{os.sep}{experiment_name}{os.sep}{ds_options.seed}"
                                 options = ExperimentOptions(seed, ds_options.stream_type, experiment_directory)
-                                makeReuseFolder(options.experiment_directory)
+                                make_reuse_folder(options.experiment_directory)
                                 save_stream(options, ds_options, arff = args['arff'])
     else:
         for r in range(args['repeat']):
-            ds_options = datastreamOptions(noise, num_concepts, args['harddifficulty'], args['easydifficulty'], args['hardappear'],
+            ds_options = DatastreamOptions(noise, num_concepts, args['harddifficulty'], args['easydifficulty'], args['hardappear'],
                     args['easyappear'], args['hardprop'], args['examplesperapp'], RCStreamType[st], seed, args['gradual'])
-            
+
             experiment_info = ds_options.__dict__.copy()
             experiment_info.pop('seed')
             experiment_info = list(experiment_info.values())
@@ -495,8 +495,7 @@ if __name__ == '__main__':
             options = ExperimentOptions(seed, ds_options.stream_type, experiment_directory)
             options.sequential = args['uniform']
             options.window_size = args['window']
-            makeReuseFolder(options.experiment_directory)
+            make_reuse_folder(options.experiment_directory)
             save_stream(options, ds_options, pattern = args['pattern'], arff = args['arff'])
             seed = random.randint(0, 10000)
             args['seed'] = seed
-        

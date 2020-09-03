@@ -12,7 +12,7 @@ from skmultiflow.data import SineGenerator
 
 from skika.data.wind_sim_generator import WindSimGenerator
 
-class conceptOccurence:
+class ConceptOccurence:
     """
     Represents a concept in a stream
     """
@@ -22,9 +22,8 @@ class conceptOccurence:
         self.noise = noise
         self.appearences = appearences
         self.examples_per_appearence = examples_per_appearence
-    
+
     def __repr__(self):
-        # return f"{self.difficulty}"
         return f"<id: {self.id}, difficulty: {self.difficulty}, noise: {self.noise}, appearences: {self.appearences}, e_p_a: {self.examples_per_appearence}"
 
 
@@ -43,9 +42,9 @@ class Concept:
     """ Base concept class.
     A 'Concept' can be thought of as a relationship
     between features and label. Here we model different
-    concept using streams produced by different 
+    concept using streams produced by different
     generating functions, i.e. each concept is a given
-    distribution of data and an observation is drawn 
+    distribution of data and an observation is drawn
     from one concept.
 
     Parameters
@@ -130,7 +129,7 @@ class TREEConcept(Concept):
         new sample generated, the sample with will perturbed by the amount of
         perturbation.
         Values go from 0.0 to 1.0.
-    desc: conceptOccurence
+    desc: ConceptOccurence
         A class which describes the specific concept.
 
     """
@@ -161,7 +160,7 @@ class RBFConcept(Concept):
         new sample generated, the sample with will perturbed by the amount of
         perturbation.
         Values go from 0.0 to 1.0.
-    desc: conceptOccurence
+    desc: ConceptOccurence
         A class which describes the specific concept.
 
     """
@@ -283,7 +282,7 @@ class WindSimConcept(Concept):
         new sample generated, the sample with will perturbed by the amount of
         perturbation.
         Values go from 0.0 to 1.0.
-    desc: conceptOccurence
+    desc: ConceptOccurence
         A class which describes the specific concept.
 
     """
@@ -315,7 +314,7 @@ class WindSimConcept(Concept):
 
     def get_info(self):
         return self.datastream.get_info(self.concept_id)
-    
+
     def get_supplementary_info(self):
         return {"seed": self.seed, "difficulty": self.difficulty, **self.datastream.get_concept_supp_info(self.seed, 1 + self.difficulty * 4)}
 
@@ -328,33 +327,33 @@ class RecurringConceptStream:
 
     rctype: RCStreamType
         An enum describing the type of stream
-    
+
     num_samples: int
         The number of samples in the stream
-    
+
     noise: float
         The probability that noise will happen in the generation. At each
         new sample generated, the sample with will perturbed by the amount of
         perturbation.
         Values go from 0.0 to 1.0.
-    
+
     concept_chain: list<int> or dict
         A dict with key observation number and value
-        the concept begining at that observation
+        the concept beginning at that observation
         or
         A list of concept ids. A dict will be generated
         with each concept lasting its length given in desc
         or uniform length.
-    
+
     seed: int
         Random seed.
-    
-    desc: dict<int><conceptOccurence>
+
+    desc: dict<int><ConceptOccurence>
         A map of concept ID to options
 
     boost_first_occurance: bool
         If true, double the observations drawn from
-        the first occurence of a concept. Allows 
+        the first occurence of a concept. Allows
         a better model to be built and stored.
 
     Examples
@@ -364,23 +363,23 @@ class RecurringConceptStream:
     >>> # Starts using generating function 0, then at
     >>> # observation 5000 transitions to generating function
     >>> # 1 then at 10000 transitions back to 0.
-    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptStream, conceptOccurence
+    >>> from skika.data.reccurring_concept_stream import RCStreamType, RecurringConceptStream, ConceptOccurence
     >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
     >>> num_samples = 15000
     >>> # init concept
-    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
-                        appearences = 2, examples_per_appearence = 5000)
-    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
-                        appearences = 1, examples_per_appearence = 5000)
+    >>> concept_0 = ConceptOccurence(id=0, difficulty=2, noise=0,
+                        appearences=2, examples_per_appearence=5000)
+    >>> concept_1 = ConceptOccurence(id=1, difficulty=3, noise=0,
+                        appearences=1, examples_per_appearence=5000)
     >>> desc = {0: concept_0, 1: concept_1}
     >>> datastream = RecurringConceptStream(
-                        rctype = RCStreamType.STAGGER,
-                        num_samples =num_samples,
-                        noise = 0,
-                        concept_chain = concept_chain,
-                        seed = 42,
-                        desc = desc,
-                        boost_first_occurance = False)
+                        rctype=RCStreamType.STAGGER,
+                        num_samples=num_samples,
+                        noise=0,
+                        concept_chain=concept_chain,
+                        seed=42,
+                        desc=desc,
+                        boost_first_occurance=False)
     >>> datastream.has_more_samples()
     True
     >>> datastream.get_drift_info()
@@ -547,7 +546,7 @@ class RecurringConceptStream:
         return self.num_samples - self.example_count
 
     def get_stream_info(self):
-        """ Prints information about the 
+        """ Prints information about the
         concepts included in the stream.
 
         """
@@ -601,7 +600,7 @@ class RecurringConceptStream:
             concept = self.concepts[self.concept_chain[start_index]]
         concepts.append((concept, start_index, self.num_samples))
         return self.get_moa_stream_string(concepts)
-    
+
     def get_supplementary_info(self):
         """ Returns supplementary info about
         each concept.
@@ -620,16 +619,16 @@ class RecurringConceptGradualStream(RecurringConceptStream):
 
     rctype: RCStreamType
         An enum describing the type of stream
-    
+
     num_samples: int
         The number of samples in the stream
-    
+
     noise: float
         The probability that noise will happen in the generation. At each
         new sample generated, the sample with will perturbed by the amount of
         perturbation.
         Values go from 0.0 to 1.0.
-    
+
     concept_chain: list<int> or dict
         A dict with key observation number and value
         the concept begining at that observation
@@ -637,20 +636,20 @@ class RecurringConceptGradualStream(RecurringConceptStream):
         A list of concept ids. A dict will be generated
         with each concept lasting its length given in desc
         or uniform length.
-    
+
     window_size: int
         The number of observations each gradual drift is
         spread over.
-    
+
     seed: int
         Random seed.
-    
-    desc: dict<int><conceptOccurence>
+
+    desc: dict<int><ConceptOccurence>
         A map of concept ID to options
 
     boost_first_occurance: bool
         If true, double the observations drawn from
-        the first occurence of a concept. Allows 
+        the first occurence of a concept. Allows
         a better model to be built and stored.
 
     Examples
@@ -660,24 +659,24 @@ class RecurringConceptGradualStream(RecurringConceptStream):
     >>> # Starts using generating function 0, then at
     >>> # observation 5000 transitions to generating function
     >>> # 1 then at 10000 transitions back to 0.
-    >>> from skika.data.synthetic.reccurring_concept_stream import RCStreamType, RecurringConceptGradualStream, conceptOccurence
+    >>> from skika.data.reccurring_concept_stream import RCStreamType, RecurringConceptGradualStream, ConceptOccurence
     >>> concept_chain = {0: 0, 5000: 1, 10000: 0}
     >>> num_samples = 15000
     >>> # init concept
-    >>> concept_0 = conceptOccurence(id = 0, difficulty = 2, noise = 0,
-                        appearences = 2, examples_per_appearence = 5000)
-    >>> concept_1 = conceptOccurence(id = 1, difficulty = 3, noise = 0,
-                        appearences = 1, examples_per_appearence = 5000)
+    >>> concept_0 = ConceptOccurence(id=0, difficulty=2, noise=0,
+                        appearences=2, examples_per_appearence=5000)
+    >>> concept_1 = ConceptOccurence(id=1, difficulty=3, noise=0,
+                        appearences=1, examples_per_appearence=5000)
     >>> desc = {0: concept_0, 1: concept_1}
     >>> datastream = RecurringConceptGradualStream(
-                        rctype = RCStreamType.STAGGER,
-                        num_samples =num_samples,
-                        noise = 0,
-                        concept_chain = concept_chain,
-                        window_size = 1000,
-                        seed = 42,
-                        desc = desc,
-                        boost_first_occurance = False)
+                        rctype=RCStreamType.STAGGER,
+                        num_samples=num_samples,
+                        noise=0,
+                        concept_chain=concept_chain,
+                        window_size=1000,
+                        seed=42,
+                        desc=desc,
+                        boost_first_occurance=False)
     >>> datastream.has_more_samples()
     True
     >>> datastream.get_drift_info()
