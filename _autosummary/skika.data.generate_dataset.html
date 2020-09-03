@@ -147,14 +147,14 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.genConceptChain" title="skika.data.generate_dataset.genConceptChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">genConceptChain</span></code></a>(concept_desc, sequential)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_concept_chain" title="skika.data.generate_dataset.generate_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_concept_chain</span></code></a>(concept_desc, sequential)</p></td>
 <td><p>Given a list of availiable concepts, generate a dict with (start, id) pairs giving the start of each concept.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.genPatternConceptChain" title="skika.data.generate_dataset.genPatternConceptChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">genPatternConceptChain</span></code></a>(concept_desc, sequential)</p></td>
-<td><p>Given a list of availiable concepts, generate a dict with (start, id) pairs giving the start of each concept.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generateExperimentConceptChain" title="skika.data.generate_dataset.generateExperimentConceptChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generateExperimentConceptChain</span></code></a>(ds_options, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="skika.data.generate_dataset.generate_experiment_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_experiment_concept_chain</span></code></a>(…)</p></td>
 <td><p>Generates a list of concepts for a datastream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="skika.data.generate_dataset.generate_pattern_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_pattern_concept_chain</span></code></a>(concept_desc, …)</p></td>
+<td><p>Given a list of availiable concepts, generate a dict with (start, id) pairs giving the start of each concept.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concept_by_example</span></code>(num_samples, …)</p></td>
 <td><p></p></td>
@@ -168,7 +168,7 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_model_drifts</span></code>(num_samples, datastream)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeReuseFolder</span></code>(experiment_directory)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_reuse_folder</span></code>(experiment_directory)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.saveStreamToArff" title="skika.data.generate_dataset.saveStreamToArff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStreamToArff</span></code></a>(filename, stream_examples, …)</p></td>
@@ -186,87 +186,29 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExperimentOptions</span></code>(seed, stream_type, directory)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.datastreamOptions" title="skika.data.generate_dataset.datastreamOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datastreamOptions</span></code></a>(noise, num_concepts, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.DatastreamOptions" title="skika.data.generate_dataset.DatastreamOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatastreamOptions</span></code></a>(noise, num_concepts, …)</p></td>
 <td><p>Options for generating a concept.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.npEncoder" title="skika.data.generate_dataset.npEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npEncoder</span></code></a>(*[, skipkeys, ensure_ascii, …])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExperimentOptions</span></code>(seed, stream_type, directory)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.NPEncoder" title="skika.data.generate_dataset.NPEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NPEncoder</span></code></a>(*[, skipkeys, ensure_ascii, …])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt id="skika.data.generate_dataset.datastreamOptions">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">datastreamOptions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">num_concepts</span></em>, <em class="sig-param"><span class="n">hard_diff</span></em>, <em class="sig-param"><span class="n">easy_diff</span></em>, <em class="sig-param"><span class="n">hard_appear</span></em>, <em class="sig-param"><span class="n">easy_appear</span></em>, <em class="sig-param"><span class="n">hard_prop</span></em>, <em class="sig-param"><span class="n">examples_per_appearence</span></em>, <em class="sig-param"><span class="n">stream_type</span></em>, <em class="sig-param"><span class="n">seed</span></em>, <em class="sig-param"><span class="n">gradual</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.datastreamOptions" title="Permalink to this definition">¶</a></dt>
+<dt id="skika.data.generate_dataset.DatastreamOptions">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">DatastreamOptions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noise</span></em>, <em class="sig-param"><span class="n">num_concepts</span></em>, <em class="sig-param"><span class="n">hard_diff</span></em>, <em class="sig-param"><span class="n">easy_diff</span></em>, <em class="sig-param"><span class="n">hard_appear</span></em>, <em class="sig-param"><span class="n">easy_appear</span></em>, <em class="sig-param"><span class="n">hard_prop</span></em>, <em class="sig-param"><span class="n">examples_per_appearence</span></em>, <em class="sig-param"><span class="n">stream_type</span></em>, <em class="sig-param"><span class="n">seed</span></em>, <em class="sig-param"><span class="n">gradual</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.DatastreamOptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Options for generating a concept.</p>
 </dd></dl>
 
-<dl class="py function">
-<dt id="skika.data.generate_dataset.genConceptChain">
-<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">genConceptChain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_desc</span></em>, <em class="sig-param"><span class="n">sequential</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.genConceptChain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
-giving the start of each concept.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sequential</strong> (<em>bool</em>) – If true, concept transitions are
-determined by ID without randomness.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="skika.data.generate_dataset.genPatternConceptChain">
-<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">genPatternConceptChain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_desc</span></em>, <em class="sig-param"><span class="n">sequential</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.genPatternConceptChain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
-giving the start of each concept.
-This is generated using a random markov model, so specific transtion patterns
-have unique properties.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sequential</strong> (<em>bool</em>) – If true, concept transitions are
-determined by ID without randomness.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="skika.data.generate_dataset.generateExperimentConceptChain">
-<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">generateExperimentConceptChain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds_options</span></em>, <em class="sig-param"><span class="n">sequential</span></em>, <em class="sig-param"><span class="n">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generateExperimentConceptChain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates a list of concepts for a datastream.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ds_options</strong> – options for the data stream</p></li>
-<li><p><strong>sequential</strong> (<em>bool</em>) – If concepts should be sequential not random</p></li>
-<li><p><strong>pattern</strong> (<em>bool</em>) – If transitions should have an underlying pattern</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>concept_chain</strong> (<em>dict&lt;int&gt;&lt;int&gt;</em>)</p></li>
-<li><p><strong>num_samples</strong> (<em>int</em>)</p></li>
-<li><p><strong>concept_descriptions</strong> (<em>list&lt;conceptOccurence&gt;</em>)</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="skika.data.generate_dataset.get_concepts">
-<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">get_concepts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gt_concepts</span></em>, <em class="sig-param"><span class="n">ex_index</span></em>, <em class="sig-param"><span class="n">num_samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.get_concepts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given [(gt_concept, start_i, end_i)…]
-Return the ground truth occuring at a given index.</p>
-</dd></dl>
-
 <dl class="py class">
-<dt id="skika.data.generate_dataset.npEncoder">
-<em class="property">class </em><code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">npEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">skipkeys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ensure_ascii</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">check_circular</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">allow_nan</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.npEncoder" title="Permalink to this definition">¶</a></dt>
+<dt id="skika.data.generate_dataset.NPEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">NPEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">skipkeys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ensure_ascii</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">check_circular</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">allow_nan</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="skika.data.generate_dataset.npEncoder.default">
-<code class="sig-name descname">default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.npEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dt id="skika.data.generate_dataset.NPEncoder.default">
+<code class="sig-name descname">default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.default" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement this method in a subclass such that it returns
 a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
 (to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
@@ -286,8 +228,8 @@ implement default like this:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="skika.data.generate_dataset.npEncoder.encode">
-<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">o</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.npEncoder.encode" title="Permalink to this definition">¶</a></dt>
+<dt id="skika.data.generate_dataset.NPEncoder.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">o</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a JSON string representation of a Python data structure.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">json.encoder</span> <span class="kn">import</span> <span class="n">JSONEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">JSONEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">({</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">]})</span>
@@ -297,8 +239,8 @@ implement default like this:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="skika.data.generate_dataset.npEncoder.iterencode">
-<code class="sig-name descname">iterencode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">o</span></em>, <em class="sig-param"><span class="n">_one_shot</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.npEncoder.iterencode" title="Permalink to this definition">¶</a></dt>
+<dt id="skika.data.generate_dataset.NPEncoder.iterencode">
+<code class="sig-name descname">iterencode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">o</span></em>, <em class="sig-param"><span class="n">_one_shot</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.iterencode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encode the given object and yield each string
 representation as available.</p>
 <p>For example:</p>
@@ -308,6 +250,64 @@ representation as available.</p>
 </div>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt id="skika.data.generate_dataset.generate_concept_chain">
+<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">generate_concept_chain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_desc</span></em>, <em class="sig-param"><span class="n">sequential</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
+giving the start of each concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sequential</strong> (<em>bool</em>) – If true, concept transitions are
+determined by ID without randomness.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="skika.data.generate_dataset.generate_experiment_concept_chain">
+<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">generate_experiment_concept_chain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ds_options</span></em>, <em class="sig-param"><span class="n">sequential</span></em>, <em class="sig-param"><span class="n">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list of concepts for a datastream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds_options</strong> – options for the data stream</p></li>
+<li><p><strong>sequential</strong> (<em>bool</em>) – If concepts should be sequential not random</p></li>
+<li><p><strong>pattern</strong> (<em>bool</em>) – If transitions should have an underlying pattern</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>concept_chain</strong> (<em>dict&lt;int&gt;&lt;int&gt;</em>)</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>)</p></li>
+<li><p><strong>concept_descriptions</strong> (<em>list&lt;ConceptOccurence&gt;</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="skika.data.generate_dataset.generate_pattern_concept_chain">
+<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">generate_pattern_concept_chain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">concept_desc</span></em>, <em class="sig-param"><span class="n">sequential</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
+giving the start of each concept.
+This is generated using a random markov model, so specific transtion patterns
+have unique properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sequential</strong> (<em>bool</em>) – If true, concept transitions are
+determined by ID without randomness.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="skika.data.generate_dataset.get_concepts">
+<code class="sig-prename descclassname">skika.data.generate_dataset.</code><code class="sig-name descname">get_concepts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gt_concepts</span></em>, <em class="sig-param"><span class="n">ex_index</span></em>, <em class="sig-param"><span class="n">num_samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.get_concepts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given [(gt_concept, start_i, end_i)…]
+Return the ground truth occuring at a given index.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -334,7 +334,7 @@ representation as available.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>options</strong> (<em>ExperimentOptions</em>) – options for the experiment</p></li>
-<li><p><strong>ds_options</strong> (<a class="reference internal" href="#skika.data.generate_dataset.datastreamOptions" title="skika.data.generate_dataset.datastreamOptions"><em>datastreamOptions</em></a>) – options for the stream</p></li>
+<li><p><strong>ds_options</strong> (<a class="reference internal" href="#skika.data.generate_dataset.DatastreamOptions" title="skika.data.generate_dataset.DatastreamOptions"><em>DatastreamOptions</em></a>) – options for the stream</p></li>
 <li><p><strong>pattern</strong> (<em>bool</em>) – Should use a pattern for concept ordering</p></li>
 <li><p><strong>arff</strong> (<em>bool</em>) – Save to ARFF</p></li>
 </ul>

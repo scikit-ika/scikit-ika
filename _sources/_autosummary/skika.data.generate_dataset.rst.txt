@@ -13,14 +13,14 @@
 
    .. autosummary::
    
-      genConceptChain
-      genPatternConceptChain
-      generateExperimentConceptChain
+      generate_concept_chain
+      generate_experiment_concept_chain
+      generate_pattern_concept_chain
       get_concept_by_example
       get_concepts
       get_concepts_from_model
       get_model_drifts
-      makeReuseFolder
+      make_reuse_folder
       saveStreamToArff
       save_stream
    
@@ -32,9 +32,9 @@
 
    .. autosummary::
    
+      DatastreamOptions
       ExperimentOptions
-      datastreamOptions
-      npEncoder
+      NPEncoder
    
    
 

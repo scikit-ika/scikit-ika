@@ -19,6 +19,7 @@
    
       AGRAWALConcept
       Concept
+      ConceptOccurence
       RBFConcept
       RCStreamType
       RecurringConceptGradualStream
@@ -28,7 +29,6 @@
       STAGGERConcept
       TREEConcept
       WindSimConcept
-      conceptOccurence
    
    
 
