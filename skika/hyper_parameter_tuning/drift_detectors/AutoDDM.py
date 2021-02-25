@@ -10,14 +10,68 @@ import pandas as pd
 
 class AutoDDM(BaseDriftDetector):
 
+    """
+    Description :
+        AutoDDM is a dirft detector that adjusts the drift thresholds based on prior information.
+        We exploit the periodicity in the data stream when it exists, such that it is more sensitive to true concept drifts while reducing false-positive detections.
+
+    Parameters :
+        min_num_instances: int
+            The minimum required number of analyzed samples so change can be
+            detected. This is used to avoid false detections during the early
+            moments of the detector, when the weight of one sample is important.
+
+        warning_level: float
+            Warning Level
+
+        out_control_level: float
+            Out-control Level
+
+        default_prob: float (0 to 1)
+            The initial probability when drift detected and reset. Default value 1.
+
+        ts_length: int
+            The length of location buffer. Default value 20.
+
+        confidence: float (0 to 1)
+            The default confidence level. Default value 0.95.
+
+        tolerance: int
+            The tolerance range of matching. Default value 1000. E.g. 500 plus/minus tolerance will match to 500
+
+        c: float
+            A Laplacian constant used in the threshold function. Default value 0.05.
+
+
+    Example:
+
+        >>> names_stm = ['BernouW1ME0010','BernouW1ME005095','BernouW1ME00509','BernouW1ME0109','BernouW1ME0108','BernouW1ME0208','BernouW1ME0207','BernouW1ME0307','BernouW1ME0306','BernouW1ME0406','BernouW1ME0506','BernouW1ME05506',
+        >>>             'BernouW100ME0010','BernouW100ME005095','BernouW100ME00509','BernouW100ME0109','BernouW100ME0108','BernouW100ME0208','BernouW100ME0207','BernouW100ME0307','BernouW100ME0306','BernouW100ME0406','BernouW100ME0506','BernouW100ME05506',
+        >>>             'BernouW500ME0010','BernouW500ME005095','BernouW500ME00509','BernouW500ME0109','BernouW500ME0108','BernouW500ME0208','BernouW500ME0207','BernouW500ME0307','BernouW500ME0306','BernouW500ME0406','BernouW500ME0506','BernouW500ME05506']
+        >>>
+        >>> names_detect = [['PH1','PH2','PH3','PH4','PH5','PH6','PH7','PH8','PH9','PH10','PH11','PH12','PH13','PH14','PH15','PH16'],
+        >>>                   ['ADWIN1','ADWIN2','ADWIN3','ADWIN4','ADWIN5','ADWIN6','ADWIN7','ADWIN8','ADWIN9'],
+        >>>                   ['DDM1','DDM2','DDM3','DDM4','DDM5','DDM6','DDM7','DDM8','DDM9','DDM10'],
+        >>>                   ['SeqDrift21','SeqDrift22','SeqDrift23','SeqDrift24','SeqDrift25','SeqDrift26','SeqDrift27','SeqDrift28','SeqDrift29','SeqDrift210',
+        >>>                    'SeqDrift211','SeqDrift212','SeqDrift213','SeqDrift214','SeqDrift215','SeqDrift216','SeqDrift217','SeqDrift218']]
+        >>>
+        >>> output_dir = os.getcwd()
+        >>> directory_path_files = 'examples/pareto_knowledge/ExampleDriftKnowledge' # Available in hyper-param-tuning-examples repository
+        >>>
+        >>> pareto_build = BuildDriftKnowledge(results_directory=directory_path_files, names_detectors=names_detect, names_streams=names_stm, output=output_dir, verbose=True)
+        >>> pareto_build.load_drift_data()
+        >>> pareto_build.calculate_pareto()
+        >>> pareto_build.best_config
+    """
+
     def __init__(self, min_num_instances=30, warning_level=2.0, out_control_level=3.0,
                  default_prob=1, ts_length=20, confidence=0.95, tolerance = 1000, c = 0.05):
-        """ AutoDDM is a dirft detector that adjusts the drift thresholds based on prior information. We exploit the periodicity in the data stream when it exists, such that it is more sensitive to true concept drifts while reducing false-positive detections.
-        :param min_num_instances: The minimum number of instances required to start drift detection
-        :param warning_level: The level when the detector is in warning phrase.
-        :param out_control_level: The level when the detector is in concept drift phrase.
-        :param default_prob: The initial probability when drift detected and reset.
-        :param ts_length: The length of location buffer.
+        """
+        :param min_num_instances:
+        :param warning_level:
+        :param out_control_level:
+        :param default_prob:
+        :param ts_length:
         :param confidence: The default confidence level.
         :param tolerance: The tolerance range of matching.
         :param c: A Laplacian constant.
@@ -100,7 +154,7 @@ class AutoDDM(BaseDriftDetector):
         else:
             self.global_prob = 1
         self.local_prob = self.calculate_pr(self.sample_count, 1)
-        self.pr = self.activation_function(self.global_ratio * self.global_prob + (1 - self.global_ratio) * self.local_prob)
+        self.pr = self.threshold_function(self.global_ratio * self.global_prob + (1 - self.global_ratio) * self.local_prob)
         self.std = np.sqrt(self.pr * (1 - self.pr) / float(self.sample_count))
 
         self.sample_count += 1
@@ -157,11 +211,8 @@ class AutoDDM(BaseDriftDetector):
         else:
             return self.nCk(spe, x) * self.nCk(ove - spe, n - x) / self.nCk(ove, n)
 
-    def activation_function(self, pr):
+    def threshold_function(self, pr):
         return math.sqrt(pr) / (self.c * self.global_ratio + math.sqrt(pr))
-
-    def sigmoid_transformation(self, p):
-        return 1/(1 + math.exp(-p))
 
     def get_pr(self):
         return self.pr
@@ -239,7 +290,6 @@ class AutoDDM(BaseDriftDetector):
     def detect_FP(self, n):
         """ A  false positive is detected
         :param n: The timestamp when the false positive is detected
-        :return:
         """
         self.diff = self.ts_prediction - n
         return
