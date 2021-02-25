@@ -45,37 +45,132 @@ class AutoDDM(BaseDriftDetector):
 
     Example:
 
-        >>> names_stm = ['BernouW1ME0010','BernouW1ME005095','BernouW1ME00509','BernouW1ME0109','BernouW1ME0108','BernouW1ME0208','BernouW1ME0207','BernouW1ME0307','BernouW1ME0306','BernouW1ME0406','BernouW1ME0506','BernouW1ME05506',
-        >>>             'BernouW100ME0010','BernouW100ME005095','BernouW100ME00509','BernouW100ME0109','BernouW100ME0108','BernouW100ME0208','BernouW100ME0207','BernouW100ME0307','BernouW100ME0306','BernouW100ME0406','BernouW100ME0506','BernouW100ME05506',
-        >>>             'BernouW500ME0010','BernouW500ME005095','BernouW500ME00509','BernouW500ME0109','BernouW500ME0108','BernouW500ME0208','BernouW500ME0207','BernouW500ME0307','BernouW500ME0306','BernouW500ME0406','BernouW500ME0506','BernouW500ME05506']
+        >>> from src.detector.AutoDDM import AutoDDM
+        >>> from skmultiflow.drift_detection import DDM
+        >>> import matplotlib.pyplot as plt
+        >>> import warnings
+        >>> import time
+        >>> import numpy as np
+        >>> from skmultiflow.trees import HoeffdingTreeClassifier, HoeffdingAdaptiveTreeClassifier, ExtremelyFastDecisionTreeClassifier
+        >>> from guppy import hpy
+        >>> import arff
+        >>> import pandas
+        >>> from skmultiflow.data import DataStream
         >>>
-        >>> names_detect = [['PH1','PH2','PH3','PH4','PH5','PH6','PH7','PH8','PH9','PH10','PH11','PH12','PH13','PH14','PH15','PH16'],
-        >>>                   ['ADWIN1','ADWIN2','ADWIN3','ADWIN4','ADWIN5','ADWIN6','ADWIN7','ADWIN8','ADWIN9'],
-        >>>                   ['DDM1','DDM2','DDM3','DDM4','DDM5','DDM6','DDM7','DDM8','DDM9','DDM10'],
-        >>>                   ['SeqDrift21','SeqDrift22','SeqDrift23','SeqDrift24','SeqDrift25','SeqDrift26','SeqDrift27','SeqDrift28','SeqDrift29','SeqDrift210',
-        >>>                    'SeqDrift211','SeqDrift212','SeqDrift213','SeqDrift214','SeqDrift215','SeqDrift216','SeqDrift217','SeqDrift218']]
+        >>> warnings.filterwarnings('ignore')
+        >>> plt.style.use("seaborn-whitegrid")
         >>>
-        >>> output_dir = os.getcwd()
-        >>> directory_path_files = 'examples/pareto_knowledge/ExampleDriftKnowledge' # Available in hyper-param-tuning-examples repository
+        >>> # Global variable
+        >>> TRAINING_SIZE = 1
+        >>> grace = 1000
+        >>> tolerance = 500
         >>>
-        >>> pareto_build = BuildDriftKnowledge(results_directory=directory_path_files, names_detectors=names_detect, names_streams=names_stm, output=output_dir, verbose=True)
-        >>> pareto_build.load_drift_data()
-        >>> pareto_build.calculate_pareto()
-        >>> pareto_build.best_config
+        >>> elec_data = arff.load("elecNormNew.arff")
+        >>> elec_df = pandas.DataFrame(elec_data)
+        >>> elec_df.columns = ['date', 'day', 'period', 'nswprice', 'nswdemand', 'vicprice', 'vicdemand', 'transfer', 'class']
+        >>> mapping = {"day":{"1":1, "2":2, "3":3, "4":4, "5":5, "6":6, "7":7}, "class": {"UP": 0, "DOWN": 1}}
+        >>> elec_df = elec_df.replace(mapping)
+        >>> elec_full_df = pandas.concat([elec_df] * 200)
+        >>> STREAM_SIZE = elec_full_df.shape[0]
+        >>> elec_stream = DataStream(elec_full_df, name="elec")
+        >>> elec_stream.prepare_for_use()
+        >>> X_train, y_train = elec_stream.next_sample(TRAINING_SIZE)
+        >>> ht = HoeffdingTreeClassifier()
+        >>> ht.partial_fit(X_train, y_train)
+        >>> n_global = TRAINING_SIZE  # Cumulative Number of observations
+        >>> d_ddm = 0
+        >>> w_ddm = 0
+        >>> TP_ddm = []
+        >>> FP_ddm = []
+        >>> RT_ddm = []
+        >>> DIST_ddm = []
+        >>> mem_ddm = []
+        >>> retrain = False
+        >>> grace_end = n_global
+        >>> detect_end = n_global
+        >>> mine_pr = []
+        >>> mine_std = []
+        >>> mine_alpha = []
+        >>> pr_min = []
+        >>> std_min = []
+        >>> pi = []
+        >>> mine_x_mean = []
+        >>> mine_sum = []
+        >>> mine_threshold = []
+        >>> pred_grace_ht = []
+        >>> pred_grace_ht_p = []
+        >>> ht_p = None
+        >>> ML_accuracy = 0
+        >>> acc_x = []
+        >>> acc_y = []
+        >>> drift_x = []
+        >>> drift_y = []
+
+        >>> ddm = AutoDDM(tolerance=tolerance)
+        >>> h = hpy()
+        >>> while elec_stream.has_more_samples():
+        >>>     n_global += 1
+
+        >>>     X_test, y_test = elec_stream.next_sample()
+        >>>     y_predict = ht.predict(X_test)
+        >>>     ddm_start_time = time.time()
+        >>>     ddm.add_element(y_test != y_predict, n_global)
+        >>>     ML_accuracy += 1 if y_test == y_predict else 0
+        >>>     if (n_global % 100 == 0):
+        >>>         acc_x.append(n_global)
+        >>>         acc_y.append(ML_accuracy/n_global)
+        >>>     ddm_running_time = time.time() - ddm_start_time
+        >>>     RT_ddm.append(ddm_running_time)
+        >>>     if (n_global > grace_end):
+        >>>         if (n_global > detect_end):
+        >>>             if ht_p is not None:
+        >>>                 drift_point = detect_end - 2 * grace
+        >>>                 print("Accuracy of ht: " + str(np.mean(pred_grace_ht)))
+        >>>                 print("Accuracy of ht_p: " + str(np.mean(pred_grace_ht_p)))
+        >>>                 if (np.mean(pred_grace_ht_p) > np.mean(pred_grace_ht)):
+        >>>                     print("TP detected at: " + str(drift_point))
+        >>>                     TP_ddm.append(drift_point)
+        >>>                     ddm.detect_TP(drift_point)
+        >>>                     ht = ht_p
+        >>>                     drift_x.append(n_global)
+        >>>                     drift_y.append(ML_accuracy/n_global)
+        >>>                 else:
+        >>>                     print("FP detected at: " + str(drift_point))
+        >>>                     FP_ddm.append(drift_point)
+        >>>                     ddm.detect_FP(n_global)
+        >>>                 ht_p = None
+        >>>                 pred_grace_ht = []
+        >>>                 pred_grace_ht_p = []
+        >>>             if ddm.detected_warning_zone():
+        >>>                 w_ddm += 1
+        >>>             if ddm.detected_change():
+        >>>                 d_ddm += 1
+        >>>                 ht_p = HoeffdingTreeClassifier()
+        >>>                 grace_end = n_global + grace
+        >>>                 detect_end = n_global + 2 * grace
+        >>>         else:
+        >>>             pred_grace_ht.append(y_test == y_predict)
+        >>>             pred_grace_ht_p.append(y_test == ht_p.predict(X_test))
+        >>>     if ht_p is not None:
+        >>>         ht_p.partial_fit(X_test, y_test)
+        >>>     ht.partial_fit(X_test, y_test)
+        >>> x = h.heap()
+        >>> mem_ddm.append(x.size)
+        >>> print("Number of drifts detected by ddm: " + str(d_ddm))
+        >>> print("TP by ddm:" + str(len(TP_ddm)))
+        >>> print("FP by ddm:" + str(len(FP_ddm)))
+        >>> print("Mean RT  %s seconds" % np.mean((ddm_running_time)))
+        >>> print("Mean Memory by ddm:" + str(mem_ddm))
+        >>> print("Accuracy by DDM:" + str(ML_accuracy / STREAM_SIZE))
+        >>> plt.plot(acc_x, acc_y, color='black')
+        >>> plt.scatter(drift_x, drift_y, edgecolors='red')
+        >>> plt.show()
+
+
     """
 
     def __init__(self, min_num_instances=30, warning_level=2.0, out_control_level=3.0,
                  default_prob=1, ts_length=20, confidence=0.95, tolerance = 1000, c = 0.05):
-        """
-        :param min_num_instances:
-        :param warning_level:
-        :param out_control_level:
-        :param default_prob:
-        :param ts_length:
-        :param confidence: The default confidence level.
-        :param tolerance: The tolerance range of matching.
-        :param c: A Laplacian constant.
-        """
         super().__init__()
         self.sample_count = 1
         self.global_ratio = 1.0
@@ -140,7 +235,8 @@ class AutoDDM(BaseDriftDetector):
         After calling this method, to verify if change was detected or if
         the learner is in the warning zone, one should call the super method
         detected_change, which returns True if concept drift was detected and
-        False otherwise.
+        False otherwise. Once identified concept drift is confirmed to be a TP/FP,
+        one should call the method detect_TP/detect_FP respectively.
 
         """
 
