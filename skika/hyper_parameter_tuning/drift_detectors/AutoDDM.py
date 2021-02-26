@@ -105,12 +105,12 @@ class AutoDDM(BaseDriftDetector):
         >>> acc_y = []
         >>> drift_x = []
         >>> drift_y = []
-
+        >>>
         >>> ddm = AutoDDM(tolerance=tolerance)
         >>> h = hpy()
         >>> while elec_stream.has_more_samples():
         >>>     n_global += 1
-
+        >>>
         >>>     X_test, y_test = elec_stream.next_sample()
         >>>     y_predict = ht.predict(X_test)
         >>>     ddm_start_time = time.time()
