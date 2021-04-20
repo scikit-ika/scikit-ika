@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; scikit-ika  documentation</title>
+    <title>Installation &#8212; scikit-ika  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.ee6fb81b276d6fba8a971ad8e9b95dd9.css" rel="stylesheet" />
@@ -27,21 +27,15 @@
     
   <link rel="preload" as="script" href="_static/js/index.c86189f1ce1b71a67eb6.js">
 
-    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-  
+    <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
-
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -112,7 +106,7 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="#" method="get">
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -130,9 +124,39 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#requirements">
+   Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-1-install-from-pypi">
+   Option 1: Install from PyPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-2-install-from-source">
+   Option 2: Install from source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#note">
+   Note
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgement">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -152,27 +176,44 @@
               
               <div>
                 
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Make sure the following dependencies are installed:</p>
+<ul class="simple">
+<li><p>Python &gt; 3.6</p></li>
+<li><p>C++ toolchain supporting C++14 (g++ 7+, CMake)</p></li>
+</ul>
+</div>
+<div class="section" id="option-1-install-from-pypi">
+<h2>Option 1: Install from PyPI<a class="headerlink" href="#option-1-install-from-pypi" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install scikit-ika
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-2-install-from-source">
+<h2>Option 2: Install from source<a class="headerlink" href="#option-2-install-from-source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/scikit-ika/scikit-ika.git --recursive
+pip install ./scikit-ika
+</pre></div>
+</div>
+</div>
+<div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-ika is still in its infancy. The APIs are unstable and the documentation is scarse.</p>
+<p>Guides on usages and parameter tunning are on its way. Meanwhile, please feel free to raise issues or email us if you have any questions.</p>
+</div>
+<div class="section" id="acknowledgement">
+<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">¶</a></h2>
+<p>This project is inspired by and has dependencies on the following projects:</p>
+<ul class="simple">
+<li><p>scikit-multiflow</p></li>
+<li><p>streamDM in C++</p></li>
+</ul>
+</div>
+</div>
+
 
               </div>
               

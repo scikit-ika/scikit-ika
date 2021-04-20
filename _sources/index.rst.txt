@@ -1,6 +1,8 @@
 Welcome to scikit-ika's documentation!
 ======================================
 
+Last Updated at Apr 16, 2021
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -12,7 +14,14 @@ Welcome to scikit-ika's documentation!
 
    API Documentation <documentation>
 
+`Getting started <installation.html>`_
+------------------------------------------
+
+`Tutorials <tutorial.html>`_
+------------------------------------------
+
 `API Documentation <documentation.html>`_
 ------------------------------------------
 
-Detailed documentation of the implementations.
+`Publications <reference.html>`_
+------------------------------------------

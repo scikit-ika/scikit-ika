@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skika.hyper_parameter_tuning.drift_detectors.AutoDDM &#8212; scikit-ika  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.ee6fb81b276d6fba8a971ad8e9b95dd9.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.c86189f1ce1b71a67eb6.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator" href="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/ika-logo.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../documentation.html">
+  API Documentation
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://scikit-ika.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.stream_generator.html">
+   skika.data.stream_generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.reccurring_concept_stream.html">
+   skika.data.reccurring_concept_stream
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.wind_sim_generator.html">
+   skika.data.wind_sim_generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.bernoulli_stream.html">
+   skika.data.bernoulli_stream
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.generate_dataset.html">
+   skika.data.generate_dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.hyper_plane_generator_redund.html">
+   skika.data.hyper_plane_generator_redund
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.random_rbf_generator_redund.html">
+   skika.data.random_rbf_generator_redund
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.data.stream_generator_redundancy_drift.html">
+   skika.data.stream_generator_redundancy_drift
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.evaluation.inspect_recurrence.html">
+   skika.evaluation.inspect_recurrence
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.html">
+   skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment.html">
+   skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.html">
+   skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.html">
+   skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.html">
+   skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator.html">
+   skika.hyper_parameter_tuning.trees_arf.meta_feature_generator
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   skika.hyper_parameter_tuning.drift_detectors.AutoDDM
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-skika.hyper_parameter_tuning.drift_detectors.AutoDDM">
+<span id="skika-hyper-parameter-tuning-drift-detectors-autoddm"></span><h1>skika.hyper_parameter_tuning.drift_detectors.AutoDDM<a class="headerlink" href="#module-skika.hyper_parameter_tuning.drift_detectors.AutoDDM" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM" title="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutoDDM</span></code></a>([min_num_instances, warning_level, …])</p></td>
+<td><p>Description :</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">skika.hyper_parameter_tuning.drift_detectors.AutoDDM.</span></code><code class="sig-name descname"><span class="pre">AutoDDM</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_num_instances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warning_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_control_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Description :</dt><dd><p>AutoDDM is a dirft detector that adjusts the drift thresholds based on prior information.
+We exploit the periodicity in the data stream when it exists, such that it is more sensitive to true concept drifts while reducing false-positive detections.</p>
+</dd>
+<dt>Parameters :</dt><dd><dl class="simple">
+<dt>min_num_instances: int</dt><dd><p>The minimum required number of analyzed samples so change can be
+detected. This is used to avoid false detections during the early
+moments of the detector, when the weight of one sample is important.</p>
+</dd>
+<dt>warning_level: float</dt><dd><p>Warning Level</p>
+</dd>
+<dt>out_control_level: float</dt><dd><p>Out-control Level</p>
+</dd>
+<dt>default_prob: float (0 to 1)</dt><dd><p>The initial probability when drift detected and reset. Default value 1.</p>
+</dd>
+<dt>ts_length: int</dt><dd><p>The length of location buffer. Default value 20.</p>
+</dd>
+<dt>confidence: float (0 to 1)</dt><dd><p>The default confidence level. Default value 0.95.</p>
+</dd>
+<dt>tolerance: int</dt><dd><p>The tolerance range of matching. Default value 1000. E.g. 500 plus/minus tolerance will match to 500</p>
+</dd>
+<dt>c: float</dt><dd><p>A Laplacian constant used in the threshold function. Default value 0.05.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">src.detector.AutoDDM</span> <span class="kn">import</span> <span class="n">AutoDDM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmultiflow.trees</span> <span class="kn">import</span> <span class="n">HoeffdingTreeClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">guppy</span> <span class="kn">import</span> <span class="n">hpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">arff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmultiflow.data</span> <span class="kn">import</span> <span class="n">DataStream</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;seaborn-whitegrid&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Global variable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TRAINING_SIZE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grace</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tolerance</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_data</span> <span class="o">=</span> <span class="n">arff</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;elecNormNew.arff&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">elec_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;nswprice&#39;</span><span class="p">,</span> <span class="s1">&#39;nswdemand&#39;</span><span class="p">,</span> <span class="s1">&#39;vicprice&#39;</span><span class="p">,</span> <span class="s1">&#39;vicdemand&#39;</span><span class="p">,</span> <span class="s1">&#39;transfer&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;day&quot;</span><span class="p">:{</span><span class="s2">&quot;1&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">},</span> <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;UP&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;DOWN&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_df</span> <span class="o">=</span> <span class="n">elec_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_full_df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">elec_df</span><span class="p">]</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">STREAM_SIZE</span> <span class="o">=</span> <span class="n">elec_full_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_stream</span> <span class="o">=</span> <span class="n">DataStream</span><span class="p">(</span><span class="n">elec_full_df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;elec&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">elec_stream</span><span class="o">.</span><span class="n">prepare_for_use</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">elec_stream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">(</span><span class="n">TRAINING_SIZE</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ht</span> <span class="o">=</span> <span class="n">HoeffdingTreeClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ht</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_global</span> <span class="o">=</span> <span class="n">TRAINING_SIZE</span>  <span class="c1"># Cumulative Number of observations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d_ddm</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_ddm</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TP_ddm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FP_ddm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RT_ddm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DIST_ddm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mem_ddm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">retrain</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grace_end</span> <span class="o">=</span> <span class="n">n_global</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detect_end</span> <span class="o">=</span> <span class="n">n_global</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_grace_ht</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_grace_ht_p</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ht_p</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ML_accuracy</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acc_x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acc_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drift_x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drift_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ddm</span> <span class="o">=</span> <span class="n">AutoDDM</span><span class="p">(</span><span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">hpy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">elec_stream</span><span class="o">.</span><span class="n">has_more_samples</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_global</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">elec_stream</span><span class="o">.</span><span class="n">next_sample</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_predict</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ddm_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ddm</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">y_test</span> <span class="o">!=</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ML_accuracy</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">y_test</span> <span class="o">==</span> <span class="n">y_predict</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="p">(</span><span class="n">n_global</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">acc_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">acc_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ML_accuracy</span><span class="o">/</span><span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ddm_running_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">ddm_start_time</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RT_ddm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ddm_running_time</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="p">(</span><span class="n">n_global</span> <span class="o">&gt;</span> <span class="n">grace_end</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="p">(</span><span class="n">n_global</span> <span class="o">&gt;</span> <span class="n">detect_end</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="k">if</span> <span class="n">ht_p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">drift_point</span> <span class="o">=</span> <span class="n">detect_end</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">grace</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of ht: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_grace_ht</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of ht_p: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_grace_ht_p</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_grace_ht_p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_grace_ht</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP detected at: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">drift_point</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">TP_ddm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">drift_point</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">ddm</span><span class="o">.</span><span class="n">detect_TP</span><span class="p">(</span><span class="n">drift_point</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">ht</span> <span class="o">=</span> <span class="n">ht_p</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">drift_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">drift_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ML_accuracy</span><span class="o">/</span><span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP detected at: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">drift_point</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">FP_ddm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">drift_point</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">ddm</span><span class="o">.</span><span class="n">detect_FP</span><span class="p">(</span><span class="n">n_global</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">ht_p</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">pred_grace_ht</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">pred_grace_ht_p</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="k">if</span> <span class="n">ddm</span><span class="o">.</span><span class="n">detected_warning_zone</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">w_ddm</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="k">if</span> <span class="n">ddm</span><span class="o">.</span><span class="n">detected_change</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">d_ddm</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">ht_p</span> <span class="o">=</span> <span class="n">HoeffdingTreeClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">grace_end</span> <span class="o">=</span> <span class="n">n_global</span> <span class="o">+</span> <span class="n">grace</span>
+<span class="gp">&gt;&gt;&gt; </span>                <span class="n">detect_end</span> <span class="o">=</span> <span class="n">n_global</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">grace</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">pred_grace_ht</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">y_predict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">pred_grace_ht_p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">ht_p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">ht_p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ht_p</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ht</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">heap</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mem_ddm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of drifts detected by ddm: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d_ddm</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP by ddm:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">TP_ddm</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP by ddm:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FP_ddm</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean RT  </span><span class="si">%s</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">ddm_running_time</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean Memory by ddm:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mem_ddm</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy by DDM:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ML_accuracy</span> <span class="o">/</span> <span class="n">STREAM_SIZE</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">acc_x</span><span class="p">,</span> <span class="n">acc_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">drift_x</span><span class="p">,</span> <span class="n">drift_y</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.add_element">
+<code class="sig-name descname"><span class="pre">add_element</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.add_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new element to the statistics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> (<em>int</em><em> (</em><em>either 0</em><em> or </em><em>1</em><em>)</em>) – This parameter indicates whether the last sample analyzed was
+correctly classified or not. 1 indicates an error (miss-classification).</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – This parameter indicates the current timestamp t.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>After calling this method, to verify if change was detected or if
+the learner is in the warning zone, one should call the super method
+detected_change, which returns True if concept drift was detected and
+False otherwise. Once identified concept drift is confirmed to be a TP/FP,
+one should call the method detect_TP/detect_FP respectively.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detect_FP">
+<code class="sig-name descname"><span class="pre">detect_FP</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detect_FP" title="Permalink to this definition">¶</a></dt>
+<dd><p>A  false positive is detected
+:param n: The timestamp when the false positive is detected</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detect_TP">
+<code class="sig-name descname"><span class="pre">detect_TP</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detect_TP" title="Permalink to this definition">¶</a></dt>
+<dd><p>A true concept drift is detected
+:param n: The timestamp when the true concept drift is detected</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detected_change">
+<code class="sig-name descname"><span class="pre">detected_change</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detected_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns whether concept drift was detected or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether concept drift was detected or not.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detected_warning_zone">
+<code class="sig-name descname"><span class="pre">detected_warning_zone</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.detected_warning_zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the change detector supports the warning zone, this function will return
+whether it’s inside the warning zone or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the change detector is in the warning zone or not.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_info">
+<code class="sig-name descname"><span class="pre">get_info</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects and returns the information about the configuration of the estimator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Configuration of the estimator.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_length_estimation">
+<code class="sig-name descname"><span class="pre">get_length_estimation</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_length_estimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length estimation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The length estimation</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_params">
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> – Parameter names mapped to their values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mapping of string to any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the change detector parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.set_params">
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.AutoDDM.AutoDDM.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+    
+  <script src="../_static/js/index.c86189f1ce1b71a67eb6.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2019, Team scikit-ika.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

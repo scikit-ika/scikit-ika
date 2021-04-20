@@ -60,3 +60,5 @@ Hyper-parameter Tuning: :mod:`hyper_parameter_tuning`
    hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees
    hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt
    hyper_parameter_tuning.trees_arf.meta_feature_generator
+   hyper_parameter_tuning.drift_detectors.AutoDDM
+

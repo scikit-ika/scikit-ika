@@ -1,0 +1,29 @@
+﻿skika.hyper\_parameter\_tuning.drift\_detectors.AutoDDM
+=======================================================
+
+.. automodule:: skika.hyper_parameter_tuning.drift_detectors.AutoDDM
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AutoDDM
+   
+   
+
+   
+   
+   
+
+
+
