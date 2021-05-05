@@ -61,7 +61,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="scikit-ika",
-    version="0.0.5",
+    version="0.0.7",
     author="Team scikit-ika",
     author_email="",
     description="real-time lifelong machine learning",

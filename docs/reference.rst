@@ -1,12 +1,10 @@
-=================
-Papers using Scikit-ika
-=================
+=======================
+Citing scikit-ika
+=======================
 
-The main reference for Scikit-ika is
+Please use the following BibTex entry if you would like to cite scikit-ika for your publications:
 
-PEARL: Probabilistic Exact Adaptive Random Forest with Lossy Counting for Data Streams
-
-which can be found `here`_::
+PEARL: Probabilistic Exact Adaptive Random Forest with Lossy Counting for Data Streams `here`_::
 
     @inproceedings{wu2020pearl,
     title={PEARL: Probabilistic Exact Adaptive Random Forest with Lossy Counting for Data Streams},
@@ -19,6 +17,6 @@ which can be found `here`_::
 .. _here: https://link.springer.com/chapter/10.1007/978-3-030-47436-2_2
 
 
-Here is an incomplete selection of peer-reviewed papers:
+Here is an incomplete list of peer-reviewed papers:
 
 * Wu, O., Koh, Y. S., Dobbie, G., & Lacombe, T. (2020, May). PEARL: Probabilistic Exact Adaptive Random Forest with Lossy Counting for Data Streams. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (pp. 17-30). Springer, Cham.

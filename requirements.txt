@@ -3,4 +3,5 @@ sklearn
 cmake
 kneed==0.5.1
 pandas
+statsmodels
 ./third_party/scikit-multiflow

@@ -1,7 +1,7 @@
 Welcome to scikit-ika's documentation!
 ======================================
 
-Welcome! This is the documentation for Scikit-ika, last updated Feb 02, 2021.
+Last Updated at Apr 16, 2021
 
 .. toctree::
    :maxdepth: 2
@@ -17,22 +17,11 @@ Welcome! This is the documentation for Scikit-ika, last updated Feb 02, 2021.
 `Getting started <installation.html>`_
 ------------------------------------------
 
-Information to install scikit-ika.
-
-
 `Tutorials <tutorial.html>`_
 ------------------------------------------
-
-Tutorials to start using scikit-ika.
-
 
 `API Documentation <documentation.html>`_
 ------------------------------------------
 
-Detailed documentation of the implementations.
-
-`Papers using scikit-ika <reference.html>`_
+`Publications <reference.html>`_
 ------------------------------------------
-
-List of publications using scikit-ika.
-

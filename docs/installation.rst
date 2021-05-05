@@ -2,8 +2,6 @@
 Installation
 =================
 
-Here we provide the guide of how to install scikit-ika.
-
 
 -----------------
 Requirements
@@ -15,21 +13,19 @@ Make sure the following dependencies are installed:
 
 * C++ toolchain supporting C++14 (g++ 7+, CMake)
 
------------------
+---------------------------
 Option 1: Install from PyPI
------------------
+---------------------------
 
-Scikit-ika is available via Python Package Index (PyPI) `here`_. So you can install it using the following command::
+.. code-block:: bash
 
     pip install scikit-ika
 
-.. _here: https://pypi.org/project/scikit-ika/
-
------------------
+-----------------------------
 Option 2: Install from source
------------------
+-----------------------------
 
-You can also install it from the original source on github: ::
+.. code-block:: bash
 
     git clone https://github.com/scikit-ika/scikit-ika.git --recursive
     pip install ./scikit-ika

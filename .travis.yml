@@ -1,5 +1,4 @@
 language: python
-
 jobs:
   include:
     - services: docker
@@ -14,20 +13,21 @@ jobs:
 
 env:
   global:
-    - TWINE_USERNAME=__token__
     - CIBW_BUILD="*macosx_x86_64 *manylinux_x86_64"
     - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-* pp*"
     - CIBW_BEFORE_BUILD_LINUX="pip install cmake"
 
 install:
-  - python3 -m pip install cibuildwheel==1.2.0
+  - python3 -m pip install certifi cibuildwheel==1.10.0
 
 script:
   - python3 -m cibuildwheel --output-dir wheelhouse
 
-after_success:
-  - |
-    if [[ $TRAVIS_TAG ]]; then
-      python3 -m pip install twine
-      python3 -m twine upload wheelhouse/*.whl
-    fi
+deploy:
+  provider: pypi
+  username: "__token__"
+  skip_cleanup: true
+  on:
+    tags: true
+  password:
+    secure: cyJeVxsTazAvMyKiez68SXEYAPeA516y8lOXNC1zM1mHlnm0RoOjrL6zEgp97TFKlqnzfMVlnlB1Ihawo5hwIRQtFzIrYq+yFvG6izZSxNZm+J8Sk6YBjxjC5HVyH/T3IiqW/u66F8HVX6UYzuvHZ19CSG+l3HVVT9IFbH5u0uJ377Jx90Tp5492Ha817UsK0qt0eeFkSotdfCUQQc73za4ejabI444NRRylHPnJAhyUgibxYIPoSuBWm6tQ/5prO8ueVS5YrMMo48oiqZYnWuAFwPnomDnd1SxeDRe1kjjNUdCt74Fl1P7SFj0j4B5srwCVftTsSFuxcjiq+rO2W7XVHR1tmI8r/kNAmNdu4gyNHglxnG5Bvq9d25bS00w18Zr3hiQB5FYL7+8QjhMVeNhby0ZfTYXqegrova2DOkQxG/Kx4yjolIn6RPqho/8WLgriw0qR5oUiPP/jRlU096ZkmIZBwQuOxAelMB019gA1599wv5pLDMyBVgMKdRdtlGUpxsNDHxz0zybu5gKrQp7Dz13KrplUHMIsJ1WzEjol3kJA9i13Tml1A4GPsmG4qI1uQdoXxXrvE6f/UqxhpuaFlWoDUNE/Eln/J6RMvlY5oqveZ193AW7Dke24719WI02KLXhz0fhq4odujynxxCKwewRDebJDwPsOuUzYWqU=
