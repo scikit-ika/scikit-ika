@@ -4,4 +4,6 @@ cmake
 kneed==0.5.1
 pandas
 statsmodels
+grpcio
+grpcio-tools
 ./third_party/scikit-multiflow
