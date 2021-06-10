@@ -7,6 +7,7 @@ skika/ensemble/adaptive_random_forest.cpp
 skika/ensemble/pearl.cpp
 skika/ensemble/lru_state.cpp
 skika/ensemble/lossy_state_graph.cpp
+skika/ensemble/pro_pearl.cpp
 )
 
 set(pybindfiles

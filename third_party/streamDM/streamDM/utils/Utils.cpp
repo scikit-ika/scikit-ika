@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
-#include <stdint.h>
+#include <unistd.h>
 #include <cmath>
 
 #include <sys/types.h>
@@ -33,6 +33,25 @@ Utils::Utils() {
 		init = true;
 		// srand(time(NULL));
 	}
+}
+
+vector<int> Utils::selectKNums(int n, int k, std::mt19937 mrand) {
+    vector<int> reservoir;
+    for (int i = 0; i < k; i++) {
+        reservoir.push_back(i);
+    }
+
+    for (int i = k; i < n; i++) {
+        std::uniform_int_distribution<int> distr(0, i);
+        int j = distr(mrand);
+        // int j = rand() % (i + 1);
+
+        if (j < k) {
+            reservoir[j] = i;
+        }
+    }
+
+    return reservoir;
 }
 
 int Utils::poisson(double lambda) {

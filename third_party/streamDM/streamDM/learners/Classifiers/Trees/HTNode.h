@@ -18,6 +18,7 @@
 #ifndef HTNODE_H_
 #define HTNODE_H_
 
+#include <random>
 #include <vector>
 #include <string>
 #include <list>
@@ -125,9 +126,12 @@ public:
 	list<AttributeClassObserver*>* attributeObservers;
 	int attrObsSize;
 	bool isInitialized;
+
+    ActiveLearningNode(const vector<double>& initialClassObservations, std::mt19937 mrand);
 	ActiveLearningNode(const vector<double>& initialClassObservations);
 	ActiveLearningNode(const Json::Value& jv);
 	~ActiveLearningNode();
+
 	virtual void learnFromInstance(const Instance* inst, HoeffdingTree* ht);
 	virtual double getWeightSeen() const;
 	virtual double getWeightSeenAtLastSplitEvaluation();
@@ -136,6 +140,9 @@ public:
 	virtual void disableAttribute(int attIndex);
 	virtual void toJson(Json::Value& jv);
 	void showActiveLearningNode();
+
+private:
+    std::mt19937 mrand;
 };
 
 

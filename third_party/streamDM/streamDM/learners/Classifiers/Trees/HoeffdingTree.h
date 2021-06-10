@@ -18,6 +18,7 @@
 #ifndef HOEFFDINGTREE_H_
 #define HOEFFDINGTREE_H_
 
+#include <random>
 #include <vector>
 #include <string>
 #include <list>
@@ -32,11 +33,13 @@ namespace HT {
 class HoeffdingTree: public Learner {
 public:
 	HoeffdingTree();
+	HoeffdingTree(std:: mt19937 mrand);
 	virtual ~HoeffdingTree();
 
 	void train(const Instance&);
 	double* getPrediction(const Instance&);
 	double probability(const Instance&, int);
+    std::mt19937 mrand;
 
 public:
 	double* classPrediction;

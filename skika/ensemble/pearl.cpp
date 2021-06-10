@@ -8,6 +8,8 @@ pearl::pearl(int num_trees,
              int lossy_window_size,
              int reuse_window_size,
              int arf_max_features,
+             int lambda,
+             int seed,
              double bg_kappa_threshold,
              double cd_kappa_threshold,
              double reuse_rate_upper_bound,
@@ -17,6 +19,8 @@ pearl::pearl(int num_trees,
              bool enable_state_graph) :
         adaptive_random_forest(num_trees,
                                arf_max_features,
+                               lambda,
+                               seed,
                                warning_delta,
                                drift_delta),
         max_num_candidate_trees(max_num_candidate_trees),
@@ -29,15 +33,7 @@ pearl::pearl(int num_trees,
         cd_kappa_threshold(cd_kappa_threshold),
         reuse_rate_upper_bound(reuse_rate_upper_bound),
         enable_state_adaption(enable_state_adaption),
-        enable_state_graph(enable_state_graph) {}
-
-void pearl::init() {
-    tree_pool = vector<shared_ptr<pearl_tree>>(num_trees);
-
-    for (int i = 0; i < num_trees; i++) {
-        tree_pool[i] = make_pearl_tree(i);
-        foreground_trees.push_back(tree_pool[i]);
-    }
+        enable_state_graph(enable_state_graph) {
 
     // initialize LRU state pattern queue
     state_queue = make_unique<lru_state>(10000000, edit_distance_threshold); // TODO
@@ -61,29 +57,29 @@ void pearl::init() {
 
 }
 
+void pearl::init() {
+    tree_pool = vector<shared_ptr<pearl_tree>>(num_trees);
+
+    for (int i = 0; i < num_trees; i++) {
+        tree_pool[i] = make_pearl_tree(i);
+        foreground_trees.push_back(tree_pool[i]);
+    }
+}
+
 shared_ptr<pearl_tree> pearl::make_pearl_tree(int tree_pool_id) {
     return make_shared<pearl_tree>(tree_pool_id,
                                    kappa_window_size,
                                    warning_delta,
-                                   drift_delta);
+                                   drift_delta,
+                                   mrand);
 }
 
-int pearl::predict() {
+void pearl::train() {
     if (foreground_trees.empty()) {
         init();
     }
 
     int actual_label = instance->getLabel();
-
-    int num_classes = instance->getNumberClasses();
-    vector<int> votes(num_classes, 0);
-
-    predict_with_state_adaption(votes, actual_label);
-
-    return vote(votes);
-}
-
-void pearl::predict_with_state_adaption(vector<int>& votes, int actual_label) {
 
     // keep track of actual labels for candidate tree evaluations
     if (actual_labels.size() >= kappa_window_size) {
@@ -91,35 +87,42 @@ void pearl::predict_with_state_adaption(vector<int>& votes, int actual_label) {
     }
     actual_labels.push_back(actual_label);
 
-    int predicted_label;
     vector<int> warning_tree_pos_list;
     vector<int> drifted_tree_pos_list;
 
     shared_ptr<pearl_tree> cur_tree = nullptr;
 
     for (int i = 0; i < num_trees; i++) {
+        std::poisson_distribution<int> poisson_distr(lambda);
+        int weight = poisson_distr(mrand);
+
+        if (weight == 0) {
+            continue;
+        }
+
+        instance->setWeight(weight);
+
         cur_tree = static_pointer_cast<pearl_tree>(foreground_trees[i]);
+        cur_tree->train(*instance);
 
-        predicted_label = cur_tree->predict(*instance, true);
-
-        votes[predicted_label]++;
-        int error_count = (int)(actual_label != predicted_label);
+        int predicted_label = cur_tree->predict(*instance, true);
+        int error_count = (int)(predicted_label != actual_label);
 
         bool warning_detected_only = false;
 
         // detect warning
         if (detect_change(error_count, cur_tree->warning_detector)) {
-            warning_detected_only = false;
-
+            warning_detected_only = true;
             cur_tree->bg_pearl_tree = make_pearl_tree(-1);
             cur_tree->warning_detector->resetChange();
         }
 
         // detect drift
         if (detect_change(error_count, cur_tree->drift_detector)) {
-            warning_detected_only = true;
+            warning_detected_only = false;
             drifted_tree_pos_list.push_back(i);
 
+            cur_tree->warning_detector->resetChange();
             cur_tree->drift_detector->resetChange();
         }
 
@@ -167,6 +170,12 @@ void pearl::select_candidate_trees(const vector<int>& warning_tree_pos_list) {
 }
 
 void pearl::tree_transition(const vector<int>& warning_tree_pos_list) {
+    tree_transition(warning_tree_pos_list, candidate_trees);
+}
+
+void pearl::tree_transition(
+        const vector<int>& warning_tree_pos_list,
+        deque<shared_ptr<pearl_tree>>& _candidate_trees) {
     shared_ptr<pearl_tree> cur_tree = nullptr;
     for (auto warning_tree_pos : warning_tree_pos_list) {
         cur_tree = static_pointer_cast<pearl_tree>(foreground_trees[warning_tree_pos]);
@@ -179,18 +188,24 @@ void pearl::tree_transition(const vector<int>& warning_tree_pos_list) {
         } else {
             if (!tree_pool[next_id]->is_candidate) {
                 // TODO
-                if (candidate_trees.size() >= max_num_candidate_trees) {
-                    candidate_trees[0]->is_candidate = false;
-                    candidate_trees.pop_front();
+                if (_candidate_trees.size() >= max_num_candidate_trees) {
+                    _candidate_trees[0]->is_candidate = false;
+                    _candidate_trees.pop_front();
                 }
                 tree_pool[next_id]->is_candidate = true;
-                candidate_trees.push_back(tree_pool[next_id]);
+                _candidate_trees.push_back(tree_pool[next_id]);
             }
         }
     }
 }
 
 void pearl::pattern_match_candidate_trees(const vector<int>& warning_tree_pos_list) {
+    pattern_match_candidate_trees(warning_tree_pos_list, candidate_trees);
+}
+
+void pearl::pattern_match_candidate_trees(
+        const vector<int>& warning_tree_pos_list,
+        deque<shared_ptr<pearl_tree>>& _candidate_trees) {
 
     set<int> ids_to_exclude;
     shared_ptr<pearl_tree> cur_tree = nullptr;
@@ -217,15 +232,14 @@ void pearl::pattern_match_candidate_trees(const vector<int>& warning_tree_pos_li
         if (cur_state.find(i) == cur_state.end()
             && !tree_pool[i]->is_candidate) {
 
-            if (candidate_trees.size() >= max_num_candidate_trees) {
-                candidate_trees[0]->is_candidate = false;
-                candidate_trees.pop_front();
+            if (_candidate_trees.size() >= max_num_candidate_trees) {
+                _candidate_trees[0]->is_candidate = false;
+                _candidate_trees.pop_front();
             }
 
             tree_pool[i]->is_candidate = true;
-            candidate_trees.push_back(tree_pool[i]);
+            _candidate_trees.push_back(tree_pool[i]);
         }
-
     }
 }
 
@@ -359,12 +373,31 @@ bool pearl::is_state_graph_stable() {
 pearl_tree::pearl_tree(int tree_pool_id,
                        int kappa_window_size,
                        double warning_delta,
-                       double drift_delta) :
-        arf_tree(warning_delta, drift_delta),
+                       double drift_delta,
+                       mt19937 mrand) :
+        arf_tree(warning_delta, drift_delta, mrand),
         tree_pool_id(tree_pool_id),
         kappa_window_size(kappa_window_size) {
 
-    tree = make_unique<HT::HoeffdingTree>();
+    tree = make_unique<HT::HoeffdingTree>(mrand);
+    warning_detector = make_unique<HT::ADWIN>(warning_delta);
+    drift_detector = make_unique<HT::ADWIN>(drift_delta);
+}
+
+pearl_tree::pearl_tree(int tree_pool_id,
+                       int kappa_window_size,
+                       int pro_drift_window_size,
+                       double warning_delta,
+                       double drift_delta,
+                       double hybrid_delta,
+                       std::mt19937 mrand) :
+        arf_tree(warning_delta, drift_delta, mrand),
+        tree_pool_id(tree_pool_id),
+        kappa_window_size(kappa_window_size),
+        pro_drift_window_size(pro_drift_window_size),
+        hybrid_delta(hybrid_delta) {
+
+    tree = make_unique<HT::HoeffdingTree>(mrand);
     warning_detector = make_unique<HT::ADWIN>(warning_delta);
     drift_detector = make_unique<HT::ADWIN>(drift_delta);
 }
@@ -384,10 +417,30 @@ int pearl_tree::predict(Instance& instance, bool track_performance) {
     }
 
     if (track_performance) {
-        if (predicted_labels.size() >= kappa_window_size) {
-            predicted_labels.pop_front();
+
+        if (predicted_labels_window.size() >= kappa_window_size) {
+            predicted_labels_window.pop_front();
         }
-        predicted_labels.push_back(result);
+        predicted_labels_window.push_back(result);
+
+
+        if (pro_drift_window_size > 0) {
+            int correct_count = (int) (result == instance.getLabel());
+            if (predicted_result_right_window.size() >= pro_drift_window_size) {
+                int right_front_label = predicted_result_right_window.front();
+                predicted_result_right_window.pop_front();
+                right_correct_count -= right_front_label;
+
+                if (predicted_result_left_window.size() >= pro_drift_window_size) {
+                    left_correct_count -= predicted_result_left_window.front();
+                    predicted_result_left_window.pop_front();
+                }
+                left_correct_count += right_front_label;
+                predicted_result_left_window.push_back(right_front_label);
+            }
+            right_correct_count += correct_count;
+            predicted_result_right_window.push_back(correct_count);
+        }
 
         // the background tree performs prediction for performance eval
         if (bg_pearl_tree) {
@@ -406,9 +459,55 @@ void pearl_tree::train(Instance& instance) {
     }
 }
 
+double pearl_tree::get_variance() {
+    double avg =
+        (left_correct_count + right_correct_count) / (pro_drift_window_size * 2);
+    double sum = 0.0;
+
+    for (int v : predicted_result_right_window) {
+        sum += ((v - avg) * (v - avg));
+    }
+
+    for (int v : predicted_result_left_window) {
+        sum += ((v - avg) * (v - avg));
+    }
+
+    return sum / (pro_drift_window_size * 2);
+}
+
+bool pearl_tree::has_actual_drift() {
+    if (predicted_result_left_window.size() < pro_drift_window_size) {
+        return false;
+    }
+
+    double left_window_mean = left_correct_count / pro_drift_window_size;
+    double right_window_mean = right_correct_count / pro_drift_window_size;
+
+    double bound = compute_hoeffding_bound(get_variance(), pro_drift_window_size, drift_delta);
+    double hybrid_bound = (bound - bound*hybrid_delta) / (hybrid_delta - 2 * abs(bound) * hybrid_delta + 1);
+
+    cout << to_string(right_window_mean) << " - "
+         << to_string(left_window_mean) << ">"
+         << to_string(bound)
+         << endl;
+
+    return (left_window_mean - right_window_mean) > hybrid_bound;
+}
+
+double pearl_tree::compute_hoeffding_bound(double variance, double window_size, double delta) {
+    // hoeffding bound with bonferroni correction
+    double m = 1.0 / ((1.0 / window_size) + (1.0 / window_size));
+    delta = delta / (window_size * 2);
+
+    double epsilon = sqrt((2 / m * variance * log(2 / delta)))
+                        + 2 / (3 * m) * log(2 / delta);
+
+    return epsilon;
+}
+
 void pearl_tree::update_kappa(const deque<int>& actual_labels, int class_count) {
 
-    if (predicted_labels.size() < kappa_window_size || actual_labels.size() < kappa_window_size) {
+    if (predicted_labels_window.size() < kappa_window_size || actual_labels.size() < kappa_window_size) {
         kappa = INT_MIN;
         return;
     }
@@ -417,8 +516,8 @@ void pearl_tree::update_kappa(const deque<int>& actual_labels, int class_count) 
     int correct = 0;
 
     for (int i = 0; i < kappa_window_size; i++) {
-        confusion_matrix[actual_labels[i]][predicted_labels[i]]++;
-        if (actual_labels[i] == predicted_labels[i]) {
+        confusion_matrix[actual_labels[i]][predicted_labels_window[i]]++;
+        if (actual_labels[i] == predicted_labels_window[i]) {
             correct++;
         }
     }
@@ -461,9 +560,19 @@ double pearl_tree::compute_kappa(const vector<vector<int>>& confusion_matrix,
 
 void pearl_tree::reset() {
     bg_pearl_tree = nullptr;
+    replaced_tree = nullptr;
     is_candidate = false;
     warning_detector->resetChange();
     drift_detector->resetChange();
-    predicted_labels.clear();
+    predicted_result_right_window.clear();
+    predicted_result_left_window.clear();
+    predicted_labels_window.clear();
+    left_correct_count = 0.0;
+    right_correct_count = 0.0;
     kappa = INT_MIN;
+}
+
+void pearl_tree::set_expected_drift_prob(double p) {
+    warning_detector->setExpectedDriftProb(p);
+    drift_detector->setExpectedDriftProb(p);
 }

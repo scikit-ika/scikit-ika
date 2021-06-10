@@ -28,6 +28,8 @@ class adaptive_random_forest {
 
         adaptive_random_forest(int num_trees,
                                int arf_max_features,
+                               int lambda,
+                               int seed,
                                double warning_delta,
                                double drift_delta);
 
@@ -37,18 +39,17 @@ class adaptive_random_forest {
         bool get_next_instance();
         int get_cur_instance_label();
         void delete_cur_instance();
-        void prepare_instance(Instance& instance);
 
         virtual int predict();
-        void train();
+        virtual void train();
         int vote(const vector<int>& votes);
-
 
     protected:
 
         int num_trees;
         int num_features;
         int arf_max_features;
+        int lambda;
         double warning_delta;
         double drift_delta;
 
@@ -59,27 +60,27 @@ class adaptive_random_forest {
 
         virtual void init();
         shared_ptr<arf_tree> make_arf_tree();
-        void online_bagging(Instance& instance, arf_tree& tree);
         bool detect_change(int error_count, unique_ptr<HT::ADWIN>& detector);
 };
 
 class arf_tree {
     public:
         arf_tree(double warning_delta,
-                 double drift_delta);
+                 double drift_delta,
+                 std::mt19937 mrand);
 
         virtual void train(Instance& instance);
-        virtual int predict(Instance& instance, bool track_performance);
-        virtual void reset();
+        virtual int predict(Instance& instance);
 
         unique_ptr<HT::HoeffdingTree> tree;
         shared_ptr<arf_tree> bg_arf_tree;
         unique_ptr<HT::ADWIN> warning_detector;
         unique_ptr<HT::ADWIN> drift_detector;
 
-    private:
+    protected:
         double warning_delta;
         double drift_delta;
+        std::mt19937 mrand;
 };
 
 #endif

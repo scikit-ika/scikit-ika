@@ -81,6 +81,7 @@ class ADWIN {
 public:
 	ADWIN();
 	ADWIN(double d);
+	ADWIN(double d, double tension);
 	ADWIN(int cl);
 	ADWIN(const Json::Value& jv);
 	virtual ~ADWIN();
@@ -104,6 +105,11 @@ public:
 	bool blnBucketDeleted;
 	int BucketNumberMAX;
 	int mintMinWinLength;
+
+    // adaptive hoeffding bound
+    bool isAdaptive = false;
+    double tension;
+    double expectedDriftProb = -1;
 
 	ADList* listRowBuckets;
 
@@ -131,6 +137,8 @@ public:
 	bool blnCutexpression(int n0, int n1, double u0, double u1, double v0,
 			double v1, double absvalue, double delta);
 	void setW(int W0);
+
+	void setExpectedDriftProb(double p);
 
 	void toJson(Json::Value& jv);
 

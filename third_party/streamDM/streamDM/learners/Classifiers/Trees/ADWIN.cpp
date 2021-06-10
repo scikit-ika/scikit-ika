@@ -330,6 +330,13 @@ ADWIN::ADWIN(double d) {
 	mdbldelta = d;
 }
 
+ADWIN::ADWIN(double d, double t) {
+    init();
+    mdbldelta = d;
+    tension = t;
+    isAdaptive = true;
+}
+
 ADWIN::ADWIN(int cl) {
 	init();
 	mintClock = cl;
@@ -619,12 +626,11 @@ bool ADWIN::setInput(double intEntrada, double delta) {
 						blnExit = true;
 						break;
 					}
-					double absvalue = (double) (u0 / n0) - (u1 / n1); //n1<WIDTH-mintMinWinLength-1
+
+					double absvalue = (double) (u0 / n0) - (u1 / n1); // n1 < WIDTH - mintMinWinLength - 1
 					if ((n1 > mintMinWinLength + 1 && n0 > mintMinWinLength + 1)
 							&& // Diference NEGATIVE
-								//if(
-							blnCutexpression(n0, n1, u0, u1, v0, v1, absvalue,
-									delta)) {
+							blnCutexpression(n0, n1, u0, u1, v0, v1, absvalue, delta)) {
 						blnBucketDeleted = true;
 						Detect = mintTime;
 
@@ -667,13 +673,22 @@ bool ADWIN::blnCutexpression(int n0, int n1, double u0, double u1, double v0,
 	double v = getVariance();
 	double m = ((double) 1 / ((n0 - mintMinWinLength + 1)))
 			+ ((double) 1 / ((n1 - mintMinWinLength + 1)));
-	double epsilon = sqrt(2 * m * v * dd) + (double) 2 / 3 * dd * m;
+
+	double epsilon = sqrt(2 * m * v * dd);
+    if (isAdaptive) {
+        epsilon *= (1 + tension * (1 - expectedDriftProb));
+    }
+    epsilon += ((double) 2 / 3 * dd * m);
 
 	return (fabs(absvalue) > epsilon);
 }
 
 void ADWIN::setW(int W0) {
 	//
+}
+
+void ADWIN::setExpectedDriftProb(double p) {
+    expectedDriftProb = p;
 }
 
 } /* namespace HT */

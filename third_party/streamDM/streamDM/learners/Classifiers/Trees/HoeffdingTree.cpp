@@ -50,6 +50,11 @@ HoeffdingTree::HoeffdingTree() {
 	renew();
 }
 
+HoeffdingTree::HoeffdingTree(std::mt19937 mrand) :
+    HoeffdingTree() {
+    this->mrand = mrand;
+}
+
 HoeffdingTree::~HoeffdingTree() {
 	if (classPrediction != nullptr) {
 		delete[] classPrediction;
@@ -691,7 +696,7 @@ LearningNode* HoeffdingTree::newLearningNode(
 		const vector<double>& initialClassObservations) {
 	LearningNode* ret;
 	if (this->params.leafPrediction == 0) { //MC
-		ret = new ActiveLearningNode(initialClassObservations);
+		ret = new ActiveLearningNode(initialClassObservations, mrand);
 	} else if (this->params.leafPrediction == 1) { //NB
 		ret = new LearningNodeNB(initialClassObservations);
 	} else { //NBAdaptive
