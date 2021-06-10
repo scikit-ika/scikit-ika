@@ -50,7 +50,7 @@ def test_nacre():
     stability_delta = 0.001
     hybrid_delta = 0.001
 
-    classifier = pro_pearl(num_trees,
+    classifier = nacre(num_trees,
                      max_num_candidate_trees,
                      repo_size,
                      edit_distance_threshold,

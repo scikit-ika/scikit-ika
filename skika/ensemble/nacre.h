@@ -1,31 +1,31 @@
-#ifndef __PRO_PEARL_H__
-#define __PRO_PEARL_H__
+#ifndef __NACRE_H__
+#define __NACRE_H__
 
 #include "pearl.h"
 
-class pro_pearl : public pearl {
+class nacre : public pearl {
 
     public:
 
-        pro_pearl(int num_trees,
-                  int max_num_candidate_trees,
-                  int repo_size,
-                  int edit_distance_threshold,
-                  int kappa_window_size,
-                  int lossy_window_size,
-                  int reuse_window_size,
-                  int arf_max_features,
-                  int lambda,
-                  int seed,
-                  double bg_kappa_threshold,
-                  double cd_kappa_threshold,
-                  double reuse_rate_upper_bound,
-                  double warning_delta,
-                  double drift_delta,
-                  int pro_drift_window_size,
-                  double hybrid_delta,
-                  int backtrack_window,
-                  double stability_delta);
+        nacre(int num_trees,
+              int max_num_candidate_trees,
+              int repo_size,
+              int edit_distance_threshold,
+              int kappa_window_size,
+              int lossy_window_size,
+              int reuse_window_size,
+              int arf_max_features,
+              int lambda,
+              int seed,
+              double bg_kappa_threshold,
+              double cd_kappa_threshold,
+              double reuse_rate_upper_bound,
+              double warning_delta,
+              double drift_delta,
+              int pro_drift_window_size,
+              double hybrid_delta,
+              int backtrack_window,
+              double stability_delta);
 
         virtual void train();
         virtual shared_ptr<pearl_tree> make_pearl_tree(int tree_pool_id);

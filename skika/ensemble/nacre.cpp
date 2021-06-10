@@ -1,6 +1,6 @@
-#include "pro_pearl.h"
+#include "nacre.h"
 
-pro_pearl::pro_pearl(int num_trees,
+nacre::nacre(int num_trees,
                      int max_num_candidate_trees,
                      int repo_size,
                      int edit_distance_threshold,
@@ -43,7 +43,7 @@ pro_pearl::pro_pearl(int num_trees,
 
 }
 
-void pro_pearl::init() {
+void nacre::init() {
     tree_pool = vector<shared_ptr<pearl_tree>>(num_trees);
     stability_detectors = vector<unique_ptr<HT::ADWIN>>();
 
@@ -54,7 +54,7 @@ void pro_pearl::init() {
     }
 }
 
-shared_ptr<pearl_tree> pro_pearl::make_pearl_tree(int tree_pool_id) {
+shared_ptr<pearl_tree> nacre::make_pearl_tree(int tree_pool_id) {
     return make_shared<pearl_tree>(tree_pool_id,
                                    kappa_window_size,
                                    pro_drift_window_size,
@@ -68,7 +68,7 @@ shared_ptr<pearl_tree> pro_pearl::make_pearl_tree(int tree_pool_id) {
 // find warning trees, select candidate trees
 // find drifted trees, update potential_drifted_tree_indices
 // candidate trees make predictions
-void pro_pearl::train() {
+void nacre::train() {
     if (foreground_trees.empty()) {
         init();
     }
@@ -160,7 +160,7 @@ void pro_pearl::train() {
     }
 }
 
-bool pro_pearl::has_actual_drift(int tree_idx) {
+bool nacre::has_actual_drift(int tree_idx) {
     if (potential_drifted_tree_indices.find(tree_idx) != potential_drifted_tree_indices.end()) {
         return false;
 
@@ -172,7 +172,7 @@ bool pro_pearl::has_actual_drift(int tree_idx) {
     return cur_tree->has_actual_drift();
 }
 
-vector<int> pro_pearl::adapt_state(
+vector<int> nacre::adapt_state(
         const vector<int>& drifted_tree_pos_list,
         bool is_proactive) {
 
@@ -183,7 +183,7 @@ vector<int> pro_pearl::adapt_state(
     }
 }
 
-vector<int> pro_pearl::adapt_state_with_proactivity(
+vector<int> nacre::adapt_state_with_proactivity(
         const vector<int>& drifted_tree_pos_list,
         deque<shared_ptr<pearl_tree>>& _candidate_trees) {
 
@@ -311,7 +311,7 @@ vector<int> pro_pearl::adapt_state_with_proactivity(
     return actual_drifted_tree_indices;
 }
 
-int pro_pearl::find_last_actual_drift_point(int tree_idx) {
+int nacre::find_last_actual_drift_point(int tree_idx) {
     if (backtrack_instances.size() > num_max_backtrack_instances) {
         LOG("backtrack_instances has too many data instance");
         exit(1);
@@ -366,13 +366,13 @@ int pro_pearl::find_last_actual_drift_point(int tree_idx) {
     return -1;
 }
 
-void pro_pearl::set_expected_drift_prob(int tree_idx, double p) {
+void nacre::set_expected_drift_prob(int tree_idx, double p) {
     shared_ptr<pearl_tree> cur_tree = nullptr;
     cur_tree = static_pointer_cast<pearl_tree>(foreground_trees[tree_idx]);
     cur_tree->set_expected_drift_prob(p);
 }
 
-bool pro_pearl::compare_kappa_arf(shared_ptr<arf_tree>& tree1,
+bool nacre::compare_kappa_arf(shared_ptr<arf_tree>& tree1,
                                   shared_ptr<arf_tree>& tree2) {
     shared_ptr<pearl_tree> pearl_tree1 =
         static_pointer_cast<pearl_tree>(tree1);
@@ -382,7 +382,7 @@ bool pro_pearl::compare_kappa_arf(shared_ptr<arf_tree>& tree1,
     return pearl_tree1->kappa < pearl_tree2->kappa;
 }
 
-bool pro_pearl::detect_stability(int error_count,
+bool nacre::detect_stability(int error_count,
                                  unique_ptr<HT::ADWIN>& detector) {
 
     double old_error = detector->getEstimation();
@@ -401,6 +401,6 @@ bool pro_pearl::detect_stability(int error_count,
     return false;
 }
 
-vector<int> pro_pearl::get_stable_tree_indices() {
+vector<int> nacre::get_stable_tree_indices() {
     return stable_tree_indices;
 }
