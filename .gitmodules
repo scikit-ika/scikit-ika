@@ -7,3 +7,6 @@
 [submodule "third_party/scikit-multiflow"]
 	path = third_party/scikit-multiflow
 	url = https://github.com/ika-day-care/scikit-multiflow
+[submodule "third_party/denstream"]
+	path = third_party/denstream
+	url = https://github.com/ingako/denstream
