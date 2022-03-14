@@ -12,10 +12,14 @@ def test_arf():
     warning_delta = 0.0001
     drift_delta = 0.00001
 
+    lam = 6
+    seed = 0
     max_samples = 5000
 
     classifier = adaptive_random_forest(num_trees,
                                         max_features,
+                                        lam,
+                                        seed,
                                         warning_delta,
                                         drift_delta)
     classifier.init_data_source("./recurrent-data/real-world/covtype.arff");
