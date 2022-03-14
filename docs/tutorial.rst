@@ -2,15 +2,16 @@
 Tutorials
 =================
 
------------------
+----------------------------------------------------
 Tutorial 1: Predicting Forest Cover Type using PEARL
------------------
+----------------------------------------------------
 
-Data Set Information:
+Dataset Information:
 
 * Forest cover type is natural resource inventory information often economically or legally impossible to collect. Vital to any private, state, or federal land management agency.
 * Collected from four wilderness areas located in the Roosevelt National Forest of northern Colorado.
 * Contains variables such as wilderness areas and soil type.
+* Available under the `recurrent-data repo <https://github.com/scikit-ika/recurrent-data/tree/master/real-world>`_.
 
 Code ::
 
@@ -26,7 +27,7 @@ Code ::
             self.num_instances = 0
             self.classifier = classifier
 
-            self.classifier.init_data_source("data/covtype.arff");
+            self.classifier.init_data_source("/your/path/recurrent-data/real-world/covtype.arff");
 
         def __call__(self):
 
@@ -137,11 +138,11 @@ Result:
 .. image:: _static/covtype-results.svg
 
 
------------------
+----------------------------------------------------------------------------------
 Tutorial 2: Error rate comparison between AutoDDM and DDM on synthetic data stream
------------------
+----------------------------------------------------------------------------------
 
-Data Set Information:
+Dataset Information:
 
 * AGRAWAL data stream generator.
 
@@ -323,3 +324,255 @@ Code ::
 Result:
 
 .. image:: _static/ErrorRate.PNG
+
+-----------------------------------------------
+Tutorial 3: Transfer Learning with AOTrAdaBoost
+-----------------------------------------------
+
+Dataset Information:
+
+* The bike datasets are real-world datasets available at the `transfer-data repo <https://github.com/scikit-ika/transfer-data/tree/main/bike>`_.
+* The task is to classify whether rental bikes are in low or high demand at different times in different cities. We use the configuration of weekdays from Washington D.C. as the source and weekends in London as the target, whereby both source and target datasets contain concept drifts.
+
+Code ::
+
+    from skika.aotradaboost import trans_tree_wrapper
+
+    sample_freq = 100
+    num_trees = 60
+    rf_lambda = 1
+    random_state = 0
+
+    warning_delta = 0.0001
+    drift_delta = 0.00001
+    kappa_window = 60
+
+    least_transfer_warning_period_instances_length = 300
+    instance_store_size = 8000
+    num_diff_distr_instances = 200
+    bbt_pool_size = 40
+    eviction_interval = 1000000
+    transfer_kappa_threshold = 0.1
+    transfer_gamma = 8
+    transfer_match_lowerbound = 0.0
+    boost_mode = "atradaboost" # i.e. aotradaboost
+    disable_drift_detection = False
+
+
+    data_file_path = "/your/path/transfer-data/bike/dc-weekend-source.arff;/your/path/transfer-data/bike/weekday.arff";
+
+    classifier = trans_tree_wrapper(
+        len(data_file_path.split(";")),
+        random_state,
+        kappa_window,
+        warning_delta,
+        drift_delta,
+        least_transfer_warning_period_instances_length,
+        instance_store_size,
+        num_diff_distr_instances,
+        bbt_pool_size,
+        eviction_interval,
+        transfer_kappa_threshold,
+        transfer_gamma,
+        transfer_match_lowerbound,
+        boost_mode,
+        num_trees,
+        disable_drift_detection)
+
+    data_file_list = data_file_path.split(";")
+
+
+    prequential_evaluation_transfer(
+        classifier=classifier,
+        data_file_paths=data_file_list,
+        sample_freq=sample_freq,
+        expected_accuracies=expected_accuracies)
+
+    class ClassifierMetrics:
+        def __init__(self):
+            self.correct = 0
+            self.instance_idx = 0
+
+    def prequential_evaluation_transfer(
+            classifier,
+            data_file_paths,
+            sample_freq,
+            expected_accuracies):
+
+        classifier_metrics_list = []
+        for i in range(len(data_file_paths)):
+            classifier.init_data_source(i, data_file_paths[i])
+            classifier_metrics_list.append(ClassifierMetrics())
+
+        classifier_idx = 0
+        classifier.switch_classifier(classifier_idx)
+        metric = classifier_metrics_list[classifier_idx]
+
+        while True:
+            if not classifier.get_next_instance():
+                # Switch streams to simulate parallel streams
+
+                classifier_idx += 1
+                if classifier_idx >= len(data_file_paths):
+                    break
+
+                classifier.switch_classifier(classifier_idx)
+                metric = classifier_metrics_list[classifier_idx]
+
+                print()
+                print(f"switching to classifier_idx {classifier_idx}")
+                continue
+
+            classifier_metrics_list[classifier_idx].instance_idx += 1
+
+            # test
+            prediction = classifier.predict()
+
+            actual_label = classifier.get_cur_instance_label()
+            if prediction == actual_label:
+                metric.correct += 1
+
+            # train
+            classifier.train()
+
+            log_metrics(
+                classifier_metrics_list[classifier_idx].instance_idx,
+                sample_freq,
+                metric,
+                classifier)
+
+    def log_metrics(count, sample_freq, metric, classifier):
+        if count % sample_freq == 0 and count != 0:
+            accuracy = round(metric.correct / sample_freq, 2)
+            print(f"{accuracy}")
+
+            metric.correct = 0
+
+----------------------------------------
+Tutorial 4: Transfer Learning with OPERA
+----------------------------------------
+
+Dataset Information:
+
+* The original Fashion MNIST datasets are used as the source stream, and the target stream is generated with varying similarities by inverting all pixel values of v% of the classes. We denote these configurations as MNIST v% or Fashion MNIST v%, where v% indicates the dissimilarity between the domains. In addition, we apply a 2 by 2 filter on both MNIST and Fashion MNIST datasets for reasonable performance outputs from the random forest base learners with limited tree models.
+* Available at the `transfer-data repo <https://github.com/scikit-ika/transfer-data>`_.
+
+Code ::
+
+    from skika.transfer import opera_wrapper
+
+    sample_freq = 1000
+    num_trees = 100
+    rf_lambda = 1
+    random_state = 0
+
+    num_phantom_branches=30
+    squashing_delta=7
+    obs_period=1000
+    conv_delta=0.1
+    conv_threshold=0.15
+    obs_window_size=50
+    perf_window_size=5000
+    min_obs_period=2000
+    split_range=10
+    force_disable_patching=False
+    force_enable_patching=False
+    grow_transfer_surrogate_during_obs=False
+
+
+    # datasets separated by the semi-colons
+    data_file_path="/your/path/transfer-data/fashion-mnist/flip20/source.arff;/your/path/transfer-data/fashion-mnist/flip20/target.arff";
+
+    classifier = opera_wrapper(
+        len(data_file_path.split(";")),
+        random_state,
+        num_trees,
+        rf_lambda,
+        num_phantom_branches,
+        squashing_delta,
+        obs_period,
+        conv_delta,
+        conv_threshold,
+        obs_window_size,
+        perf_window_size,
+        min_obs_period,
+        split_range,
+        grow_transfer_surrogate_during_obs,
+        force_disable_patching,
+        force_enable_patching)
+
+    data_file_list = data_file_path.split(";")
+
+
+    prequential_evaluation_transfer(
+        classifier=classifier,
+        data_file_paths=data_file_list,
+        max_samples=max_samples,
+        sample_freq=sample_freq,
+        expected_accuracies=expected_accuracies)
+
+    class ClassifierMetrics:
+    def __init__(self):
+        self.correct = 0
+        self.instance_idx = 0
+
+    def prequential_evaluation_transfer(
+        classifier,
+        data_file_paths,
+        max_samples,
+        sample_freq,
+        expected_accuracies):
+
+    classifier_metrics_list = []
+    for i in range(len(data_file_paths)):
+        classifier.init_data_source(i, data_file_paths[i])
+        classifier_metrics_list.append(ClassifierMetrics())
+
+    classifier_idx = 0
+    classifier.switch_classifier(classifier_idx)
+    metric = classifier_metrics_list[classifier_idx]
+
+    while True:
+        if not classifier.get_next_instance():
+            # Switch streams to simulate parallel streams
+
+            classifier_idx += 1
+            if classifier_idx >= len(data_file_paths):
+                break
+
+            classifier.switch_classifier(classifier_idx)
+            metric = classifier_metrics_list[classifier_idx]
+
+            print()
+            print(f"switching to classifier_idx {classifier_idx}")
+            continue
+
+        classifier_metrics_list[classifier_idx].instance_idx += 1
+
+        # test
+        prediction = classifier.predict()
+
+        actual_label = classifier.get_cur_instance_label()
+        if prediction == actual_label:
+            metric.correct += 1
+
+        # train
+        classifier.train()
+
+        log_metrics(
+            classifier_metrics_list[classifier_idx].instance_idx,
+            sample_freq,
+            metric,
+            classifier)
+
+    def log_metrics(count, sample_freq, metric, classifier):
+        if count % sample_freq == 0 and count != 0:
+            accuracy = round(metric.correct / sample_freq, 2)
+
+            # Phantom tree outputs
+            f = int(classifier.get_full_region_complexity())
+            e = int(classifier.get_error_region_complexity())
+            c = int(classifier.get_correct_region_complexity())
+
+            print(f"{count},{accuracy},{f},{e},{c}")
+            metric.correct = 0
