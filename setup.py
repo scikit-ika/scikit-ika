@@ -75,7 +75,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    ext_modules=[CMakeExtension('skika.ensemble')],
+    ext_modules=[CMakeExtension('skika.ensemble'), CMakeExtension('skika.transfer')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )

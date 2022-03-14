@@ -37,7 +37,7 @@ The test data is located in [here](https://github.com/scikit-ika/recurrent-data)
 
 Documentation follows the [NumPy/SciPy guidelines](https://numpydoc.readthedocs.io/en/latest/format.html) and you can find an example [here](https://www.sphinx-doc.org/en/master/usage/extensions/example_numpy.html).
 
-The documentation page is hosted in the **gh-pages** branch. It is updated whenever a new version is released to PyPI.
+The documentation page is hosted in the **gh-pages** branch. It is updated when a new version is released to PyPI.
 
 ```bash
 cd docs
