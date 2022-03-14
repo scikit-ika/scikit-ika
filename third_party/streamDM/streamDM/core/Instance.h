@@ -30,9 +30,6 @@ public:
 	Instance();
 	virtual ~Instance();
 
-    void setAttributeStatus(vector<int>& indices);
-    bool isAttributeEnabled(int idx) const;
-
 	//Values
 	virtual double getInputAttributeValue(int) const = 0;
     virtual int getInputAttributeID(int) const { return 0;}
@@ -59,17 +56,19 @@ public:
 	virtual void addValues(const vector<double>& values);
 
 	// only used in FPInstance
-	virtual list<list<double>>* getValues();
+	virtual vector<double> getValues();
 
 	virtual void addLabels(const vector<double>& values);
 
 	virtual Instance* clone() = 0;
 
+	virtual void setValue(int attIdx, double value);
+	virtual void setLabel(int attIdx, double label);
+	bool instanceInformationSaved;
+
 protected:
 	InstanceInformation* instanceInformation;
-	bool instanceInformationSaved;
 	double weight;
-    vector<bool> attributeStatus;
 };
 
 Instance* cloneInstance(const Instance* s);

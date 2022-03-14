@@ -50,39 +50,8 @@ HoeffdingTree::HoeffdingTree() {
 	renew();
 }
 
-HoeffdingTree::HoeffdingTree(std::mt19937& mrand) :
+HoeffdingTree::HoeffdingTree(std::mt19937 mrand) :
     HoeffdingTree() {
-    this->mrand = mrand;
-    this->is_ensemble_member = true;
-}
-
-HoeffdingTree::HoeffdingTree(
-        int leafPredictionType,
-        std::mt19937& mrand) : HoeffdingTree() {
-
-    this->params.leafPrediction = leafPredictionType;
-    this->mrand = mrand;
-    this->is_ensemble_member = true;
-}
-
-HoeffdingTree::HoeffdingTree(
-        int gracePeriod,
-	    float splitConfidence,
-	    float tieThreshold,
-	    bool binarySplits,
-	    bool noPrePrune,
-	    int nbThreshold,
-        int leafPredictionType,
-        std::mt19937& mrand) : HoeffdingTree() {
-
-    this->params.gracePeriod = gracePeriod,
-    this->params.splitConfidence = splitConfidence;
-    this->params.tieThreshold = tieThreshold;
-    this->params.binarySplits = binarySplits;
-    this->params.noPrePrune = noPrePrune;
-    this->params.nbThreshold = nbThreshold;
-
-    this->params.leafPrediction = leafPredictionType;
     this->mrand = mrand;
 }
 
@@ -133,14 +102,14 @@ void HoeffdingTree::doSetParams() {
 HoeffdingTree::Params::Params() {
 	maxByteSize = 33554432;
 	memoryEstimatePeriod = 1000000;
-	gracePeriod = 200; // 50
-	splitConfidence = 0.0000001f; // 0.01
+	gracePeriod = 200;
+	splitConfidence = 0.0000001f;
 	tieThreshold = 0.05;
 	binarySplits = false;
 	stopMemManagement = false;
 //	removePoorAtts;
 	noPrePrune = false;
-    this->leafPrediction = 0;
+	this->leafPrediction = 0;
 	this->nbThreshold = 0;
 }
 
@@ -177,7 +146,6 @@ void HoeffdingTree::Params::toJson(Json::Value& jv) {
 }
 
 void HoeffdingTree::train(const Instance& instance) {
-    trainingWeightSeenByModel += instance.getWeight();
 	trainOnInstanceImpl(&instance);
 }
 
@@ -244,165 +212,6 @@ void HoeffdingTree::showTreePath(const Instance& instance, Node* node) {
 	}
 	return;
 }
-
-DenseInstance* HoeffdingTree::generate_data(DenseInstance* sample_instance) {
-    DenseInstance* pseudo_instance = (DenseInstance*) sample_instance->clone();
-
-    // cout << "before random walk--------------------------" << endl << flush;
-    // cout << "sample instance" << endl << flush;
-    // for (double v : sample_instance->mInputData) {
-    //     cout << v << " ";
-    // }
-    // for (double v : sample_instance->mOutputData) {
-    //     cout << v << " ";
-    // }
-    // cout << endl;
-    // cout << "pseudo instance" << endl << flush;
-    // for (double v : pseudo_instance->mInputData) {
-    //     cout << v << " ";
-    // }
-    // for (double v : pseudo_instance->mOutputData) {
-    //     cout << v << " ";
-    // }
-    // cout << endl;
-
-    pseudo_instance = generate_data_by_random_walk(this->treeRoot, pseudo_instance);
-
-    // cout << "after random walk---------------------------" << endl << flush;
-    // cout << "sample instance" << endl << flush;
-    // for (double v : sample_instance->mInputData) {
-    //     cout << v << " ";
-    // }
-    // for (double v : sample_instance->mOutputData) {
-    //     cout << v << " ";
-    // }
-    // cout << endl;
-
-    // cout << "pseudo instance" << endl << flush;
-    // for (double v : pseudo_instance->mInputData) {
-    //     cout << v << " ";
-    // }
-    // for (double v : pseudo_instance->mOutputData) {
-    //     cout << v << " ";
-    // }
-    // cout << endl;
-
-    return pseudo_instance;
-}
-
-DenseInstance* HoeffdingTree::generate_data_by_random_walk(Node* node, DenseInstance* pseudo_instance) {
-    if (node == nullptr) {
-        cout << "Empty root" << endl;
-        exit(0);
-    }
-
-    SplitNode* splitNode = (SplitNode*) node;
-
-    // Add class label
-    if (node->isLeaf()) {
-        vector<double> class_predictions = node->getObservedClassDistribution();
-        double max_val = class_predictions[0];
-        int labelIdx = 0;
-
-        // Find class label with the highest probability
-        for (int i = 1; i < class_predictions.size(); i++) {
-            if (max_val < class_predictions[i]) {
-                max_val = class_predictions[i];
-                labelIdx = i;
-            }
-        }
-        pseudo_instance->setLabel(0, labelIdx);
-
-        return pseudo_instance;
-    }
-
-    InstanceConditionalTest* splitTest = splitNode->splitTest;
-    if (splitTest == nullptr) {
-        cout << "Empty splitTest" << endl;
-        exit(0);
-    }
-
-	int attIdx = splitTest->getAttIndex();
-    double attVal = splitTest->getAttValue();
-    if (pseudo_instance->getInputAttribute(attIdx)->isNumeric()) {
-        // Generate value by normal distribution
-        double mean = splitTest->att_mean;
-        double stddev = sqrt(splitTest->squared_distance_sum / splitTest->num_instances_seen);
-        normal_distribution<double> normal_distr(mean, stddev);
-
-        if (splitTest->min_att_val > splitTest->max_att_val) {
-            cout << "splitTest min attribute value is greater than max" << endl;
-            exit(1);
-        }
-
-        int loop_count = 0;
-        do {
-            attVal = normal_distr(mrand);
-
-            loop_count += 1;
-            if (loop_count > 500) {
-                cout << "infinite loop" << endl;
-                exit(1);
-                // break;
-            }
-        } while (attVal < splitTest->min_att_val || splitTest->max_att_val < attVal);
-
-        // cout << "attVal: " << attVal << endl;
-    }
-
-    pseudo_instance->setValue(attIdx, attVal);
-    pseudo_instance->modifiedAttIndices.push_back(attIdx);
-
-    // TODO use a different mrand for experiments
-    std::uniform_int_distribution<int> distr(0, splitNode->numChildren() - 1);
-    int randChildIdx = distr(mrand);
-    Node* child = splitNode->getChild(randChildIdx);
-    generate_data_by_random_walk(child, pseudo_instance);
-}
-
-string HoeffdingTree::printTree() {
-    if (treeRoot == nullptr) {
-        return "empty tree";
-    }
-
-    deque<SplitNode*> nodes;
-    nodes.push_back((SplitNode*) treeRoot);
-    std::stringstream ss;
-
-    while (nodes.size() > 0) {
-        int size = nodes.size();
-        for (int i = 0; i < size; i++) {
-            SplitNode *curNode = nodes[0];
-            nodes.pop_front();
-
-            if (curNode->isLeaf()) {
-                vector<double> class_predictions = curNode->getObservedClassDistribution();
-                double max_val = class_predictions[0];
-                int labelIdx = 0;
-
-                // Find class label with the highest probability
-                for (int j = 1; j < class_predictions.size(); j++) {
-                    if (max_val < class_predictions[j]) {
-                        max_val = class_predictions[j];
-                        labelIdx = j;
-                    }
-                }
-                ss << "[label]" << labelIdx << " ";
-
-            } else {
-                ss << "[" << curNode->splitTest->getAttIndex() << "]"
-                   << curNode->splitTest->getAttValue() << " ";
-                for (int j = 0; j < curNode->numChildren(); j++) {
-                    nodes.push_back((SplitNode*) curNode->getChild(j));
-                }
-            }
-        }
-        ss << endl;
-    }
-
-    return ss.str();
-}
-
 
 double HoeffdingTree::probability(const Instance&, int int1) {
 	return 0;
@@ -622,7 +431,7 @@ void HoeffdingTree::attemptToSplit(ActiveLearningNode* node, SplitNode* parent,
 		AttributeSplitSuggestion* splitDecision = (*iter);
 
 		// debug: show best split suggestion
-		// cout << showSplitSuggestion(splitDecision) << endl;
+//			cout << showSplitSuggestion(splitDecision) << endl;
 
 		if (splitDecision->splitTest == nullptr) {
 			// preprune - null wins
@@ -889,9 +698,9 @@ LearningNode* HoeffdingTree::newLearningNode(
 	if (this->params.leafPrediction == 0) { //MC
 		ret = new ActiveLearningNode(initialClassObservations, mrand);
 	} else if (this->params.leafPrediction == 1) { //NB
-		ret = new LearningNodeNB(initialClassObservations, mrand);
+		ret = new LearningNodeNB(initialClassObservations);
 	} else { //NBAdaptive
-		ret = new LearningNodeNBAdaptive(initialClassObservations, mrand);
+		ret = new LearningNodeNBAdaptive(initialClassObservations);
 	}
 	return ret;
 }

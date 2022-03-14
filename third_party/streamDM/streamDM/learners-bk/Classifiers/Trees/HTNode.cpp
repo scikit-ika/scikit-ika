@@ -287,7 +287,6 @@ FoundNode* SplitNode::filterInstanceToLeaf(const Instance* inst,
 		}
 		return new FoundNode(nullptr, this, childIndex);
 	}
-
 	return new FoundNode(this, parent, parentBranch);
 }
 
@@ -339,7 +338,7 @@ void InactiveLearningNode::learnFromInstance(const Instance* inst,
 			inst->getWeight());
 }
 
-ActiveLearningNode::ActiveLearningNode(const vector<double>& initialClassObservations, std::mt19937& mrand) :
+ActiveLearningNode::ActiveLearningNode(const vector<double>& initialClassObservations, std::mt19937 mrand) :
         ActiveLearningNode(initialClassObservations) {
     this->mrand = mrand;
 }
@@ -438,13 +437,10 @@ void ActiveLearningNode::learnFromInstance(const Instance* inst,
 
 	auto iter = (*attributeObservers).begin();
 
-    vector<int> attribute_indices;
-    if (ht->is_ensemble_member) {
-        attribute_indices = Utils::selectKNums(
-                inst->getNumberInputAttributes(),
-                sqrt(inst->getNumberInputAttributes()) + 1,
-                mrand);
-    }
+    vector<int> attribute_indices = Utils::selectKNums(
+            inst->getNumberInputAttributes(),
+            sqrt(inst->getNumberInputAttributes()),
+            mrand);
 
 	for (int i = 0; i < inst->getNumberInputAttributes(); i++, iter++) {
 		int instAttIndex = i;
@@ -457,18 +453,12 @@ void ActiveLearningNode::learnFromInstance(const Instance* inst,
 			(*iter) = obs;
 		}
 
-        if (ht->is_ensemble_member) {
-            if (std::find(attribute_indices.begin(), attribute_indices.end(), instAttIndex) !=
-                attribute_indices.end()) {
-                obs->observeAttributeClass(inst->getInputAttributeValue(instAttIndex),
-                                           (int) inst->getLabel(), inst->getWeight());
-            } else {
-                obs->observeAttributeClass(inst->getInputAttributeValue(instAttIndex),
-                                           (int) inst->getLabel(), 0);
-            }
+        if (std::find(attribute_indices.begin(), attribute_indices.end(), instAttIndex) != attribute_indices.end()) {
+            obs->observeAttributeClass(inst->getInputAttributeValue(instAttIndex),
+                    (int) inst->getLabel(), inst->getWeight());
         } else {
-                obs->observeAttributeClass(inst->getInputAttributeValue(instAttIndex),
-                                           (int) inst->getLabel(), inst->getWeight());
+            obs->observeAttributeClass(inst->getInputAttributeValue(instAttIndex),
+                    (int) inst->getLabel(), 0);
         }
 	}
 }
@@ -583,8 +573,6 @@ list<AttributeSplitSuggestion*>* ActiveLearningNode::getBestSplitSuggestions(
 	vector<double>& preSplitDist = observedClassDistribution;
 
 	if (!ht->params.noPrePrune) {
-        // TODO
-        // cout << "getBestSplitSuggestion::noPrePrune - should not enter" << endl;
 		vector<vector<double>> * vvd = new vector<vector<double>>(1);
 		(*vvd)[0] = preSplitDist;
 
@@ -620,13 +608,6 @@ void ActiveLearningNode::disableAttribute(int attIndex) {
 
 LearningNodeNB::LearningNodeNB(const vector<double>& initialClassObservations) :
 		ActiveLearningNode(initialClassObservations) {
-	this->mClassTypes = {NT_LearningNodeNB,NT_ActiveLearningNode,NT_LearningNode,NT_Node};
-}
-
-LearningNodeNB::LearningNodeNB(
-        const vector<double>& initialClassObservations,
-        mt19937& mrand) :
-		ActiveLearningNode(initialClassObservations, mrand) {
 	this->mClassTypes = {NT_LearningNodeNB,NT_ActiveLearningNode,NT_LearningNode,NT_Node};
 }
 
@@ -700,15 +681,6 @@ vector<double>& LearningNodeNB::doNaiveBayesPrediction(const Instance* inst,
 LearningNodeNBAdaptive::LearningNodeNBAdaptive(
 		const vector<double>& initialClassObservations) :
 		LearningNodeNB(initialClassObservations) {
-	this->mcCorrectWeight = 0.0f;
-	this->nbCorrectWeight = 0.0f;
-	this->mClassTypes = {NT_LearningNodeNBAdaptive, NT_LearningNodeNB, NT_ActiveLearningNode, NT_LearningNode, NT_Node};
-}
-
-LearningNodeNBAdaptive::LearningNodeNBAdaptive(
-		const vector<double>& initialClassObservations,
-        mt19937& mrand) :
-		LearningNodeNB(initialClassObservations, mrand) {
 	this->mcCorrectWeight = 0.0f;
 	this->nbCorrectWeight = 0.0f;
 	this->mClassTypes = {NT_LearningNodeNBAdaptive, NT_LearningNodeNB, NT_ActiveLearningNode, NT_LearningNode, NT_Node};

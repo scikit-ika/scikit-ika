@@ -33,28 +33,13 @@ namespace HT {
 class HoeffdingTree: public Learner {
 public:
 	HoeffdingTree();
-	HoeffdingTree(std:: mt19937& mrand);
-    HoeffdingTree(int leafPredictionType, std::mt19937& mrand);
-
-    HoeffdingTree(
-        int gracePeriod,
-	    float splitConfidence,
-	    float tieThreshold,
-	    bool binarySplits,
-	    bool noPrePrune,
-	    int nbThreshold,
-        int leafPredictionType,
-        std::mt19937& mrand);
-
+	HoeffdingTree(std:: mt19937 mrand);
 	virtual ~HoeffdingTree();
 
 	void train(const Instance&);
 	double* getPrediction(const Instance&);
 	double probability(const Instance&, int);
     std::mt19937 mrand;
-    bool is_ensemble_member = false;
-
-    string printTree();
 
 public:
 	double* classPrediction;
@@ -124,10 +109,6 @@ public:
 
 	virtual void toJson(Json::Value& jv);
 
-	// For transfer
-    DenseInstance * generate_data(DenseInstance* sample_instance);
-    DenseInstance* generate_data_by_random_walk(Node* node, DenseInstance* pseudo_instance);
-
 private:
 	string showSplitSuggestion(AttributeSplitSuggestion* ass);
 	void showBestSplitSuggestions(
@@ -143,7 +124,6 @@ protected:
 
 	bool mFixTree;
 	vector<int> mTreePropertyIndexList;
-
 };
 // class HoeffdingTree
 

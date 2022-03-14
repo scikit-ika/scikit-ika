@@ -78,19 +78,8 @@ int NumericAttributeBinaryTest::branchForInstance(const Instance* inst) {
 		return -1;
 	}
 	double v = inst->getInputAttributeValue(instAttIndex);
-
-    // For transfer
-    num_instances_seen += 1;
-    double delta = v - att_mean;
-    att_mean += delta / num_instances_seen;
-    double delta2 = v - att_mean;
-    squared_distance_sum += delta * delta2;
-
-    min_att_val = min(min_att_val, v);
-    max_att_val = max(max_att_val, v);
-
-    if (v == this->attValue) {
-        return this->equalsPassesTest ? 0 : 1;
+	if (v == this->attValue) {
+		return this->equalsPassesTest ? 0 : 1;
 	}
 	return v < this->attValue ? 0 : 1;
 }

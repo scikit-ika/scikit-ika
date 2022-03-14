@@ -25,6 +25,11 @@
 class DenseInstance: public Instance {
 public:
 	DenseInstance();
+    DenseInstance(double weight,
+                  bool instanceInformationSaved,
+                  vector<double> inputData,
+                  vector<double> outputData,
+                  InstanceInformation* instanceInformation);
 	virtual ~DenseInstance();
 
 	//Values
@@ -32,14 +37,21 @@ public:
 	virtual double getOutputAttributeValue(int) const;
 	virtual Json::Value toJson() const;
 
+    virtual vector<double> getValues();
+
 	virtual void addValues(const vector<double>& values);
 	virtual void addLabels(const vector<double>& values);
 
+	virtual void setValue(int attIdx, double value);
+	virtual void setLabel(int attIdx, double label);
+
 	Instance* clone();
 
-protected:
+// protected:
 	vector<double> mInputData;
 	vector<double> mOutputData;
+
+	vector<int> modifiedAttIndices;
 };
 
 #endif /* DENSEINSTANCE_H_ */

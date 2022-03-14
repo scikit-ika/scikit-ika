@@ -36,21 +36,6 @@ Instance::~Instance() {
 	}
 }
 
-void Instance::setAttributeStatus(vector<int>& indices) {
-    attributeStatus.clear();
-    for (int i = 0; i < this->getNumberInputAttributes(); i++) {
-        attributeStatus.push_back(false);
-    }
-
-    for (int idx : indices) {
-        attributeStatus[idx] = true;
-    }
-}
-
-bool Instance::isAttributeEnabled(int idx) const {
-    return attributeStatus[idx];
-}
-
 int Instance::getNumberClasses() const {
 	return instanceInformation->getNumberClasses();
 }
@@ -105,11 +90,14 @@ void Instance::addLabels(const vector<double>& values) {
 
 }
 
+void Instance::setValue(int attIdx, double value) {}
+void Instance::setLabel(int attIdx, double label) {}
+
 Instance* cloneInstance(const Instance* s) {
 	Instance* temp = (Instance*) s;
 	return temp->clone();
 }
 
-list<list<double> >* Instance::getValues() {
-	return nullptr;
+vector<double> Instance::getValues() {
+	return {};
 }

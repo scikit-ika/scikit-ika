@@ -76,9 +76,6 @@ public:
 
 	int mLevel;
 
-
-    deque<Instance*> instanceStore;
-
 //	void addToValue(int index, double value);
 //	double sumOfValues();
 };
@@ -130,7 +127,7 @@ public:
 	int attrObsSize;
 	bool isInitialized;
 
-    ActiveLearningNode(const vector<double>& initialClassObservations, std::mt19937& mrand);
+    ActiveLearningNode(const vector<double>& initialClassObservations, std::mt19937 mrand);
 	ActiveLearningNode(const vector<double>& initialClassObservations);
 	ActiveLearningNode(const Json::Value& jv);
 	~ActiveLearningNode();
@@ -154,10 +151,9 @@ public:
 	vector<double> classVotes;	// used for save votes, don't need to clean memory after calling getClassVotes()
 
 	LearningNodeNB(const vector<double>& initialClassObservations);
-    LearningNodeNB(const vector<double>& initialClassObservations, mt19937& mrand);
 	LearningNodeNB(const Json::Value& jv);
 	~LearningNodeNB();
-	virtual vector<double> getClassVotes(const Instance* inst, HoeffdingTree* ht);
+	virtual vector<double> getClassVotes(const Instance* inst, HoeffdingTree* ht) ;
 	virtual void disableAttribute(int attIndex);
 	virtual void toJson(Json::Value& jv);
 	vector<double>& doNaiveBayesPrediction(const Instance* inst,
@@ -170,10 +166,9 @@ public:
 	double mcCorrectWeight;
 	double nbCorrectWeight;
 	LearningNodeNBAdaptive(const vector<double>& initialClassObservations);
-    LearningNodeNBAdaptive(const vector<double>& initialClassObservations, mt19937& mrand);
 	LearningNodeNBAdaptive(const Json::Value& jv);
 	virtual void learnFromInstance(const Instance* inst, HoeffdingTree* ht);
-	virtual vector<double> getClassVotes(const Instance* inst, HoeffdingTree* ht);
+	virtual vector<double> getClassVotes(const Instance* inst, HoeffdingTree* ht) ;
 	virtual void toJson(Json::Value& jv);
 };
 

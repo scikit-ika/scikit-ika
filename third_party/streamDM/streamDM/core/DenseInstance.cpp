@@ -17,6 +17,7 @@
 
 #include "DenseInstance.h"
 #include <sstream>
+#include <iostream>
 
 DenseInstance::DenseInstance() {
 	weight = 1;
@@ -42,6 +43,10 @@ Json::Value DenseInstance::toJson() const {
 	return jv;
 }
 
+vector<double> DenseInstance::getValues() {
+    return mInputData;
+}
+
 void DenseInstance::addValues(const vector<double>& values) {
 	mInputData = values;
 }
@@ -50,7 +55,15 @@ void DenseInstance::addLabels(const vector<double>& values) {
 	mOutputData = values;
 }
 
-Instance* DenseInstance::clone(){
+void DenseInstance::setValue(int attIdx, double value) {
+	mInputData[attIdx] = value;
+}
+
+void DenseInstance::setLabel(int labelIdx, double label) {
+	mOutputData[labelIdx] = label;
+}
+
+Instance* DenseInstance::clone() {
 	DenseInstance* di = new DenseInstance();
 	if (this->instanceInformationSaved) {
 		di->instanceInformation = this->instanceInformation->clone();
@@ -63,4 +76,3 @@ Instance* DenseInstance::clone(){
 	di->instanceInformationSaved = this->instanceInformationSaved;
 	return di;
 }
-
