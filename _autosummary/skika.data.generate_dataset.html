@@ -4,39 +4,41 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>skika.data.generate_dataset &#8212; scikit-ika  documentation</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.ee6fb81b276d6fba8a971ad8e9b95dd9.css" rel="stylesheet" />
-
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.c86189f1ce1b71a67eb6.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skika.data.hyper_plane_generator_redund" href="skika.data.hyper_plane_generator_redund.html" />
-    <link rel="prev" title="skika.data.bernoulli_stream" href="skika.data.bernoulli_stream.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -68,7 +70,7 @@
       
       <div class="navbar-center-item">
         <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 current active nav-item">
+    <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../documentation.html">
   API Documentation
  </a>
@@ -89,10 +91,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/scikit-ika/scikit-ika" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -108,100 +108,18 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.stream_generator.html">
-   skika.data.stream_generator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.reccurring_concept_stream.html">
-   skika.data.reccurring_concept_stream
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.wind_sim_generator.html">
-   skika.data.wind_sim_generator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.bernoulli_stream.html">
-   skika.data.bernoulli_stream
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   skika.data.generate_dataset
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.hyper_plane_generator_redund.html">
-   skika.data.hyper_plane_generator_redund
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.random_rbf_generator_redund.html">
-   skika.data.random_rbf_generator_redund
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.data.stream_generator_redundancy_drift.html">
-   skika.data.stream_generator_redundancy_drift
-  </a>
- </li>
-</ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.evaluation.inspect_recurrence.html">
-   skika.evaluation.inspect_recurrence
-  </a>
- </li>
-</ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.html">
-   skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment.html">
-   skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_experiment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge.html">
-   skika.hyper_parameter_tuning.drift_detectors.evaluate_drift_detection_knowledge
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees.html">
-   skika.hyper_parameter_tuning.trees_arf.build_pareto_knowledge_trees
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt.html">
-   skika.hyper_parameter_tuning.trees_arf.evaluate_prequential_and_adapt
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.trees_arf.meta_feature_generator.html">
-   skika.hyper_parameter_tuning.trees_arf.meta_feature_generator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="skika.hyper_parameter_tuning.drift_detectors.AutoDDM.html">
-   skika.hyper_parameter_tuning.drift_detectors.AutoDDM
-  </a>
- </li>
-</ul>
-
+    
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -234,7 +152,7 @@
               
               <div>
                 
-  <div class="section" id="module-skika.data.generate_dataset">
+  <section id="module-skika.data.generate_dataset">
 <span id="skika-data-generate-dataset"></span><h1>skika.data.generate_dataset<a class="headerlink" href="#module-skika.data.generate_dataset" title="Permalink to this headline">¶</a></h1>
 <p class="rubric">Functions</p>
 <table class="longtable table autosummary">
@@ -246,19 +164,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_concept_chain" title="skika.data.generate_dataset.generate_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_concept_chain</span></code></a>(concept_desc, sequential)</p></td>
 <td><p>Given a list of availiable concepts, generate a dict with (start, id) pairs giving the start of each concept.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="skika.data.generate_dataset.generate_experiment_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_experiment_concept_chain</span></code></a>(…)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="skika.data.generate_dataset.generate_experiment_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_experiment_concept_chain</span></code></a>(...)</p></td>
 <td><p>Generates a list of concepts for a datastream.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="skika.data.generate_dataset.generate_pattern_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_pattern_concept_chain</span></code></a>(concept_desc, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="skika.data.generate_dataset.generate_pattern_concept_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_pattern_concept_chain</span></code></a>(concept_desc, ...)</p></td>
 <td><p>Given a list of availiable concepts, generate a dict with (start, id) pairs giving the start of each concept.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concept_by_example</span></code>(num_samples, …)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concept_by_example</span></code>(num_samples, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.get_concepts" title="skika.data.generate_dataset.get_concepts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concepts</span></code></a>(gt_concepts, ex_index, num_samples)</p></td>
-<td><p>Given [(gt_concept, start_i, end_i)…] Return the ground truth occuring at a given index.</p></td>
+<td><p>Given [(gt_concept, start_i, end_i)...] Return the ground truth occuring at a given index.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concepts_from_model</span></code>(concept_chain, …)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_concepts_from_model</span></code>(concept_chain, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_model_drifts</span></code>(num_samples, datastream)</p></td>
@@ -267,7 +185,7 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_reuse_folder</span></code>(experiment_directory)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.saveStreamToArff" title="skika.data.generate_dataset.saveStreamToArff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStreamToArff</span></code></a>(filename, stream_examples, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.saveStreamToArff" title="skika.data.generate_dataset.saveStreamToArff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saveStreamToArff</span></code></a>(filename, stream_examples, ...)</p></td>
 <td><p>Save examples to an ARFF file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skika.data.generate_dataset.save_stream" title="skika.data.generate_dataset.save_stream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_stream</span></code></a>(options, ds_options[, pattern, arff])</p></td>
@@ -282,29 +200,29 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.DatastreamOptions" title="skika.data.generate_dataset.DatastreamOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatastreamOptions</span></code></a>(noise, num_concepts, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.DatastreamOptions" title="skika.data.generate_dataset.DatastreamOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatastreamOptions</span></code></a>(noise, num_concepts, ...)</p></td>
 <td><p>Options for generating a concept.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExperimentOptions</span></code>(seed, stream_type, directory)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.NPEncoder" title="skika.data.generate_dataset.NPEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NPEncoder</span></code></a>(*[, skipkeys, ensure_ascii, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skika.data.generate_dataset.NPEncoder" title="skika.data.generate_dataset.NPEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NPEncoder</span></code></a>(*[, skipkeys, ensure_ascii, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt id="skika.data.generate_dataset.DatastreamOptions">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">DatastreamOptions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_concepts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">easy_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_appear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">easy_appear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_prop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">examples_per_appearence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradual</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.DatastreamOptions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.DatastreamOptions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">DatastreamOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_concepts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">easy_diff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_appear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">easy_appear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_prop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">examples_per_appearence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradual</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.DatastreamOptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Options for generating a concept.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="skika.data.generate_dataset.NPEncoder">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">NPEncoder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.NPEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">NPEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="skika.data.generate_dataset.NPEncoder.default">
-<code class="sig-name descname"><span class="pre">default</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.NPEncoder.default">
+<span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.default" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement this method in a subclass such that it returns
 a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
 (to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
@@ -324,8 +242,8 @@ implement default like this:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="skika.data.generate_dataset.NPEncoder.encode">
-<code class="sig-name descname"><span class="pre">encode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.encode" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.NPEncoder.encode">
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a JSON string representation of a Python data structure.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">json.encoder</span> <span class="kn">import</span> <span class="n">JSONEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">JSONEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">({</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">]})</span>
@@ -335,8 +253,8 @@ implement default like this:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="skika.data.generate_dataset.NPEncoder.iterencode">
-<code class="sig-name descname"><span class="pre">iterencode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_one_shot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.iterencode" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.NPEncoder.iterencode">
+<span class="sig-name descname"><span class="pre">iterencode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_one_shot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.NPEncoder.iterencode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encode the given object and yield each string
 representation as available.</p>
 <p>For example:</p>
@@ -349,8 +267,8 @@ representation as available.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.generate_concept_chain">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">generate_concept_chain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concept_desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.generate_concept_chain">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">generate_concept_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concept_desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_concept_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
 giving the start of each concept.</p>
 <dl class="field-list simple">
@@ -362,8 +280,8 @@ determined by ID without randomness.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.generate_experiment_concept_chain">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">generate_experiment_concept_chain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.generate_experiment_concept_chain">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">generate_experiment_concept_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_experiment_concept_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a list of concepts for a datastream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -385,8 +303,8 @@ determined by ID without randomness.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.generate_pattern_concept_chain">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">generate_pattern_concept_chain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concept_desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.generate_pattern_concept_chain">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">generate_pattern_concept_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concept_desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.generate_pattern_concept_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a list of availiable concepts, generate a dict with (start, id) pairs
 giving the start of each concept.
 This is generated using a random markov model, so specific transtion patterns
@@ -400,15 +318,15 @@ determined by ID without randomness.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.get_concepts">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">get_concepts</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gt_concepts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ex_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.get_concepts" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.get_concepts">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">get_concepts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gt_concepts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ex_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.get_concepts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given [(gt_concept, start_i, end_i)…]
 Return the ground truth occuring at a given index.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.saveStreamToArff">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">saveStreamToArff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_examples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_supplementary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.saveStreamToArff" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.saveStreamToArff">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">saveStreamToArff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_examples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_supplementary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.saveStreamToArff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save examples to an ARFF file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -423,8 +341,8 @@ Return the ground truth occuring at a given index.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="skika.data.generate_dataset.save_stream">
-<code class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></code><code class="sig-name descname"><span class="pre">save_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ds_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.save_stream" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="skika.data.generate_dataset.save_stream">
+<span class="sig-prename descclassname"><span class="pre">skika.data.generate_dataset.</span></span><span class="sig-name descname"><span class="pre">save_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ds_options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.generate_dataset.save_stream" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create, generate and save a data stream to csv or ARFF.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -438,7 +356,7 @@ Return the ground truth occuring at a given index.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
               </div>
@@ -449,22 +367,20 @@ Return the ground truth occuring at a given index.</p>
 
       </div>
     </div>
-    
-  <script src="../_static/js/index.c86189f1ce1b71a67eb6.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2019, Team scikit-ika.<br/>
+    &copy; Copyright 2019, Team scikit-ika.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     
