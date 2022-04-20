@@ -31,7 +31,7 @@ pip install ./scikit-ika
 
 1. Install the Visual Studio 2022 Community Edition (or later). Make sure you tick the box for "Desktop C++" development.
 2. Install the latest CMake.
-3. Install the latest 64bit Python. Make sure you tick the box to add Python to the system path.
+3. Install the latest 64bit Python from Python.org. There's two checkboxes you need to be careful with in the installer! You must check the box to disable the limit on long lines if you're prompted for that! Also make sure you tick the box to add Python to the system path.
 4. Install Git.
 5. Run "Developer PowerShell for VS 2022" (or whatever your Visual Studio is).
 6. Checkout the code: `git clone https://github.com/scikit-ika/scikit-ika.git --recursive`
