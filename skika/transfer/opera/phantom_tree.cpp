@@ -150,7 +150,7 @@ void phantom_tree::phantomSplit(shared_ptr<phantom_node> node) {
     }
     allSplitSuggestions->sort(compare_suggestion);
     allSplitSuggestions->reverse();
-    allSplitSuggestions->resize(std::min((unsigned long) this->split_range, allSplitSuggestions->size()));
+    allSplitSuggestions->resize(std::min((size_t) this->split_range, allSplitSuggestions->size()));
 
     auto iter = (*allSplitSuggestions).begin();
     for (; iter != (*allSplitSuggestions).end(); iter++) {

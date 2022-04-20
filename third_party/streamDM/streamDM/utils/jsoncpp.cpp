@@ -69,7 +69,14 @@ license you like.
 // //////////////////////////////////////////////////////////////////////
 
 
-
+#if defined(_WIN32) || defined(WIN32)
+// Windows work arounds for functions used from unistd.h.
+#include <io.h>
+#define access _access
+#define strcasecmp stricmp
+#else
+#include <unistd.h>
+#endif
 
 
 
