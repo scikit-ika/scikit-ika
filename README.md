@@ -27,6 +27,17 @@ git clone https://github.com/scikit-ika/scikit-ika.git --recursive
 pip install ./scikit-ika
 ```
 
+### Building on Windows x64
+
+1. Install the Visual Studio 2022 Community Edition (or later). Make sure you tick the box for "Desktop C++" development.
+2. Install the latest CMake.
+3. Install the latest 64bit Python. Make sure you tick the box to add Python to the system path.
+4. Install Git.
+5. Run "Developer PowerShell for VS 2022" (or whatever your Visual Studio is).
+6. Checkout the code: `git clone https://github.com/scikit-ika/scikit-ika.git --recursive`
+7. `cd scikit-ika`
+8. `pip install .`
+
 ### Note
 
 `scikit-ika` is still in its infancy. The APIs are unstable and the documentation is scarse.
