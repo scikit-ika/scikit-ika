@@ -630,9 +630,9 @@ Code ::
         expected_accuracies=expected_accuracies)
 
     class ClassifierMetrics:
-    def __init__(self):
-        self.correct = 0
-        self.instance_idx = 0
+        def __init__(self):
+            self.correct = 0
+            self.instance_idx = 0
 
     def prequential_evaluation_transfer(
         classifier,
@@ -641,47 +641,47 @@ Code ::
         sample_freq,
         expected_accuracies):
 
-    classifier_metrics_list = []
-    for i in range(len(data_file_paths)):
-        classifier.init_data_source(i, data_file_paths[i])
-        classifier_metrics_list.append(ClassifierMetrics())
+        classifier_metrics_list = []
+        for i in range(len(data_file_paths)):
+            classifier.init_data_source(i, data_file_paths[i])
+            classifier_metrics_list.append(ClassifierMetrics())
 
-    classifier_idx = 0
-    classifier.switch_classifier(classifier_idx)
-    metric = classifier_metrics_list[classifier_idx]
+        classifier_idx = 0
+        classifier.switch_classifier(classifier_idx)
+        metric = classifier_metrics_list[classifier_idx]
 
-    while True:
-        if not classifier.get_next_instance():
-            # Switch streams to simulate parallel streams
+        while True:
+            if not classifier.get_next_instance():
+                # Switch streams to simulate parallel streams
 
-            classifier_idx += 1
-            if classifier_idx >= len(data_file_paths):
-                break
+                classifier_idx += 1
+                if classifier_idx >= len(data_file_paths):
+                    break
 
-            classifier.switch_classifier(classifier_idx)
-            metric = classifier_metrics_list[classifier_idx]
+                classifier.switch_classifier(classifier_idx)
+                metric = classifier_metrics_list[classifier_idx]
 
-            print()
-            print(f"switching to classifier_idx {classifier_idx}")
-            continue
+                print()
+                print(f"switching to classifier_idx {classifier_idx}")
+                continue
 
-        classifier_metrics_list[classifier_idx].instance_idx += 1
+            classifier_metrics_list[classifier_idx].instance_idx += 1
 
-        # test
-        prediction = classifier.predict()
+            # test
+            prediction = classifier.predict()
 
-        actual_label = classifier.get_cur_instance_label()
-        if prediction == actual_label:
-            metric.correct += 1
+            actual_label = classifier.get_cur_instance_label()
+            if prediction == actual_label:
+                metric.correct += 1
 
-        # train
-        classifier.train()
+            # train
+            classifier.train()
 
-        log_metrics(
-            classifier_metrics_list[classifier_idx].instance_idx,
-            sample_freq,
-            metric,
-            classifier)
+            log_metrics(
+                classifier_metrics_list[classifier_idx].instance_idx,
+                sample_freq,
+                metric,
+                classifier)
 
     def log_metrics(count, sample_freq, metric, classifier):
         if count % sample_freq == 0 and count != 0:
