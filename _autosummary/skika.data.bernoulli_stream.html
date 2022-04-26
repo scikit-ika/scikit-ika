@@ -8,26 +8,23 @@
 
     <title>skika.data.bernoulli_stream &#8212; scikit-ika  documentation</title>
     
-    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
     
-    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -41,7 +38,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -153,9 +150,9 @@
               <div>
                 
   <section id="module-skika.data.bernoulli_stream">
-<span id="skika-data-bernoulli-stream"></span><h1>skika.data.bernoulli_stream<a class="headerlink" href="#module-skika.data.bernoulli_stream" title="Permalink to this headline">¶</a></h1>
+<span id="skika-data-bernoulli-stream"></span><h1>skika.data.bernoulli_stream<a class="headerlink" href="#module-skika.data.bernoulli_stream" title="Permalink to this headline">#</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable table autosummary">
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -168,7 +165,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.bernoulli_stream.</span></span><span class="sig-name descname"><span class="pre">BernoulliStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drift_period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_drifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widths_drifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_errors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_stable_drifts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.bernoulli_stream.</span></span><span class="sig-name descname"><span class="pre">BernoulliStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drift_period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_drifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widths_drifts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_errors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_stable_drifts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream" title="Permalink to this definition">#</a></dt>
 <dd><p>A class to generate a Bernoulli Stream</p>
 <blockquote>
 <div><p>The stream is simulating the error rate of a learner.
@@ -233,14 +230,14 @@ This enable to generate streams with more or less drifts diversity.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet">
-<span class="sig-name descname"><span class="pre">choiceWithoutRepet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_choices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">choiceWithoutRepet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_choices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.choiceWithoutRepet" title="Permalink to this definition">#</a></dt>
 <dd><p>Generate a list of n_iter items from lit_choices without following repetition.
 If len(list_choice) &gt; 2, the list is generated without repetitions every 3 items.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_drift_magnitude</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_drift_magnitude</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_magnitude" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the current_drift_magnitude.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -254,7 +251,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.current_drift_severity">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_drift_severity</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_severity" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_drift_severity</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_drift_severity" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the current_drift_severity.
 :returns: The current_drift_severity.
 :rtype: int</p>
@@ -262,7 +259,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.current_mean_error">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_mean_error</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_mean_error" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_mean_error</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_mean_error" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the current_mean_error.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -276,7 +273,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.current_width">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_width</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_width" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_width</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.current_width" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the current_width.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -290,7 +287,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.get_data_info">
-<span class="sig-name descname"><span class="pre">get_data_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.get_data_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_data_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.get_data_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves information from the stream</p>
 <blockquote>
 <div><p>The default format is: ‘Stream name - n_samples, n_drifts, widths_drifts, error_rates’.</p>
@@ -304,7 +301,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.list_positions">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_positions</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.list_positions" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_positions</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.list_positions" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the list of drifts positions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -318,7 +315,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.n_samples">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_samples</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.n_samples" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_samples</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.n_samples" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the length of the stream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -332,7 +329,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.next_mean_error">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_mean_error</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_mean_error" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_mean_error</span></span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_mean_error" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the next_mean_error.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -346,7 +343,7 @@ If len(list_choice) &gt; 2, the list is generated without repetitions every 3 it
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.next_sample">
-<span class="sig-name descname"><span class="pre">next_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">next_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.next_sample" title="Permalink to this definition">#</a></dt>
 <dd><dl>
 <dt>The sample generation works as follows:</dt><dd><p>A prediction 0 or 1 is generated by the random Bernoulli process,
 based on the current and next mean errors.
@@ -371,14 +368,14 @@ the batch_size samples that were requested.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials">
-<span class="sig-name descname"><span class="pre">perform_bernoulli_trials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">perform_bernoulli_trials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.perform_bernoulli_trials" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform n Bernoulli trials with success probability p
 and return number of successes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.bernoulli_stream.BernoulliStream.prepare_for_use">
-<span class="sig-name descname"><span class="pre">prepare_for_use</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.prepare_for_use" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prepare_for_use</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.bernoulli_stream.BernoulliStream.prepare_for_use" title="Permalink to this definition">#</a></dt>
 <dd><p>Prepares the stream for use.</p>
 <p class="rubric">Notes</p>
 <p>This functions should always be called after the stream initialization.</p>
@@ -398,8 +395,9 @@ and return number of successes.</p>
       </div>
     </div>
   
-    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -410,7 +408,7 @@ and return number of successes.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     

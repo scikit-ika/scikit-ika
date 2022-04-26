@@ -8,26 +8,23 @@
 
     <title>skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts &#8212; scikit-ika  documentation</title>
     
-    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
     
-    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -41,7 +38,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -153,9 +150,9 @@
               <div>
                 
   <section id="module-skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts">
-<span id="skika-hyper-parameter-tuning-drift-detectors-build-pareto-knowledge-drifts"></span><h1>skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts<a class="headerlink" href="#module-skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts" title="Permalink to this headline">¶</a></h1>
+<span id="skika-hyper-parameter-tuning-drift-detectors-build-pareto-knowledge-drifts"></span><h1>skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts<a class="headerlink" href="#module-skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts" title="Permalink to this headline">#</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable table autosummary">
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -168,7 +165,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.</span></span><span class="sig-name descname"><span class="pre">BuildDriftKnowledge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_detectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_streams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.</span></span><span class="sig-name descname"><span class="pre">BuildDriftKnowledge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_detectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_streams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge" title="Permalink to this definition">#</a></dt>
 <dd><dl>
 <dt>Description :</dt><dd><p>Class to build the pareto knowledge from hyper-parameters configurations evaluated on differents datasets for the drift detector tuning.
 The knowledge consists in the best configuration of hyper-parameters for each dataset.</p>
@@ -218,7 +215,7 @@ NOT USED FOR THE MOMENT, need further implementing to bring the two applications
 </div>
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.best_config">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best_config</span></span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.best_config" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">best_config</span></span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.best_config" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the length of the stream.
 :returns: The length of the stream.
 :rtype: int</p>
@@ -226,7 +223,7 @@ NOT USED FOR THE MOMENT, need further implementing to bring the two applications
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_crowding">
-<span class="sig-name descname"><span class="pre">calculate_crowding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_crowding" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">calculate_crowding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_crowding" title="Permalink to this definition">#</a></dt>
 <dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a>
 Crowding is based on a vector for each individual
 All dimension is normalised between low and high. For any one dimension, all
@@ -237,25 +234,25 @@ lowest score. Total crowding value sums all crowding for all scores</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_pareto">
-<span class="sig-name descname"><span class="pre">calculate_pareto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_pareto" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">calculate_pareto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.calculate_pareto" title="Permalink to this definition">#</a></dt>
 <dd><p>Function to calculate the Pareto front and detect the knee point</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.identify_pareto">
-<span class="sig-name descname"><span class="pre">identify_pareto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.identify_pareto" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">identify_pareto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.identify_pareto" title="Permalink to this definition">#</a></dt>
 <dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.load_drift_data">
-<span class="sig-name descname"><span class="pre">load_drift_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.load_drift_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">load_drift_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.load_drift_data" title="Permalink to this definition">#</a></dt>
 <dd><p>Function to load the performance data from the csv files</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.reduce_by_crowding">
-<span class="sig-name descname"><span class="pre">reduce_by_crowding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.reduce_by_crowding" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reduce_by_crowding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_to_select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.hyper_parameter_tuning.drift_detectors.build_pareto_knowledge_drifts.BuildDriftKnowledge.reduce_by_crowding" title="Permalink to this definition">#</a></dt>
 <dd><p>From <a class="reference external" href="https://github.com/MichaelAllen1966">https://github.com/MichaelAllen1966</a>
 This function selects a number of solutions based on tournament of
 crowding distances. Two members of the population are picked at
@@ -276,8 +273,9 @@ random. The one with the higher croding dostance is always picked</p>
       </div>
     </div>
   
-    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -288,7 +286,7 @@ random. The one with the higher croding dostance is always picked</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     

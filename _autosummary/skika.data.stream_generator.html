@@ -8,26 +8,23 @@
 
     <title>skika.data.stream_generator &#8212; scikit-ika  documentation</title>
     
-    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
     
-    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -41,7 +38,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -153,9 +150,9 @@
               <div>
                 
   <section id="module-skika.data.stream_generator">
-<span id="skika-data-stream-generator"></span><h1>skika.data.stream_generator<a class="headerlink" href="#module-skika.data.stream_generator" title="Permalink to this headline">¶</a></h1>
+<span id="skika-data-stream-generator"></span><h1>skika.data.stream_generator<a class="headerlink" href="#module-skika.data.stream_generator" title="Permalink to this headline">#</a></h1>
 <p class="rubric">Classes</p>
-<table class="longtable table autosummary">
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -168,7 +165,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.stream_generator.</span></span><span class="sig-name descname"><span class="pre">RecurrentDriftStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'agrawal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concepts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">0,</span> <span class="pre">8]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_concepts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">0,</span> <span class="pre">8,</span> <span class="pre">6,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concept_shift_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concept_shift_sample_intervals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[200000,</span> <span class="pre">250000,</span> <span class="pre">300000]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skika.data.stream_generator.</span></span><span class="sig-name descname"><span class="pre">RecurrentDriftStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'agrawal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concepts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">0,</span> <span class="pre">8]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_concepts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">0,</span> <span class="pre">8,</span> <span class="pre">6,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concept_shift_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concept_shift_sample_intervals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[200000,</span> <span class="pre">250000,</span> <span class="pre">300000]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stable_period_logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates a stream with recurrent concept drifts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -177,7 +174,7 @@
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.feature_names">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feature_names</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.feature_names" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feature_names</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.feature_names" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the names of the features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -191,7 +188,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.get_data_info">
-<span class="sig-name descname"><span class="pre">get_data_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_data_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_data_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_data_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves minimum information from the stream</p>
 <p>Used by evaluator methods to id the stream.</p>
 <p>The default format is: ‘Stream name - n_targets, n_classes, n_features’.</p>
@@ -207,7 +204,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.get_info">
-<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Collects and returns the information about the configuration of the estimator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -221,7 +218,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.get_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -239,7 +236,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.has_more_samples">
-<span class="sig-name descname"><span class="pre">has_more_samples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.has_more_samples" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">has_more_samples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.has_more_samples" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks if stream has more samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -253,7 +250,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.is_restartable">
-<span class="sig-name descname"><span class="pre">is_restartable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.is_restartable" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_restartable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.is_restartable" title="Permalink to this definition">#</a></dt>
 <dd><p>Determine if the stream is restartable.
 :returns: True if stream is restartable.
 :rtype: Boolean</p>
@@ -261,7 +258,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.last_sample">
-<span class="sig-name descname"><span class="pre">last_sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.last_sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">last_sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.last_sample" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves last <cite>batch_size</cite> samples in the stream.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -276,7 +273,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.n_cat_features">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_cat_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_cat_features" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_cat_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_cat_features" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the number of integer features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -290,7 +287,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.n_features">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_features" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_features" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the number of features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -304,7 +301,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.n_num_features">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_num_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_num_features" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_num_features</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_num_features" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the number of numerical features.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -318,7 +315,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.n_remaining_samples">
-<span class="sig-name descname"><span class="pre">n_remaining_samples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_remaining_samples" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">n_remaining_samples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_remaining_samples" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the estimated number of remaining samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -332,7 +329,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.n_targets">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_targets</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_targets" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_targets</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.n_targets" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the number of targets</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -346,7 +343,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.next_sample">
-<span class="sig-name descname"><span class="pre">next_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.next_sample" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">next_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.next_sample" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the next <cite>batch_size</cite> samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -364,7 +361,7 @@ for the batch_size samples that were requested.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.prepare_for_use">
-<span class="sig-name descname"><span class="pre">prepare_for_use</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.prepare_for_use" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prepare_for_use</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.prepare_for_use" title="Permalink to this definition">#</a></dt>
 <dd><p>Prepares the stream for use.</p>
 <p class="rubric">Notes</p>
 <p>This functions should always be called after the stream initialization.</p>
@@ -372,7 +369,7 @@ for the batch_size samples that were requested.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.reset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.reset" title="Permalink to this definition">#</a></dt>
 <dd><p>Resets the estimator to its initial state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -383,13 +380,13 @@ for the batch_size samples that were requested.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.restart">
-<span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.restart" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.restart" title="Permalink to this definition">#</a></dt>
 <dd><p>Restart the stream.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.set_params" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.set_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
@@ -404,7 +401,7 @@ component of a nested object.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.target_names">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_names</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_names" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_names</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_names" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve the names of the targets</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -418,7 +415,7 @@ component of a nested object.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="skika.data.stream_generator.RecurrentDriftStream.target_values">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_values</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_values" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_values</span></span><a class="headerlink" href="#skika.data.stream_generator.RecurrentDriftStream.target_values" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve all target_values in the stream for each target.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -444,8 +441,9 @@ component of a nested object.</p>
       </div>
     </div>
   
-    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -456,7 +454,7 @@ component of a nested object.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     
