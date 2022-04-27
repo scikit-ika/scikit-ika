@@ -762,10 +762,11 @@
 
 
 <span class="c1"># datasets separated by the semi-colons</span>
-<span class="n">data_file_path</span><span class="o">=</span><span class="s2">&quot;/your/path/transfer-data/fashion-mnist/flip20/source.arff;/your/path/transfer-data/fashion-mnist/flip20/target.arff&quot;</span><span class="p">;</span>
+<span class="n">data_file_path</span> <span class="o">=</span> <span class="s2">&quot;./transfer-data/fashion-mnist/flip20/source.arff;./transfer-data/fashion-mnist/flip20/target.arff&quot;</span><span class="p">;</span>
+<span class="n">data_file_paths</span> <span class="o">=</span> <span class="n">data_file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">opera_wrapper</span><span class="p">(</span>
-    <span class="nb">len</span><span class="p">(</span><span class="n">data_file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)),</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">data_file_paths</span><span class="p">),</span>
     <span class="n">random_state</span><span class="p">,</span>
     <span class="n">num_trees</span><span class="p">,</span>
     <span class="n">rf_lambda</span><span class="p">,</span>
@@ -782,69 +783,11 @@
     <span class="n">force_disable_patching</span><span class="p">,</span>
     <span class="n">force_enable_patching</span><span class="p">)</span>
 
-<span class="n">data_file_list</span> <span class="o">=</span> <span class="n">data_file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-
-
-<span class="n">prequential_evaluation_transfer</span><span class="p">(</span>
-    <span class="n">classifier</span><span class="o">=</span><span class="n">classifier</span><span class="p">,</span>
-    <span class="n">data_file_paths</span><span class="o">=</span><span class="n">data_file_list</span><span class="p">,</span>
-    <span class="n">max_samples</span><span class="o">=</span><span class="n">max_samples</span><span class="p">,</span>
-    <span class="n">sample_freq</span><span class="o">=</span><span class="n">sample_freq</span><span class="p">,</span>
-    <span class="n">expected_accuracies</span><span class="o">=</span><span class="n">expected_accuracies</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ClassifierMetrics</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance_idx</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">prequential_evaluation_transfer</span><span class="p">(</span>
-    <span class="n">classifier</span><span class="p">,</span>
-    <span class="n">data_file_paths</span><span class="p">,</span>
-    <span class="n">max_samples</span><span class="p">,</span>
-    <span class="n">sample_freq</span><span class="p">,</span>
-    <span class="n">expected_accuracies</span><span class="p">):</span>
-
-    <span class="n">classifier_metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_file_paths</span><span class="p">)):</span>
-        <span class="n">classifier</span><span class="o">.</span><span class="n">init_data_source</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">data_file_paths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">classifier_metrics_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ClassifierMetrics</span><span class="p">())</span>
-
-    <span class="n">classifier_idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">classifier</span><span class="o">.</span><span class="n">switch_classifier</span><span class="p">(</span><span class="n">classifier_idx</span><span class="p">)</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span>
-
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">classifier</span><span class="o">.</span><span class="n">get_next_instance</span><span class="p">():</span>
-            <span class="c1"># Switch streams to simulate parallel streams</span>
-
-            <span class="n">classifier_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">classifier_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_file_paths</span><span class="p">):</span>
-                <span class="k">break</span>
-
-            <span class="n">classifier</span><span class="o">.</span><span class="n">switch_classifier</span><span class="p">(</span><span class="n">classifier_idx</span><span class="p">)</span>
-            <span class="n">metric</span> <span class="o">=</span> <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span>
-
-            <span class="nb">print</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;switching to classifier_idx </span><span class="si">{</span><span class="n">classifier_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">continue</span>
-
-        <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span><span class="o">.</span><span class="n">instance_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="c1"># test</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
-
-        <span class="n">actual_label</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">get_cur_instance_label</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">prediction</span> <span class="o">==</span> <span class="n">actual_label</span><span class="p">:</span>
-            <span class="n">metric</span><span class="o">.</span><span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="c1"># train</span>
-        <span class="n">classifier</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-
-        <span class="n">log_metrics</span><span class="p">(</span>
-            <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span><span class="o">.</span><span class="n">instance_idx</span><span class="p">,</span>
-            <span class="n">sample_freq</span><span class="p">,</span>
-            <span class="n">metric</span><span class="p">,</span>
-            <span class="n">classifier</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">log_metrics</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">sample_freq</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">classifier</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="n">sample_freq</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">count</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -857,6 +800,49 @@
 
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">metric</span><span class="o">.</span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="n">classifier_metrics_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_file_paths</span><span class="p">)):</span>
+    <span class="n">classifier</span><span class="o">.</span><span class="n">init_data_source</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">data_file_paths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">classifier_metrics_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ClassifierMetrics</span><span class="p">())</span>
+
+<span class="n">classifier_idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">switch_classifier</span><span class="p">(</span><span class="n">classifier_idx</span><span class="p">)</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">classifier</span><span class="o">.</span><span class="n">get_next_instance</span><span class="p">():</span>
+        <span class="c1"># Switch streams to simulate parallel streams</span>
+
+        <span class="n">classifier_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">classifier_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_file_paths</span><span class="p">):</span>
+            <span class="k">break</span>
+
+        <span class="n">classifier</span><span class="o">.</span><span class="n">switch_classifier</span><span class="p">(</span><span class="n">classifier_idx</span><span class="p">)</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;switching to classifier_idx </span><span class="si">{</span><span class="n">classifier_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span><span class="o">.</span><span class="n">instance_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># test</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+
+    <span class="n">actual_label</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">get_cur_instance_label</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">prediction</span> <span class="o">==</span> <span class="n">actual_label</span><span class="p">:</span>
+        <span class="n">metric</span><span class="o">.</span><span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># train</span>
+    <span class="n">classifier</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+    <span class="n">log_metrics</span><span class="p">(</span>
+        <span class="n">classifier_metrics_list</span><span class="p">[</span><span class="n">classifier_idx</span><span class="p">]</span><span class="o">.</span><span class="n">instance_idx</span><span class="p">,</span>
+        <span class="n">sample_freq</span><span class="p">,</span>
+        <span class="n">metric</span><span class="p">,</span>
+        <span class="n">classifier</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

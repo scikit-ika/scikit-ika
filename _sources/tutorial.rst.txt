@@ -599,10 +599,11 @@ Code ::
 
 
     # datasets separated by the semi-colons
-    data_file_path="/your/path/transfer-data/fashion-mnist/flip20/source.arff;/your/path/transfer-data/fashion-mnist/flip20/target.arff";
+    data_file_path = "./transfer-data/fashion-mnist/flip20/source.arff;./transfer-data/fashion-mnist/flip20/target.arff";
+    data_file_paths = data_file_path.split(";")
 
     classifier = opera_wrapper(
-        len(data_file_path.split(";")),
+        len(data_file_paths),
         random_state,
         num_trees,
         rf_lambda,
@@ -619,69 +620,11 @@ Code ::
         force_disable_patching,
         force_enable_patching)
 
-    data_file_list = data_file_path.split(";")
-
-
-    prequential_evaluation_transfer(
-        classifier=classifier,
-        data_file_paths=data_file_list,
-        max_samples=max_samples,
-        sample_freq=sample_freq,
-        expected_accuracies=expected_accuracies)
 
     class ClassifierMetrics:
         def __init__(self):
             self.correct = 0
             self.instance_idx = 0
-
-    def prequential_evaluation_transfer(
-        classifier,
-        data_file_paths,
-        max_samples,
-        sample_freq,
-        expected_accuracies):
-
-        classifier_metrics_list = []
-        for i in range(len(data_file_paths)):
-            classifier.init_data_source(i, data_file_paths[i])
-            classifier_metrics_list.append(ClassifierMetrics())
-
-        classifier_idx = 0
-        classifier.switch_classifier(classifier_idx)
-        metric = classifier_metrics_list[classifier_idx]
-
-        while True:
-            if not classifier.get_next_instance():
-                # Switch streams to simulate parallel streams
-
-                classifier_idx += 1
-                if classifier_idx >= len(data_file_paths):
-                    break
-
-                classifier.switch_classifier(classifier_idx)
-                metric = classifier_metrics_list[classifier_idx]
-
-                print()
-                print(f"switching to classifier_idx {classifier_idx}")
-                continue
-
-            classifier_metrics_list[classifier_idx].instance_idx += 1
-
-            # test
-            prediction = classifier.predict()
-
-            actual_label = classifier.get_cur_instance_label()
-            if prediction == actual_label:
-                metric.correct += 1
-
-            # train
-            classifier.train()
-
-            log_metrics(
-                classifier_metrics_list[classifier_idx].instance_idx,
-                sample_freq,
-                metric,
-                classifier)
 
     def log_metrics(count, sample_freq, metric, classifier):
         if count % sample_freq == 0 and count != 0:
@@ -694,3 +637,46 @@ Code ::
 
             print(f"{count},{accuracy},{f},{e},{c}")
             metric.correct = 0
+
+
+    classifier_metrics_list = []
+    for i in range(len(data_file_paths)):
+        classifier.init_data_source(i, data_file_paths[i])
+        classifier_metrics_list.append(ClassifierMetrics())
+
+    classifier_idx = 0
+    classifier.switch_classifier(classifier_idx)
+    metric = classifier_metrics_list[classifier_idx]
+
+    while True:
+        if not classifier.get_next_instance():
+            # Switch streams to simulate parallel streams
+
+            classifier_idx += 1
+            if classifier_idx >= len(data_file_paths):
+                break
+
+            classifier.switch_classifier(classifier_idx)
+            metric = classifier_metrics_list[classifier_idx]
+
+            print()
+            print(f"switching to classifier_idx {classifier_idx}")
+            continue
+
+        classifier_metrics_list[classifier_idx].instance_idx += 1
+
+        # test
+        prediction = classifier.predict()
+
+        actual_label = classifier.get_cur_instance_label()
+        if prediction == actual_label:
+            metric.correct += 1
+
+        # train
+        classifier.train()
+
+        log_metrics(
+            classifier_metrics_list[classifier_idx].instance_idx,
+            sample_freq,
+            metric,
+            classifier)
